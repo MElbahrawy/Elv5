@@ -1,0 +1,32 @@
+#hero-section {
+    position: relative;
+    height: calc(100vh - 179px);
+    display: flex;
+    align-items: center;
+}
+.img-holder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: inherit;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+}
+.img-holder img {
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+.hero-heading {
+    background-color: var(--main-color);
+    padding: 50px;
+    border-bottom-left-radius: 15px;
+    color: var(--text-light);
+    width: 50%;
+    position: relative;
+}
+.google-play img {
+    width: 200px;
+}

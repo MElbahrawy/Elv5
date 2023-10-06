@@ -1,0 +1,17 @@
+.head {
+    display: flex;
+    font-weight: 700;
+    background-color: var(--background-color);
+}
+.head .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.head .container > div {
+    display: flex;
+    gap: 15px;
+}
+.head a {
+    color: var(--main-color);
+}

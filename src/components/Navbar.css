@@ -1,0 +1,18 @@
+div.navbar {
+    background-color: var(--main-color);
+    padding: 20px 0;
+}
+.nav-brand {
+    color: var(--text-light);
+}
+.signing {
+    display: flex;
+    gap: 15px;
+}
+.signing a {
+    color: var(--text-light);
+    text-align: center;
+}
+.signing a:hover {
+    opacity: 0.8;
+}

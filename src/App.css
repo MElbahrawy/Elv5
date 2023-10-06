@@ -1,0 +1,22 @@
+:root {
+    --main-color: #103057;
+    --secondary-color: #49627f;
+    --text-color: #222;
+    --text-light: #fff;
+    --background-color: #eee;
+
+    --main-transition: all 0.2s ease;
+}
+body {
+    background-color: var(--background-color);
+}
+* {
+    font-family: "Cairo", sans-serif;
+}
+a {
+    text-decoration: none;
+    /* color: var(--text-color); */
+}
+section {
+    margin-top: 15px;
+}
