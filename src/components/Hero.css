@@ -26,7 +26,16 @@
     color: var(--text-light);
     width: 50%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .google-play img {
-    width: 200px;
+    max-width: 200px;
+}
+@media (max-width: 767px) {
+    .hero-heading {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
 }
