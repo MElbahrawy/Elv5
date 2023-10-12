@@ -1,0 +1,29 @@
+.categories {
+  background-color: #ddd;
+  margin-top: 15px;
+  padding: 25px;
+}
+.categories .row {
+  width: 100%;
+  margin-top: 80px;
+}
+.category {
+  text-align: center;
+  margin-bottom: 15px;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+.category:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+.category img {
+  width: 30%;
+  margin-bottom: 15px;
+}
