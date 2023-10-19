@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Navs from "./components/Navs";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
       <Header />
       <Navbar />
       <Navs />
-      <Home />
+      {/* <Home /> */}
+      <Login />
       <Footer />
     </div>
   );
