@@ -1,6 +1,7 @@
 import React from "react";
 import "./Hero.css";
 import Logo from "../img/Logo3-03.png";
+import { Link } from "react-router-dom";
 export default function Heading() {
   return (
     <section id="hero-section">
@@ -16,12 +17,12 @@ export default function Heading() {
           طريقك الي جيل جديد من المصاعد الذكية <br />
           الآن من مكان واحد تستطيع الحصول على كل ما يخص المصاعد في مصر
         </p>
-        <a href="/" className="google-play">
+        <Link to="/" className="google-play">
           <img
             src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
             alt="Get it on Google play"
           />
-        </a>
+        </Link>
       </div>
     </section>
   );

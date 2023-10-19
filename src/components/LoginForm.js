@@ -1,5 +1,6 @@
 import React from "react";
 import "./LoginForm.css";
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
   return (
@@ -24,9 +25,9 @@ export default function LoginForm() {
           </div>
           <div className="input-btn">
             <button className="btn">تسجيل دخول</button>
-            <a href="/" className="to-signup">
+            <Link to="/" className="to-signup">
               لست عضو ؟ انضم الان
-            </a>
+            </Link>
           </div>
         </form>
       </div>

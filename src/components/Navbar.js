@@ -1,23 +1,24 @@
 import React from "react";
 import "./Navbar.css";
 import Logo from "../img/Logo3-03.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div className="navbar navbar-expand-md ">
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Logo_Elev5" id="logo" />
-        </a>
+        </Link>
 
         <div className="signing">
-          <a href="/">
+          <Link to="Login">
             <i className="fa-solid fa-circle-user d-block"></i>دخول
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <i className="fa-solid fa-pen-to-square d-block"></i>
             تسجيل
-          </a>
+          </Link>
         </div>
       </div>
     </div>
