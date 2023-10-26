@@ -10,7 +10,7 @@ export default function SignUpForm() {
   const phases = [
     "أنشئ حساب لـ",
     "بيانات شخصية",
-    "عنوان العماره/ منطقة الفني",
+    "عنوان / منطقة ",
     "معلومات الدخول",
   ];
   const showForm = () => {
