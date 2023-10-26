@@ -25,7 +25,7 @@ export default function LoginForm() {
           </div>
           <div className="input-btn">
             <button className="btn">تسجيل دخول</button>
-            <Link to="/" className="to-signup">
+            <Link to="Signup" className="to-signup">
               لست عضو ؟ انضم الان
             </Link>
           </div>

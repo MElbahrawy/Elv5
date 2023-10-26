@@ -1,0 +1,24 @@
+.address-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.address-data input {
+  width: 80%;
+  padding: 10px 5px;
+  border: 0;
+  border-bottom: 1px solid;
+  border-color: var(--text-color);
+  outline: none;
+  background-color: transparent;
+  color: var(--main-color);
+  margin-bottom: 15px;
+}
+.address-data select {
+  width: 80%;
+  padding: 10px 5px;
+  text-align: center;
+}
+.address-data input:focus {
+  background-color: var(--background-color);
+}
