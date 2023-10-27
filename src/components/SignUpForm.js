@@ -7,6 +7,19 @@ import Phase4 from "./Phase4";
 
 export default function SignUpForm() {
   const [phase, setPhase] = useState(0);
+  const [data, setData] = useState({
+    type: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    buildNo: "",
+    street: "",
+    state: "",
+    gov: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const phases = [
     "أنشئ حساب لـ",
     "بيانات شخصية",
@@ -16,13 +29,13 @@ export default function SignUpForm() {
   const showForm = () => {
     switch (phase) {
       case 0:
-        return <Phase1 />;
+        return <Phase1 data={data} setData={setData} />;
       case 1:
-        return <Phase2 />;
+        return <Phase2 data={data} setData={setData} />;
       case 2:
-        return <Phase3 />;
+        return <Phase3 data={data} setData={setData} />;
       default:
-        return <Phase4 />;
+        return <Phase4 data={data} setData={setData} />;
     }
   };
   return (
@@ -54,9 +67,13 @@ export default function SignUpForm() {
               عودة
             </button>
             <button
-              disabled={phase === phases.length - 1}
               onClick={() => {
-                setPhase((curr) => curr + 1);
+                if (phase === phases.length - 1) {
+                  console.log(data);
+                  alert("Filled Successfully");
+                } else {
+                  setPhase((curr) => curr + 1);
+                }
               }}
             >
               {phase === phases.length - 1 ? "تسجيل" : "التالي"}

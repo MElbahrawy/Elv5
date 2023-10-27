@@ -1,14 +1,73 @@
 import React from "react";
 import "./Phase3.css";
 
-export default function Phase1() {
+export default function Phase3(props) {
+  const { data, setData } = props;
+  //   const gov = [
+  //     { govAr: "القاهرة", govEn: "" },
+  //     { govAr: "الجيزة", govEn: "" },
+  //     { govAr: "الإسكندرية", govEn: "" },
+  //     { govAr: "الدقهلية", govEn: "" },
+  //     { govAr: "الشرقية", govEn: "" },
+  //     { govAr: "المنوفية", govEn: "" },
+  //     { govAr: "القليوبية", govEn: "" },
+  //     { govAr: "البحيرة", govEn: "" },
+  //     { govAr: "الغربية", govEn: "" },
+  //     { govAr: "بورسعيد", govEn: "" },
+  //     { govAr: "دمياط", govEn: "" },
+  //     { govAr: "الإسماعيلية", govEn: "" },
+  //     { govAr: "السويس", govEn: "" },
+  //     { govAr: "كفر الشيخ", govEn: "" },
+  //     { govAr: "الفيوم", govEn: "" },
+  //     { govAr: "بني سويف", govEn: "" },
+  //     { govAr: "مطروح", govEn: "" },
+  //     { govAr: "شمال سيناء", govEn: "" },
+  //     { govAr: "جنوب سيناء", govEn: "" },
+  //     { govAr: "المنيا", govEn: "" },
+  //     { govAr: "أسيوط", govEn: "" },
+  //     { govAr: "سوهاج", govEn: "" },
+  //     { govAr: "قنا", govEn: "" },
+  //     { govAr: "البحر الأحمر", govEn: "" },
+  //     { govAr: "الأقصر", govEn: "" },
+  //     { govAr: "أسوان", govEn: "" },
+  //     { govAr: "الوادي الجديد", govEn: "" },
+  //   ];
+
   return (
     <div className="address-data">
-      <input type="number" placeholder="رقم المبني" />
-      <input type="address" placeholder="الشارع" />
-      <input type="text" placeholder="المنطقة" />
-      <select class="form-select form-select-md" name="gov">
-        <option selected="selected" disabled>
+      <input
+        type="number"
+        placeholder="رقم المبني"
+        value={data.buildNo}
+        onChange={(e) => {
+          setData({ ...data, buildNo: e.target.value });
+        }}
+      />
+      <input
+        type="address"
+        placeholder="الشارع"
+        value={data.street}
+        onChange={(e) => {
+          setData({ ...data, street: e.target.value });
+        }}
+      />
+      <input
+        type="text"
+        placeholder="المنطقة"
+        value={data.state}
+        onChange={(e) => {
+          setData({ ...data, state: e.target.value });
+        }}
+      />
+      <select
+        className="form-select form-select-md"
+        name="gov"
+        onChange={(e) => {
+          setData({ ...data, gov: e.target.value });
+          console.log(data);
+        }}
+      >
+        <option defaultValue="selected" disabled>
           المحافظة
         </option>
         <option>القاهرة</option>

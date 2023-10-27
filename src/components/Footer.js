@@ -32,13 +32,13 @@ export default function Footer() {
           <div className="social footer-col col-lg-3 col-md-6 col-sm-12">
             <h4>وسائل التواصل</h4>
             <Link to="/">
-              <i class="fa-brands fa-facebook-f"></i>فيس بوك
+              <i className="fa-brands fa-facebook-f"></i>فيس بوك
             </Link>
             <Link to="/">
-              <i class="fa-brands fa-instagram"></i>انستاجرام
+              <i className="fa-brands fa-instagram"></i>انستاجرام
             </Link>
             <Link to="/">
-              <i class="fa-brands fa-x-twitter"></i>اكس
+              <i className="fa-brands fa-x-twitter"></i>اكس
             </Link>
           </div>
         </div>
