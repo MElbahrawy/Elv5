@@ -1,7 +1,9 @@
-.personal-data {
-  text-align: center;
+.address-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.personal-data input {
+.address-data input {
   width: 80%;
   padding: 10px 5px;
   border: 0;
@@ -12,6 +14,11 @@
   color: var(--main-color);
   margin-bottom: 15px;
 }
-.personal-data input:focus {
+.address-data select {
+  width: 80%;
+  padding: 10px 5px;
+  text-align: center;
+}
+.address-data input:focus {
   background-color: var(--background-color);
 }

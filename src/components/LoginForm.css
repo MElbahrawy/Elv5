@@ -15,12 +15,9 @@
   width: 50%;
   background-color: var(--text-light);
   padding: 50px;
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
+  padding-bottom: 10px;
   gap: 15px;
+  box-shadow: 0 0px 10px -5px var(--text-color);
   /* align-items: center; */
 }
 @media (max-width: 767px) {
@@ -33,18 +30,21 @@
 }
 .login-form input {
   width: 100%;
-  padding: 10px 5px;
+  padding: 15px 5px;
   /* margin: 5px 0; */
   border: 0;
   border-bottom: 1px solid;
   border-color: var(--text-color);
   outline: none;
   background-color: transparent;
-  color: var(--main-color);
 }
 .login-form input::placeholder {
   color: var(--main-color);
 }
+.login-form input:focus {
+  background-color: var(--background-color);
+}
+
 .login-form span {
   color: red;
   font-size: 12px;

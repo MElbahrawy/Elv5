@@ -14,16 +14,13 @@
   flex-direction: column;
   width: 50%;
   background-color: var(--text-light);
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
   gap: 15px;
   align-items: center;
   min-height: 500px;
   justify-content: space-between;
   position: relative;
+  overflow: hidden;
+  box-shadow: 0 0px 10px -5px var(--text-color);
 }
 @media (max-width: 767px) {
   .signup-page .signup-form {
@@ -49,20 +46,22 @@
   width: 25%;
   height: 100%;
   border-radius: 0;
-  border-top-right-radius: 15px;
+  /* border-top-right-radius: 15px; */
   transition: 1s;
+  overflow: visible;
 }
-/* .signup-page .Phases .progress::after {
+.signup-page .Phases .progress::after {
   content: "";
   position: absolute;
   width: 5px;
   height: 100%;
   top: 0;
+  left: -20px;
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
+  border-right: 20px solid;
   border-right-color: var(--main-color);
-  border-right: 20px solid red;
-} */
+}
 .signup-page .Phases span {
   z-index: 1;
   padding: 10px;

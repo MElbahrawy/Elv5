@@ -1,9 +1,7 @@
-.address-data {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.contact-data {
+  text-align: center;
 }
-.address-data input {
+.contact-data input {
   width: 80%;
   padding: 10px 5px;
   border: 0;
@@ -14,11 +12,6 @@
   color: var(--main-color);
   margin-bottom: 15px;
 }
-.address-data select {
-  width: 80%;
-  padding: 10px 5px;
-  text-align: center;
-}
-.address-data input:focus {
+.contact-data input:focus {
   background-color: var(--background-color);
 }

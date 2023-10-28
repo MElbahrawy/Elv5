@@ -35,7 +35,7 @@ export default function Navs() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                المنتجات
+                الشركات
               </Link>
             </li>
             <li className="nav-item">

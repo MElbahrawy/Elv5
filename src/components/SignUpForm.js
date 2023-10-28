@@ -3,12 +3,11 @@ import "./SignUpForm.css";
 import Phase1 from "./Phase1";
 import Phase2 from "./Phase2";
 import Phase3 from "./Phase3";
-import Phase4 from "./Phase4";
 
 export default function SignUpForm() {
   const [phase, setPhase] = useState(0);
   const [data, setData] = useState({
-    type: "",
+    type: "user",
     firstName: "",
     lastName: "",
     phone: "",
@@ -20,22 +19,15 @@ export default function SignUpForm() {
     password: "",
     confirmPassword: "",
   });
-  const phases = [
-    "أنشئ حساب لـ",
-    "بيانات شخصية",
-    "عنوان / منطقة ",
-    "معلومات الدخول",
-  ];
+  const phases = ["بيانات شخصية", "عنوان / منطقة ", "معلومات الدخول"];
   const showForm = () => {
     switch (phase) {
       case 0:
         return <Phase1 data={data} setData={setData} />;
       case 1:
         return <Phase2 data={data} setData={setData} />;
-      case 2:
-        return <Phase3 data={data} setData={setData} />;
       default:
-        return <Phase4 data={data} setData={setData} />;
+        return <Phase3 data={data} setData={setData} />;
     }
   };
   return (
@@ -47,13 +39,11 @@ export default function SignUpForm() {
               className="progress"
               style={{
                 width: `${(phase + 1) * (100 / phases.length)}%`,
-                borderTopLeftRadius: phase === phases.length - 1 ? "15px" : "0",
               }}
             ></div>
             <span>مرحله 1</span>
             <span>مرحله 2</span>
             <span>مرحله 3</span>
-            <span>مرحله 4</span>
           </div>
           <div className="form-head">{phases[phase]}</div>
           <div className="form-body">{showForm()}</div>
@@ -69,7 +59,6 @@ export default function SignUpForm() {
             <button
               onClick={() => {
                 if (phase === phases.length - 1) {
-                  console.log(data);
                   alert("Filled Successfully");
                 } else {
                   setPhase((curr) => curr + 1);
