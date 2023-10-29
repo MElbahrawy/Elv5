@@ -1,0 +1,5 @@
+.technician-card {
+  text-align: center;
+  background-color: var(--text-light);
+  width: calc(33.3% - 15px);
+}

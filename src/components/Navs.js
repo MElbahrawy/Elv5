@@ -34,12 +34,12 @@ export default function Navs() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/Companies">
                 الشركات
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/#">
+              <Link className="nav-link" to="/technicians">
                 الفنيين
               </Link>
             </li>

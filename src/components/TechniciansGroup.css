@@ -1,0 +1,6 @@
+.technicians {
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}

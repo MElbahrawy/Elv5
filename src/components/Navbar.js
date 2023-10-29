@@ -15,7 +15,7 @@ export default function Navbar() {
           <Link to="Login">
             <i className="fa-solid fa-circle-user d-block"></i>دخول
           </Link>
-          <Link to="Signup">
+          <Link to="sign-up">
             <i className="fa-solid fa-pen-to-square d-block"></i>
             تسجيل
           </Link>
