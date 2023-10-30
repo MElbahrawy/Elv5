@@ -3,6 +3,11 @@
   margin-top: 15px;
   padding: 25px;
 }
+.categories .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .categories .row {
   width: 100%;
   margin-top: 80px;
@@ -15,6 +20,7 @@
   -moz-transition: var(--main-transition);
   -ms-transition: var(--main-transition);
   -o-transition: var(--main-transition);
+  color: var(--text-color);
 }
 .category:hover {
   transform: scale(1.1);
