@@ -5,10 +5,10 @@ import "./TechniciansGroup.css";
 export default function TechniciansGroup() {
   return (
     <div className="row technicians">
-      <Technician />
-      <Technician />
-      <Technician />
-      <Technician />
+      <Technician name="محمد البحراوي" city="بنها" gov="قليوبية" />
+      <Technician name="محمد البحراوي" city="بنها" gov="قليوبية" />
+      <Technician name="محمد البحراوي" city="بنها" gov="قليوبية" />
+      <Technician name="محمد البحراوي" city="بنها" gov="قليوبية" />
     </div>
   );
 }

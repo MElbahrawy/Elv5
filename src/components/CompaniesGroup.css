@@ -1,6 +1,8 @@
 .companies {
-  height: 50vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
+  margin: 50px 0;
 }

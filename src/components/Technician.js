@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./Technician.css";
 export default function Technician(props) {
+  const { name, city, gov } = props;
   return (
     <div className="technician-card col-lg-5 col-md-12">
       <div className="avatar-holder">
         <img src="https://avatar.iran.liara.run/public/boy" alt="avatar" />
       </div>
       <div className="tech-info">
-        <h2 className="tech-name">محمد البحراوي</h2>
-        <p className="tech-location">بنها ، القليوبية</p>
+        <h2 className="tech-name">{name}</h2>
+        <p className="tech-location">
+          {city} ، {gov}
+        </p>
       </div>
       <div className="tech-contact">
         <a

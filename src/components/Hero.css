@@ -1,6 +1,6 @@
 #hero-section {
   position: relative;
-  min-height: calc(100vh - 185px);
+  height: calc(100vh - 185px);
   display: flex;
   align-items: center;
 }
