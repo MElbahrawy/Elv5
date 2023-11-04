@@ -23,19 +23,36 @@
   padding: 30px;
   flex-direction: column;
 }
+@media (max-width: 767px) {
+  #main-ad .ad-details {
+    padding: 15px;
+    padding-right: 30px;
+  }
+}
 #main-ad .ad-details .main-ad-title {
   font-weight: 900;
   text-shadow: 0 0 10px var(--text-color);
+}
+@media (max-width: 767px) {
+  #main-ad .ad-details .main-ad-title {
+    font-size: 1em;
+    font-weight: 700;
+  }
 }
 #main-ad .ad-details .main-ad-desc {
   text-shadow: 0 0 10px var(--text-color);
   margin-bottom: 5px;
 }
+@media (max-width: 767px) {
+  #main-ad .ad-details .main-ad-desc {
+    font-size: 0.6em;
+  }
+}
 #main-ad .ad-details .main-ad-website {
   border: 1px solid;
   color: var(--text-light);
-  text-shadow: 0 0 2px var(--text-color);
   border-color: var(--text-light);
+  text-shadow: 0 0 2px var(--text-color);
   box-shadow: 0 0 5px var(--text-light);
   padding: 10px;
   border-radius: 15px;
@@ -43,6 +60,19 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
+}
+@media (max-width: 767px) {
+  #main-ad .ad-details .main-ad-website {
+    font-size: 0.5em;
+    padding: 5px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    text-shadow: 0 0 1px var(--text-color);
+    box-shadow: 0 0 3px var(--text-light);
+  }
 }
 #main-ad .ad-details .main-ad-website:hover {
   opacity: 0.8;
