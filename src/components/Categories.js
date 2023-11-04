@@ -6,7 +6,7 @@ import "./Categories.css";
 import { Link } from "react-router-dom";
 export default function Categories() {
   return (
-    <div className="categories">
+    <section className="categories">
       <div className="container">
         <h2 className="text-center">بوابتك لعالم المصاعد الذكية في مصر</h2>
         <div className="row">
@@ -24,6 +24,6 @@ export default function Categories() {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

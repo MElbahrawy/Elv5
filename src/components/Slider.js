@@ -3,7 +3,7 @@ import "./Slider.css";
 
 export default function Slider() {
   return (
-    <div className="container slider">
+    <section className="slider">
       <div
         id="carouselExampleCaptions"
         className="carousel slide carousel-fade"
@@ -98,6 +98,6 @@ export default function Slider() {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-    </div>
+    </section>
   );
 }

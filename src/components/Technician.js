@@ -5,7 +5,10 @@ export default function Technician(props) {
   return (
     <div className="technician-card col-lg-5 col-md-12">
       <div className="avatar-holder">
-        <img src="https://avatar.iran.liara.run/public/boy" alt="avatar" />
+        <img
+          src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+          alt="avatar"
+        />
       </div>
       <div className="tech-info">
         <h2 className="tech-name">{name}</h2>

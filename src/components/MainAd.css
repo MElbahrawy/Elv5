@@ -1,0 +1,52 @@
+#main-ad {
+  width: 100%;
+  color: var(--text-light);
+}
+#main-ad .container {
+  position: relative;
+  background-color: #ddd;
+  height: inherit;
+}
+#main-ad .container .row {
+  height: inherit;
+}
+#main-ad .img-holder {
+  background: url("https://th.bing.com/th/id/OIG.6Ejut67NUS1zRxZcQs6.?pid=ImgGn&w=1024&h=1024&rs=1");
+  background-position: center;
+  background-size: cover;
+}
+#main-ad .ad-details {
+  background: linear-gradient(to right, var(--main-color), #fdfae7);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 30px;
+  flex-direction: column;
+}
+#main-ad .ad-details .main-ad-title {
+  font-weight: 900;
+  text-shadow: 0 0 10px var(--text-color);
+}
+#main-ad .ad-details .main-ad-desc {
+  text-shadow: 0 0 10px var(--text-color);
+  margin-bottom: 5px;
+}
+#main-ad .ad-details .main-ad-website {
+  border: 1px solid;
+  color: var(--text-light);
+  text-shadow: 0 0 2px var(--text-color);
+  border-color: var(--text-light);
+  box-shadow: 0 0 5px var(--text-light);
+  padding: 10px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+#main-ad .ad-details .main-ad-website:hover {
+  opacity: 0.8;
+}
+#main-ad .ad-details .main-ad-website i {
+  margin-left: 5px;
+}

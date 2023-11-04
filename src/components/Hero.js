@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 export default function Heading() {
   return (
     <section id="hero-section">
-      <div className="img-holder">
-        <img
-          src="https://wallpapercave.com/wp/wp2303648.jpg"
-          alt="home_elevator"
-        />
-      </div>
+      <div className="img-holder"></div>
       <div className="hero-heading ">
         <img src={Logo} alt="" className="center" />
         <p>
