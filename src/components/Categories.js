@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ing from "../img/engineer-worker-svgrepo-com.png";
 import elv from "../img/elevator-svgrepo-com.png";
 import buld from "../img/buildings-building-svgrepo-com.png";
 import "./Categories.css";
-import { Link } from "react-router-dom";
+
 export default function Categories() {
   return (
     <section className="categories">
@@ -11,15 +12,15 @@ export default function Categories() {
         <h2 className="text-center">بوابتك لعالم المصاعد الذكية في مصر</h2>
         <div className="row">
           <Link to="/technicians" className="category col-md-4 col-sm-12">
-            <img src={ing} alt="" />
+            <img src={ing} alt="technicians" />
             <h3>الفنيين</h3>
           </Link>
           <Link to="/" className="category col-md-4 col-sm-12">
-            <img src={elv} alt="" />
+            <img src={elv} alt="Offers" />
             <h3>عروض المصاعد</h3>
           </Link>
           <Link to="/Companies" className="category col-md-4 col-sm-12">
-            <img src={buld} alt="" />
+            <img src={buld} alt="Companies" />
             <h3>الشركات</h3>
           </Link>
         </div>

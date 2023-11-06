@@ -18,12 +18,10 @@
   padding-bottom: 10px;
   gap: 15px;
   box-shadow: 0 0px 10px -5px var(--text-color);
-  /* align-items: center; */
 }
 @media (max-width: 767px) {
   .login-form {
     gap: 25px;
-    /* text-align: center; */
     padding: 30px;
     width: 75%;
   }
@@ -31,7 +29,6 @@
 .login-form input {
   width: 100%;
   padding: 15px 5px;
-  /* margin: 5px 0; */
   border: 0;
   border-bottom: 1px solid;
   border-color: var(--text-color);

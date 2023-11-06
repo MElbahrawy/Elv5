@@ -1,5 +1,6 @@
 import React from "react";
 import "./Company.css";
+
 export default function Company(props) {
   const { title, description, location, logo, phone, email, website } = props;
 
@@ -7,7 +8,7 @@ export default function Company(props) {
     <div className="company-card">
       <div className="company-body">
         <div className="logo-holder">
-          <img src={logo} alt="" />
+          <img src={logo} alt="companyLogo" />
         </div>
         <div className="company-details">
           <h2 className="company-title">{title}</h2>
