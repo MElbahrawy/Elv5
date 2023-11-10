@@ -1,0 +1,9 @@
+.posts-holder {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 767px) {
+  .posts-holder {
+    padding-right: 15px;
+  }
+}

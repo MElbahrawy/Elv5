@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Technician.css";
+import WhatsappBtn from "./WhatsappBtn";
+import PhoneBtn from "./PhoneBtn";
 export default function Technician(props) {
   const { name, city, gov } = props;
   return (
@@ -17,22 +19,8 @@ export default function Technician(props) {
         </p>
       </div>
       <div className="tech-contact">
-        <a
-          href="tel:201151245412"
-          className="phone"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i className="fa-solid fa-phone-volume"></i>اتصل الان
-        </a>
-        <a
-          href="https://wa.me/201151245412"
-          className="whatsapp"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <i className="fa-brands fa-whatsapp"></i>واتس اب
-        </a>
+        <PhoneBtn phone="01151245412" />
+        <WhatsappBtn phone="01151245412" />
       </div>
     </div>
   );

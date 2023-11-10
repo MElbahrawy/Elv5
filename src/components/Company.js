@@ -24,7 +24,7 @@ export default function Company(props) {
       <div className="company-contact">
         <a
           href={`tel:${phone}`}
-          className="phone"
+          className="company-phone"
           target="_blank"
           rel="noreferrer"
         >
@@ -33,7 +33,7 @@ export default function Company(props) {
         </a>
         <a
           href={`https://wa.me/${phone}`}
-          className="whatsapp"
+          className="company-whatsapp"
           target="_blank"
           rel="noreferrer"
         >

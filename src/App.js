@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Companies from "./pages/Companies";
 import Technicians from "./pages/Technicians";
+import Posts from "./pages/Posts";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/technicians" element={<Technicians />} />
+        <Route path="/Posts" element={<Posts />} />
       </Routes>
       <Footer />
     </div>

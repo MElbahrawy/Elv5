@@ -1,0 +1,21 @@
+.phone {
+  background-color: #1973e8;
+  padding: 7px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  width: fit-content;
+  color: #fff;
+}
+
+.phone:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+.phone i {
+  margin: 0 5px;
+  color: #fff;
+  font-size: 1.1em;
+}

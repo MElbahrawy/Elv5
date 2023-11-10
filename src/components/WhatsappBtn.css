@@ -1,0 +1,20 @@
+.whatsapp {
+  background-color: #075e54;
+  padding: 7px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  width: fit-content;
+  color: #fff;
+}
+.whatsapp:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+.whatsapp i {
+  margin: 0 5px;
+  color: #fff;
+  font-size: 1.1em;
+}
