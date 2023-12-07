@@ -1,103 +1,101 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import "./Phase2.css";
+import ProgressBar from "./ProgressBar";
 
 export default function Phase2(props) {
-  const { data, setData } = props;
-  //   const gov = [
-  //     { govAr: "القاهرة", govEn: "" },
-  //     { govAr: "الجيزة", govEn: "" },
-  //     { govAr: "الإسكندرية", govEn: "" },
-  //     { govAr: "الدقهلية", govEn: "" },
-  //     { govAr: "الشرقية", govEn: "" },
-  //     { govAr: "المنوفية", govEn: "" },
-  //     { govAr: "القليوبية", govEn: "" },
-  //     { govAr: "البحيرة", govEn: "" },
-  //     { govAr: "الغربية", govEn: "" },
-  //     { govAr: "بورسعيد", govEn: "" },
-  //     { govAr: "دمياط", govEn: "" },
-  //     { govAr: "الإسماعيلية", govEn: "" },
-  //     { govAr: "السويس", govEn: "" },
-  //     { govAr: "كفر الشيخ", govEn: "" },
-  //     { govAr: "الفيوم", govEn: "" },
-  //     { govAr: "بني سويف", govEn: "" },
-  //     { govAr: "مطروح", govEn: "" },
-  //     { govAr: "شمال سيناء", govEn: "" },
-  //     { govAr: "جنوب سيناء", govEn: "" },
-  //     { govAr: "المنيا", govEn: "" },
-  //     { govAr: "أسيوط", govEn: "" },
-  //     { govAr: "سوهاج", govEn: "" },
-  //     { govAr: "قنا", govEn: "" },
-  //     { govAr: "البحر الأحمر", govEn: "" },
-  //     { govAr: "الأقصر", govEn: "" },
-  //     { govAr: "أسوان", govEn: "" },
-  //     { govAr: "الوادي الجديد", govEn: "" },
-  //   ];
+  const { phase, setPhase, phases, data, setData, handleBack } = props;
+  const govs = [
+    "القاهرة",
+    "الجيزة",
+    "الإسكندرية",
+    "الدقهلية",
+    "الشرقية",
+    "المنوفية",
+    "القليوبية",
+    "البحيرة",
+    "الغربية",
+    "بورسعيد",
+    "دمياط",
+    "الإسماعيلية",
+    "السويس",
+    "كفر الشيخ",
+    "الفيوم",
+    "بني سويف",
+    "مطروح",
+    "شمال سيناء",
+    "جنوب سيناء",
+    "المنيا",
+    "أسيوط",
+    "سوهاج",
+    "قنا",
+    "البحر الأحمر",
+    "الأقصر",
+    "أسوان",
+    "الوادي الجديد",
+  ];
 
+  const {
+    register,
+    reset,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    defaultValues: data,
+    mode: "onSubmit",
+  });
+  const submitHandler = (formData) => {
+    setData({
+      ...data,
+      buildNo: formData.buildNo,
+      street: formData.street,
+      state: formData.state,
+      gov: formData.gov,
+    });
+    setPhase((perv) => perv + 1);
+  };
   return (
-    <div className="address-data">
-      <input
-        type="number"
-        placeholder="رقم المبني"
-        value={data.buildNo}
-        onChange={(e) => {
-          setData({ ...data, buildNo: e.target.value });
-        }}
-      />
-      <input
-        type="address"
-        placeholder="الشارع"
-        value={data.street}
-        onChange={(e) => {
-          setData({ ...data, street: e.target.value });
-        }}
-      />
-      <input
-        type="text"
-        placeholder="المنطقة"
-        value={data.state}
-        onChange={(e) => {
-          setData({ ...data, state: e.target.value });
-        }}
-      />
-      <select
-        className="form-select form-select-md"
-        name="gov"
-        onChange={(e) => {
-          setData({ ...data, gov: e.target.value });
-          console.log(data);
-        }}
-      >
-        <option defaultValue="selected" disabled>
-          المحافظة
-        </option>
-        <option>القاهرة</option>
-        <option>الجيزة</option>
-        <option>الإسكندرية</option>
-        <option>الدقهلية</option>
-        <option>الشرقية</option>
-        <option>المنوفية</option>
-        <option>القليوبية</option>
-        <option>البحيرة</option>
-        <option>الغربية</option>
-        <option>بورسعيد</option>
-        <option>دمياط</option>
-        <option>الإسماعيلية</option>
-        <option>السويس</option>
-        <option>كفر الشيخ</option>
-        <option>الفيوم</option>
-        <option>بني سويف</option>
-        <option>مطروح</option>
-        <option>شمال سيناء</option>
-        <option>جنوب سيناء</option>
-        <option>المنيا</option>
-        <option>أسيوط</option>
-        <option>سوهاج</option>
-        <option>قنا</option>
-        <option>البحر الأحمر</option>
-        <option>الأقصر</option>
-        <option>أسوان</option>
-        <option>الوادي الجديد</option>
-      </select>
-    </div>
+    <form onSubmit={handleSubmit(submitHandler)} className="form-body">
+      <div className="address-data">
+        <input
+          type="number"
+          placeholder="رقم المبني"
+          {...register("buildNo", { required: "يرجي ادخال رقم المبني" })}
+        />
+        {errors.buildNo && <p className="error">{errors.buildNo.message}</p>}
+        <input
+          type="address"
+          placeholder="الشارع"
+          {...register("street", { required: "يرجي ادخال اسم الشارع" })}
+        />
+        {errors.street && <p className="error">{errors.street.message}</p>}
+        <input
+          type="text"
+          placeholder="المنطقة"
+          {...register("state", { required: "يرجي ادخال اسم المنطقه" })}
+        />
+        {errors.state && <p className="error">{errors.state.message}</p>}
+        <select
+          className="form-select form-select-md"
+          name="gov"
+          {...register("gov", { required: "يرجي اختيار المحافظة" })}
+        >
+          <option hidden="true">المحافظة</option>
+          <option disabled="disabled" default="true">
+            المحافظة
+          </option>
+          {govs.map((gov, id) => (
+            <option key={id}>{gov}</option>
+          ))}
+        </select>
+        {errors.gov && <p className="error">{errors.gov.message}</p>}
+      </div>
+      <div className="form-foot">
+        <button type="button" onClick={handleBack}>
+          عودة
+        </button>
+        <button type="submit">التالي</button>
+      </div>
+    </form>
   );
 }

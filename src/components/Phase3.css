@@ -1,8 +1,8 @@
 .contact-data {
-  text-align: center;
+  padding: 0 10%;
 }
 .contact-data input {
-  width: 80%;
+  width: 100%;
   padding: 10px 5px;
   border: 0;
   border-bottom: 1px solid;

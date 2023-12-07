@@ -1,0 +1,45 @@
+.signup-page .Phases {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.signup-page .Phases .progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--secondary-color)
+  );
+  width: 25%;
+  height: 100%;
+  border-radius: 0;
+  transition: 1s;
+  overflow: visible;
+}
+.signup-page .Phases .progress::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  top: 0;
+  left: -20px;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid;
+  border-right-color: var(--main-color);
+}
+.signup-page .Phases span {
+  z-index: 1;
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+  color: var(--text-light);
+}
+@media (max-width: 420px) {
+  .signup-page .Phases span {
+    font-size: 0.85em;
+  }
+}

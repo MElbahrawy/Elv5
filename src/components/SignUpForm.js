@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "./SignUpForm.css";
+import ProgressBar from "./ProgressBar";
 import Phase1 from "./Phase1";
 import Phase2 from "./Phase2";
 import Phase3 from "./Phase3";
+import "./SignUpForm.css";
 
 export default function SignUpForm() {
   const [phase, setPhase] = useState(0);
@@ -20,54 +21,53 @@ export default function SignUpForm() {
     confirmPassword: "",
   });
   const phases = ["بيانات شخصية", "عنوان / منطقة ", "معلومات الدخول"];
+  const handleBack = () => {
+    setPhase((perv) => perv - 1);
+  };
   const showForm = () => {
     switch (phase) {
       case 0:
-        return <Phase1 data={data} setData={setData} />;
+        return (
+          <Phase1
+            phase={phase}
+            setPhase={setPhase}
+            phases={phases}
+            data={data}
+            setData={setData}
+            handleBack={handleBack}
+          />
+        );
       case 1:
-        return <Phase2 data={data} setData={setData} />;
+        return (
+          <Phase2
+            phase={phase}
+            setPhase={setPhase}
+            phases={phases}
+            data={data}
+            setData={setData}
+            handleBack={handleBack}
+          />
+        );
       default:
-        return <Phase3 data={data} setData={setData} />;
+        return (
+          <Phase3
+            phase={phase}
+            setPhase={setPhase}
+            phases={phases}
+            data={data}
+            setData={setData}
+            handleBack={handleBack}
+          />
+        );
     }
   };
   return (
     <div className="signup-page">
       <div className="container">
         <div className="signup-form">
-          <div className="Phases">
-            <div
-              className="progress"
-              style={{
-                width: `${(phase + 1) * (100 / phases.length)}%`,
-              }}
-            ></div>
-            <span>مرحله 1</span>
-            <span>مرحله 2</span>
-            <span>مرحله 3</span>
-          </div>
+          <ProgressBar phase={phase} phases={phases} />
           <div className="form-head">{phases[phase]}</div>
-          <div className="form-body">{showForm()}</div>
-          <div className="form-foot">
-            <button
-              disabled={phase === 0}
-              onClick={() => {
-                setPhase((curr) => curr - 1);
-              }}
-            >
-              عودة
-            </button>
-            <button
-              onClick={() => {
-                if (phase === phases.length - 1) {
-                  alert("Filled Successfully");
-                } else {
-                  setPhase((curr) => curr + 1);
-                }
-              }}
-            >
-              {phase === phases.length - 1 ? "تسجيل" : "التالي"}
-            </button>
-          </div>
+          {showForm()}
         </div>
       </div>
     </div>
