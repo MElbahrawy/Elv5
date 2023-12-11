@@ -5,10 +5,7 @@ import PostsList from "../components/PostsList";
 export default function Posts() {
   return (
     <section>
-      <div className="container d-flex flex-column">
-        <AddPost />
-        <PostsList />
-      </div>
+      <PostsList />
     </section>
   );
 }

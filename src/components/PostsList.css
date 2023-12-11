@@ -1,6 +1,7 @@
 .posts-holder {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 @media (max-width: 767px) {
   .posts-holder {

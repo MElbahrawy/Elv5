@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import PostCard from "./PostCard";
 import "./PostsList.css";
+import AddPost from "./AddPost";
 
 export default function PostsList() {
-  const postsData = [
+  const [postsData, setPostsData] = useState([
     {
       id: 1,
       img: "",
@@ -13,7 +14,7 @@ export default function PostsList() {
       content: `لا أحب هؤلاء السُذّج الذين يتخرجون بمعدلات عالية، وتخصصات علمية مهمة، لكنهم لا يسمعون الموسيقى، ولا يعرفون شاعراً واحداً، ولم يحضروا فيلم سينما، أو يحاولوا كتابة قصيدة، أو أن يخلطوا علبة ألوان ليرسموا لوحة..
       أنا لا أفهم هؤلاء الناس الذين بلا طقوس شخصية بلا عادات بلا تفاصيل ، لا يهتمون بألوان الأزرار ، ولا خشب المقاعد ويرضون بأي سائل ساخن أحمر فلا يتوقفون عند نوع الشاي .
       الحياة في التفاصيل ، في الأحاسيس ، في الذائقة .. في معنى أن تهز رأسك حزناً أو فرحاً أو طرباً لمقطع من أغنية قديمة ، أو أن تنفعل برائحة الياسمين تهب من شارع عتيق على الدوار الأول.
-
+ 
       — إبراهيم جابر إبراهيم.`,
       phoneNumber: "01151245412",
     },
@@ -36,23 +37,25 @@ export default function PostsList() {
         وعما يحدث وعما سيحدث لي..`,
       phoneNumber: "01151245412",
     },
-  ];
+  ]);
   return (
-    <div className="posts-holder">
-      {postsData.map((post) => (
-        <>
-          <hr />
-          <PostCard
-            key={post.id}
-            img={post.img}
-            name={post.name}
-            type={post.type}
-            date={post.date}
-            content={post.content}
-            phoneNumber={post.phoneNumber}
-          />
-        </>
-      ))}
-    </div>
+    <>
+      <AddPost postsData={postsData} setPostsData={setPostsData} />
+      <div className="posts-holder container">
+        {postsData.map((post) => (
+          <React.Fragment key={post.id}>
+            <PostCard
+              img={post.img}
+              name={post.name}
+              type={post.type}
+              date={post.date}
+              content={post.content}
+              phoneNumber={post.phoneNumber}
+            />
+            <hr />
+          </React.Fragment>
+        ))}
+      </div>
+    </>
   );
 }

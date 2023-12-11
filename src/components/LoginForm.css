@@ -43,9 +43,11 @@
 }
 
 .login-form span {
+  text-align: start;
   color: red;
-  font-size: 12px;
-  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em;
 }
 .login-form .btn {
   background: linear-gradient(
