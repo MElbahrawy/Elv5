@@ -75,7 +75,7 @@ export default function Phase3({
         <button type="button" onClick={handleBack}>
           عودة
         </button>
-        <button type="submit">التالي</button>
+        <button type="submit" onClick={notify}>التالي</button>
       </div>
       <ToastContainer />
     </form>
