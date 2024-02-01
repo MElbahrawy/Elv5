@@ -55,7 +55,7 @@ export default function LoginForm() {
             )}
           </div>
           <div className="input-btn">
-            <button className="btn">تسجيل دخول</button>
+            <button className="btn" onClick={notify}>تسجيل دخول</button>
             <Link to="/sign-up" className="to-signup">
               لست عضو ؟ انضم الان
             </Link>
