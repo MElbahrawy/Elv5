@@ -1,6 +1,6 @@
 import React from "react";
 import "./Hero.css";
-import Logo from "../img/Logo3-03.png";
+import Logo from "../../img/Logo3-03.png";
 import { Link } from "react-router-dom";
 export default function Heading() {
   return (

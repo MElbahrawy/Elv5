@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Technician.css";
-import WhatsappBtn from "./WhatsappBtn";
-import PhoneBtn from "./PhoneBtn";
+import WhatsappBtn from "../Utilities/WhatsappBtn";
+import PhoneBtn from "../Utilities/PhoneBtn";
 export default function Technician(props) {
   const { name, city, gov } = props;
   return (

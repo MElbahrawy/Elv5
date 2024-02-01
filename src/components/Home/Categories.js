@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ing from "../img/engineer-worker-svgrepo-com.png";
-import elv from "../img/elevator-svgrepo-com.png";
-import buld from "../img/buildings-building-svgrepo-com.png";
+import ing from "../../img/engineer-worker-svgrepo-com.png";
+import elv from "../../img/elevator-svgrepo-com.png";
+import buld from "../../img/buildings-building-svgrepo-com.png";
 import "./Categories.css";
 
 export default function Categories() {

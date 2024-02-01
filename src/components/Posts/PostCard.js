@@ -1,10 +1,9 @@
 import React from "react";
 import "./PostCard.css";
-import PhoneBtn from "./PhoneBtn.js";
-import WhatsappBtn from "./WhatsappBtn.js";
+import PhoneBtn from "../Utilities/PhoneBtn.js";
+import WhatsappBtn from "../Utilities/WhatsappBtn.js";
 
-export default function PostCard(props) {
-  const { img, name, type, date, content, phoneNumber } = props;
+export default function PostCard({ img, name, type, date, content, phoneNumber }) {
   return (
     <div className="post-card">
       <div className="post-header">

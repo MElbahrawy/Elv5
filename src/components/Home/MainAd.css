@@ -11,12 +11,12 @@
   height: inherit;
 }
 #main-ad .img-holder {
-  background: url("https://th.bing.com/th/id/OIG.6Ejut67NUS1zRxZcQs6.?pid=ImgGn&w=1024&h=1024&rs=1");
+  background: url("../../img/fred-kleber-tSDsY-zvg5k-unsplash.jpg");
   background-position: center;
   background-size: cover;
 }
 #main-ad .ad-details {
-  background: linear-gradient(to right, var(--main-color), #fdfae7);
+  background: linear-gradient(to right, var(--main-color), #e89002);
   display: flex;
   justify-content: center;
   align-items: start;

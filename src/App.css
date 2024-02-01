@@ -21,3 +21,91 @@ section {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+.img {
+    max-width: 186px;
+}
+.logo-sm {
+    width: 128px;
+}
+.bg-main {
+    background-color: var(--main-color);
+    color: var(--text-light);
+}
+.bg-light {
+    background-color: white;
+}
+.rounded-box {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+.top-company {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    position: relative;
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+    -ms-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+}
+.top-company::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate();
+    -moz-transform: translate();
+    -ms-transform: translate();
+    -o-transform: translate();
+    z-index: -1;
+    
+}
+.top-company::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    bottom: -40px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    
+}
+.more-btn {
+    border: 2px solid;
+    border-color: var(--secondary-color);
+    background-color: transparent;
+    transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -moz-transition: 0.2s all ease;
+    -ms-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+}
+.more-btn:hover {
+    background-color: var(--main-color);
+    color: var(--text-light);
+}
+.back-btn {
+    position: absolute;
+    left: 10%;
+    top: 2%;
+}

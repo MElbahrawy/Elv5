@@ -1,5 +1,5 @@
 import React from "react";
-import TechniciansGroup from "../components/TechniciansGroup";
+import TechniciansGroup from "../../components/Technicians/TechniciansGroup";
 
 export default function Technicians() {
   return (

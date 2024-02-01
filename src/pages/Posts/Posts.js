@@ -1,6 +1,6 @@
 import React from "react";
-import AddPost from "../components/AddPost";
-import PostsList from "../components/PostsList";
+import AddPost from "../../components/Posts/AddPost";
+import PostsList from "../../components/Posts/PostsList";
 
 export default function Posts() {
   return (

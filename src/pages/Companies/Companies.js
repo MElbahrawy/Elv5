@@ -1,5 +1,5 @@
 import React from "react";
-import CompaniesGroup from "../components/CompaniesGroup";
+import CompaniesGroup from "../../components/Companies/CompaniesGroup";
 
 export default function Companies() {
   return (

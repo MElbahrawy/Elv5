@@ -8,8 +8,8 @@ export default function Header() {
       <div className="container">
         <div className="navs">
           <Link to="/">الرئيسية</Link>
-          <Link to="/">تواصل معنا</Link>
-          <Link to="/">عن الشركة</Link>
+          <Link to="contact">تواصل معنا</Link>
+          <Link to="about">عن الشركة</Link>
         </div>
       </div>
     </div>
