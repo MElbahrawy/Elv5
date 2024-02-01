@@ -21,6 +21,9 @@ section {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+img {
+    pointer-events: none;
+}
 .img {
     max-width: 186px;
 }
@@ -54,6 +57,13 @@ section {
     -moz-transition: 0.2s all ease;
     -ms-transition: 0.2s all ease;
     -o-transition: 0.2s all ease;
+}
+.top-company:hover {
+    transform: scale(1.1,1.1);
+    -webkit-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    -ms-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
 }
 .top-company::before {
     content: "";

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./LoginForm.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm() {
   const {
@@ -20,6 +22,8 @@ export default function LoginForm() {
     setSuccess(true);
     console.log(data);
   };
+
+  const notify = () => toast.success("تم تسجيل دخولك بنجاح");
   return (
     <div className="login-page">
       <div className="container">
@@ -56,11 +60,7 @@ export default function LoginForm() {
               لست عضو ؟ انضم الان
             </Link>
           </div>
-          <p
-            style={{ textAlign: "center", display: success ? "block" : "none" }}
-          >
-            :) Login Successfully
-          </p>
+          <ToastContainer />
         </form>
       </div>
     </div>

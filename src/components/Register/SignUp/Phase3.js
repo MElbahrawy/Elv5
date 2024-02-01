@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import "./Phase3.css";
+
 
 export default function Phase3({
   phase,
@@ -32,6 +35,8 @@ export default function Phase3({
   useEffect(() => {
     if (result) console.log(data);
   }, [data, result]);
+
+  const notify = () => toast.success("تم التسجيل بنجاح");
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="form-body">
       <div className="contact-data">
@@ -70,11 +75,9 @@ export default function Phase3({
         <button type="button" onClick={handleBack}>
           عودة
         </button>
-        <button type="submit">التالي</button>
+        <button type="submit" onClick={notify}>التالي</button>
       </div>
-      <p style={{ textAlign: "center", display: result ? "block" : "none" }}>
-        Sign Up Successfully :)
-      </p>
+      <ToastContainer />
     </form>
   );
 }
