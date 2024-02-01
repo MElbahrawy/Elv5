@@ -19,6 +19,7 @@ import AboutPage from "./pages/AboutUs/AboutPage";
 import ContactPage from "./pages/ContactUs/ContactPage";
 import TermsPage from "./pages/TermsAndConditions.js/TermsPage";
 import PrivacyPage from "./pages/Privacy/PrivacyPage";
+import ScrollToTop from "./components/Utilities/ScrollToTop";
 
 export default function App() {
   return (
@@ -26,7 +27,7 @@ export default function App() {
       <Header />
       <Navbar />
       <Navs />
-      <Routes>
+      <Routes >
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/technicians" element={<Technicians />} />
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

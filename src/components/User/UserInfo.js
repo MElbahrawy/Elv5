@@ -83,7 +83,7 @@ export default function UserPage() {
               </Col>
           </Row>
           <Button variant="success">حفظ التغييرات</Button>
-          <Link to={localStorage.type === "admin" ? "/admin/users" : "/"} className="mx-2"><Button variant="danger">عودة</Button></Link>
+          <Link to=".." relative="path" className="mx-2"><Button variant="danger">عودة</Button></Link>
         </Form>
       </Container>
     </div>
