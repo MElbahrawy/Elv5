@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Technician.css";
 import WhatsappBtn from "../Utilities/WhatsappBtn";
 import PhoneBtn from "../Utilities/PhoneBtn";
-export default function Technician(props) {
-  const { name, city, gov } = props;
+export default function Technician({ name, address }) {
   return (
     <div className="technician-card col-lg-5 col-md-12">
       <div className="avatar-holder">
@@ -14,9 +13,7 @@ export default function Technician(props) {
       </div>
       <div className="tech-info">
         <h2 className="tech-name">{name}</h2>
-        <p className="tech-location">
-          {city} ، {gov}
-        </p>
+        <p className="tech-location">{address}</p>
       </div>
       <div className="tech-contact">
         <PhoneBtn phone="01151245412" />

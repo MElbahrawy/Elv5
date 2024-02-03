@@ -1,10 +1,11 @@
-import React from 'react'
-import Table from 'react-bootstrap/Table';
-import CrudBtns from './CrudBtns';
+import React from "react";
+import Table from "react-bootstrap/Table";
+import CrudBtns from "./CrudBtns";
+import { companies } from "../../Data/companies";
 
 export default function UsersCrud() {
   return (
-    <Table striped bordered hover responsive >
+    <Table striped bordered hover responsive>
       <thead>
         <tr>
           <th>#</th>
@@ -15,14 +16,19 @@ export default function UsersCrud() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>مؤسسة الفتح للمصاعد</td>
-          <td> برج البشطمير, الشقة 1, الدور 1, دوران المجزر - الدقهلية - المنصورة</td>
-          <td>01008479268</td>
-          <td> <CrudBtns/> </td>
-        </tr>
+        {companies.map((company) => (
+          <tr key={company.id}>
+            <td>{company.id}</td>
+            <td>{company.title}</td>
+            <td>{company.location}</td>
+            <td>{company.phone}</td>
+            <td>
+              {" "}
+              <CrudBtns />{" "}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
-  )
+  );
 }

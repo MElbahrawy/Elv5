@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Navs.css";
 import { Link } from "react-router-dom";
+import { user } from "../../Data/user";
+
 export default function Navs() {
   const [isActive, setActive] = useState(false);
 
@@ -33,11 +35,13 @@ export default function Navs() {
                 الرئيسية
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/Posts">
-                المنشورات
-              </Link>
-            </li>
+            {user.id ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/Posts">
+                  المنشورات
+                </Link>
+              </li>
+            ) : null}
             <li className="nav-item">
               <Link className="nav-link" to="/Companies">
                 الشركات

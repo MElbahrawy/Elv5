@@ -20,6 +20,7 @@ import ContactPage from "./pages/ContactUs/ContactPage";
 import TermsPage from "./pages/TermsAndConditions.js/TermsPage";
 import PrivacyPage from "./pages/Privacy/PrivacyPage";
 import ScrollToTop from "./components/Utilities/ScrollToTop";
+import { user } from "./Data/user";
 
 export default function App() {
   return (
@@ -27,7 +28,7 @@ export default function App() {
       <Header />
       <Navbar />
       <Navs />
-      <Routes >
+      <Routes>
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/technicians" element={<Technicians />} />
@@ -35,9 +36,15 @@ export default function App() {
         <Route path="/Posts" element={<Posts />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin/users" element={<UsersCrudPage />} />
-        <Route path="/admin/users/id" element={<UserDataPage />} />
-        <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
+        {user.type === "admin" ? (
+          <Route path="/admin/users" element={<UsersCrudPage />} />
+        ) : null}
+        {user.type === "admin" ? (
+          <Route path="/admin/users/id" element={<UserDataPage />} />
+        ) : null}
+        {user.type === "admin" ? (
+          <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
+        ) : null}
         <Route path="/user" element={<UserPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />

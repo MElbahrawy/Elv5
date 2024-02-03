@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { user } from "../../Data/user";
 import "./AddPost.css";
 
 export default function AddPost({ postsData, setPostsData }) {
   const [value, setValue] = useState({
     id: 1,
     img: "",
-    name: "اسم المستخدم",
-    type: "مستخدم",
+    name: user.firstName + " " + user.lastName,
+    type: user.type,
     date: "الان",
     content: ``,
-    phoneNumber: "01151245412",
+    phoneNumber: user.phoneNumber,
   });
   const handleChange = (e) => {
     setValue({

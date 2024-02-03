@@ -16,6 +16,7 @@ body {
 }
 a {
   text-decoration: none;
+  color: var(--text-color);
 }
 section {
   margin-top: 15px;
@@ -23,6 +24,7 @@ section {
 }
 img {
     pointer-events: none;
+    
 }
 .img {
     max-width: 186px;
@@ -118,4 +120,11 @@ img {
     position: absolute;
     left: 10%;
     top: 2%;
+}
+#dropdown button{
+    background-color: transparent;
+    border-color: var(--secondary-color);
+}
+#dropdown p,#dropdown i {
+ font-size: 15px;
 }

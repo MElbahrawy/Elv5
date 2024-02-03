@@ -2,25 +2,20 @@ import React from "react";
 import "./Navbar.css";
 import Logo from "../../img/Logo3-03.png";
 import { Link } from "react-router-dom";
+import NavbarDropdown from "./NavbarDropdown";
+import { Container } from "react-bootstrap";
+import { user } from "../../Data/user";
+import NavbarBtns from "./NavbarBtns";
 
 export default function Navbar() {
   return (
     <div className="navbar navbar-expand-md ">
-      <div className="container">
+      <Container className="container">
         <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Logo_Elev5" id="logo" />
         </Link>
-
-        <div className="signing">
-          <Link to="Login">
-            <i className="fa-solid fa-circle-user d-block"></i>دخول
-          </Link>
-          <Link to="sign-up">
-            <i className="fa-solid fa-pen-to-square d-block"></i>
-            تسجيل
-          </Link>
-        </div>
-      </div>
+        {user.id ? <NavbarDropdown /> : <NavbarBtns />}
+      </Container>
     </div>
   );
 }

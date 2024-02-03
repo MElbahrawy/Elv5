@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import "./LoginForm.css";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+import "./LoginForm.css";
 
 export default function LoginForm() {
   const {
     register,
-    reset,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -17,13 +16,14 @@ export default function LoginForm() {
       password: "",
     },
   });
-  const [success, setSuccess] = useState(false);
+  
+  const notify = () => toast.success("تم تسجيل دخولك بنجاح");
+  
   const submitHandler = (data) => {
-    setSuccess(true);
     console.log(data);
+    notify()
   };
 
-  const notify = () => toast.success("تم تسجيل دخولك بنجاح");
   return (
     <div className="login-page">
       <div className="container">
@@ -55,7 +55,7 @@ export default function LoginForm() {
             )}
           </div>
           <div className="input-btn">
-            <button className="btn" onClick={notify}>تسجيل دخول</button>
+            <button className="btn">تسجيل دخول</button>
             <Link to="/sign-up" className="to-signup">
               لست عضو ؟ انضم الان
             </Link>
