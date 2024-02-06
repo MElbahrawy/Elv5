@@ -26,8 +26,16 @@ img {
     pointer-events: none;
     
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 0;
+}
+input:disabled {
+    background-color: var(--background-color);
+}
 .img {
     max-width: 186px;
+    
 }
 .logo-sm {
     width: 128px;

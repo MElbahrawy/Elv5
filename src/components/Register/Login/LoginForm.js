@@ -1,8 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import { user } from "../../../Data/user";
+
+import "react-toastify/dist/ReactToastify.css";
 import "./LoginForm.css";
 
 export default function LoginForm() {
@@ -16,12 +18,26 @@ export default function LoginForm() {
       password: "",
     },
   });
-  
-  const notify = () => toast.success("تم تسجيل دخولك بنجاح");
-  
+
+  const [logedIn, setlogedIn] = useState(false);
+
   const submitHandler = (data) => {
-    console.log(data);
-    notify()
+    if (data.email === "admin@gmail.com" && data.password === "admin") {
+      localStorage.setItem("token", "a1b2c3");
+      user.id = 1;
+      user.type = "admin";
+      user.firstName = "محمد";
+      user.lastName = "البحراوي";
+      user.email = "mohamedelbahrawy512@gmail.com";
+      user.address = "بنها/القليوبية/مصر";
+      user.phoneNumber = "01151245412";
+      user.secondNumber = "01062032063";
+      console.log(user);
+      toast.success("تم تسجيل دخولك بنجاح");
+      setlogedIn(true);
+    } else {
+      toast.error("البريد الالكتروني او كلمة السر غير صحيح");
+    }
   };
 
   return (
@@ -61,6 +77,7 @@ export default function LoginForm() {
             </Link>
           </div>
           <ToastContainer />
+          {logedIn ? <Navigate to="/" /> : null}
         </form>
       </div>
     </div>

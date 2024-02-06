@@ -3,11 +3,12 @@ import "./Footer.css";
 import Logo from "../../img/Logo-02.png";
 import FooterCopyright from "./FooterCopyright";
 import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 export default function Footer() {
   return (
     <footer className="">
-      <div className="container">
+      <Container className="">
         <div className="row">
           <div className="Who-are-we footer-col col-lg-3 col-md-6 col-sm-12">
             <Link to="/" className="logo-sm">
@@ -41,7 +42,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-      </div>
+      </Container>
       <FooterCopyright />
     </footer>
   );

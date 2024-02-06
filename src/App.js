@@ -33,7 +33,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/technicians" element={<Technicians />} />
         <Route path="/companies" element={<Companies />} />
-        <Route path="/Posts" element={<Posts />} />
+        {localStorage.token ? (
+          <Route path="/Posts" element={<Posts />} />
+        ) : null}
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         {user.type === "admin" ? (
@@ -45,7 +47,9 @@ export default function App() {
         {user.type === "admin" ? (
           <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
         ) : null}
-        <Route path="/user" element={<UserPage />} />
+        {localStorage.token ? (
+          <Route path="/user" element={<UserPage />} />
+        ) : null}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/Terms&Conditions" element={<TermsPage />} />

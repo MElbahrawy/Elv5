@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import Logo from "../../img/Logo3-03.png";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ export default function Navbar() {
         <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Logo_Elev5" id="logo" />
         </Link>
-        {user.id ? <NavbarDropdown /> : <NavbarBtns />}
+        {localStorage.token ? <NavbarDropdown /> : <NavbarBtns />}
       </Container>
     </div>
   );

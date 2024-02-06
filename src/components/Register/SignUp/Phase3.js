@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Phase3.css";
 
-
-export default function Phase3({
-  phase,
-  setPhase,
-  phases,
-  data,
-  setData,
-  handleBack,
-}) {
+export default function Phase3({ data, setData, handleBack }) {
   const [result, setResult] = useState(false);
   const {
     register,
@@ -33,7 +25,11 @@ export default function Phase3({
     setResult(true);
   };
   useEffect(() => {
-    if (result) console.log(data);
+    if (result) {
+      console.log(data);
+      notify();
+      localStorage.token = "a1b2c3";
+    }
   }, [data, result]);
 
   const notify = () => toast.success("تم التسجيل بنجاح");
@@ -54,8 +50,15 @@ export default function Phase3({
         {errors.email && <p className="error">{errors.email.message}</p>}
         <input
           type="password"
+          autoComplete="off"
           placeholder="الرقم السري"
-          {...register("password", { required: "يرجي ادخال رقم سري" })}
+          {...register("password", {
+            required: "يرجي ادخال رقم سري",
+            minLength: {
+              value: 8,
+              message: "يجب ان تكون كلمة السر اكثر من 8 حروف و ارقام",
+            },
+          })}
         />
         {errors.password && <p className="error">{errors.password.message}</p>}
         <input
@@ -64,7 +67,7 @@ export default function Phase3({
           {...register("confirmPassword", {
             required: "يرجي تأكيد رقمك السري",
             validate: (value) =>
-              value === watch("password") || "Passwords do not match",
+              value === watch("password") || "كلمتان السر غير متطابقتان",
           })}
         />
         {errors.confirmPassword && (
@@ -75,7 +78,7 @@ export default function Phase3({
         <button type="button" onClick={handleBack}>
           عودة
         </button>
-        <button type="submit" onClick={notify}>التالي</button>
+        <button type="submit">التالي</button>
       </div>
       <ToastContainer />
     </form>

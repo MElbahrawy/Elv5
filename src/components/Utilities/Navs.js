@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navs.css";
 import { Link } from "react-router-dom";
 import { user } from "../../Data/user";
@@ -9,8 +9,9 @@ export default function Navs() {
   const toggleClass = () => {
     setActive(!isActive);
   };
+
   return (
-    <nav className="navbar navbar-expand-md ">
+    <nav className={`navbar navbar-expand-md`}>
       <div className="container">
         <button
           className="btn"
@@ -35,7 +36,7 @@ export default function Navs() {
                 الرئيسية
               </Link>
             </li>
-            {user.id ? (
+            {localStorage.token ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/Posts">
                   المنشورات

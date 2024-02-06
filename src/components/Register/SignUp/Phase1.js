@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Phase1.css";
-import ProgressBar from "./ProgressBar";
 
-export default function Phase1({ phase, setPhase, phases, data, setData }) {
+export default function Phase1({ setPhase, data, setData }) {
+  const [check, setCheck] = useState(false);
   const {
     register,
-    reset,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -19,13 +18,15 @@ export default function Phase1({ phase, setPhase, phases, data, setData }) {
       ...data,
       firstName: formData.firstName,
       lastName: formData.lastName,
-      phone: formData.phone,
+      phoneNumber: formData.phoneNumber,
+      whatsappNumber: formData.whatsappNumber || null,
     });
     setPhase((perv) => perv + 1);
   };
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="form-body">
       <div className="personal-data">
+        {/* First Name */}
         <input
           type="text"
           placeholder="الاسم الاول"
@@ -41,24 +42,49 @@ export default function Phase1({ phase, setPhase, phases, data, setData }) {
         {errors.firstName && (
           <p className="error">{errors.firstName.message}</p>
         )}
+        {/* Last Name */}
         <input
           type="text"
           placeholder="اسم العائله"
           {...register("lastName", { required: "يرجي ادخال اسم العائله" })}
         />
         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
+        {/* Phone number */}
         <input
           type="number"
           placeholder="رقم الهاتف"
-          {...register("phone", {
+          {...register("phoneNumber", {
             required: "يرجي ادخال رقم هاتفك",
+            pattern: {
+              value: /^01[0|1|2|5][0-9]{8}$/,
+              message: "الرقم الذي ادخلته غير صالح",
+            },
+          })}
+        />
+        {errors.phoneNumber && (
+          <p className="error">{errors.phoneNumber.message}</p>
+        )}
+        {/* Whatsapp number */}
+        <input
+          type="number"
+          placeholder="رقم الواتس اب"
+          disabled={check}
+          {...register("whatsappNumber", {
             pattern: {
               value: /^01[0-9]{9}$/,
               message: "الرقم الذي ادخلته غير صالح",
             },
           })}
         />
-        {errors.phone && <p className="error">{errors.phone.message}</p>}
+        <div className="d-flex align-items-center gap-2 mx-3">
+          <input
+            type="checkbox"
+            className="w-auto m-0"
+            id="check"
+            onChange={() => setCheck(!check)}
+          />
+          <label htmlFor="check">ليس لدي واتس اب</label>
+        </div>
       </div>
       <div className="form-foot">
         <button disabled>عودة</button>

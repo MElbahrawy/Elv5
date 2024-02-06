@@ -6,32 +6,30 @@ import Phase3 from "./Phase3";
 import "./SignUpForm.css";
 
 export default function SignUpForm() {
+  // control phases
   const [phase, setPhase] = useState(0);
-  const [data, setData] = useState({
-    type: "user",
-    firstName: "",
-    lastName: "",
-    phone: "",
-    buildNo: "",
-    street: "",
-    state: "",
-    gov: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
   const phases = ["بيانات شخصية", "عنوان / منطقة ", "معلومات الدخول"];
   const handleBack = () => {
     setPhase((perv) => perv - 1);
   };
+  // data
+  const [data, setData] = useState({
+    type: "user",
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    whatsappNumber: "",
+    address: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const showForm = () => {
     switch (phase) {
       case 0:
         return (
           <Phase1
-            phase={phase}
             setPhase={setPhase}
-            phases={phases}
             data={data}
             setData={setData}
             handleBack={handleBack}
@@ -40,25 +38,14 @@ export default function SignUpForm() {
       case 1:
         return (
           <Phase2
-            phase={phase}
             setPhase={setPhase}
-            phases={phases}
             data={data}
             setData={setData}
             handleBack={handleBack}
           />
         );
       default:
-        return (
-          <Phase3
-            phase={phase}
-            setPhase={setPhase}
-            phases={phases}
-            data={data}
-            setData={setData}
-            handleBack={handleBack}
-          />
-        );
+        return <Phase3 data={data} setData={setData} handleBack={handleBack} />;
     }
   };
   return (

@@ -7,7 +7,7 @@ import "./Slider.css";
 
 export default function Slider() {
   return (
-    <Carousel className="slider">
+    <Carousel className="slider" fade>
       <Carousel.Item>
         <img src={slide1} className="d-block w-100" alt="..." />
         <Carousel.Caption>
