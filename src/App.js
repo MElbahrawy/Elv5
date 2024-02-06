@@ -38,14 +38,20 @@ export default function App() {
         ) : null}
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        {user.type === "admin" ? (
-          <Route path="/admin/users" element={<UsersCrudPage />} />
+        {localStorage.token ? (
+          user.type === "admin" ? (
+            <Route path="/admin/users" element={<UsersCrudPage />} />
+          ) : null
         ) : null}
-        {user.type === "admin" ? (
-          <Route path="/admin/users/id" element={<UserDataPage />} />
+        {localStorage.token ? (
+          user.type === "admin" ? (
+            <Route path="/admin/users/id" element={<UserDataPage />} />
+          ) : null
         ) : null}
-        {user.type === "admin" ? (
-          <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
+        {localStorage.token ? (
+          user.type === "admin" ? (
+            <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
+          ) : null
         ) : null}
         {localStorage.token ? (
           <Route path="/user" element={<UserPage />} />
