@@ -8,13 +8,18 @@ import { user } from "../../Data/user";
 import NavbarBtns from "./NavbarBtns";
 
 export default function Navbar() {
+  const [token, setToken] = useState(localStorage.token);
+  useEffect(() => {
+    console.log("change");
+    setToken(localStorage.token);
+  }, [localStorage.token]);
   return (
     <div className="navbar navbar-expand-md ">
       <Container className="container">
         <Link className="navbar-brand" to="/">
           <img src={Logo} alt="Logo_Elev5" id="logo" />
         </Link>
-        {localStorage.token ? <NavbarDropdown /> : <NavbarBtns />}
+        {token ? <NavbarDropdown /> : <NavbarBtns />}
       </Container>
     </div>
   );

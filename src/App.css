@@ -67,13 +67,14 @@ input:disabled {
     -moz-transition: 0.2s all ease;
     -ms-transition: 0.2s all ease;
     -o-transition: 0.2s all ease;
+    transform-style: preserve-3d;
 }
 .top-company:hover {
-    transform: scale(1.1,1.1);
-    -webkit-transform: scale(1.1,1.1);
-    -moz-transform: scale(1.1,1.1);
-    -ms-transform: scale(1.1,1.1);
-    -o-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1) translateZ(12px);
+    -webkit-transform: scale(1.1,1.1) translateZ(12px);
+    -moz-transform: scale(1.1,1.1) translateZ(12px);
+    -ms-transform: scale(1.1,1.1) translateZ(12px);
+    -o-transform: scale(1.1,1.1) translateZ(12px);
 }
 .top-company::before {
     content: "";
