@@ -4,13 +4,11 @@ import Logo from "../../img/Logo3-03.png";
 import { Link } from "react-router-dom";
 import NavbarDropdown from "./NavbarDropdown";
 import { Container } from "react-bootstrap";
-import { user } from "../../Data/user";
 import NavbarBtns from "./NavbarBtns";
 
 export default function Navbar() {
   const [token, setToken] = useState(localStorage.token);
   useEffect(() => {
-    console.log("change");
     setToken(localStorage.token);
   }, [localStorage.token]);
   return (

@@ -7,5 +7,7 @@ export const user = {
   address: "بنها/القليوبية/مصر",
   phoneNumber: "01151245412",
   secondNumber: "01062032063",
+  password: "admin",
 };
 // import { user } from "../../Data/user";
+ 

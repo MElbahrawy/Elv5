@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "../../img/Logo3-03.png";
 import WhatsappBtn from "../Utilities/WhatsappBtn";
 import PhoneBtn from "../Utilities/PhoneBtn";
 

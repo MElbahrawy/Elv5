@@ -15,10 +15,10 @@ export default function Categories() {
             <img src={ing} alt="technicians" />
             <h3>الفنيين</h3>
           </Link>
-          <Link to="/" className="category col-md-4 col-sm-12">
+          <a href="#main-ad" className="category col-md-4 col-sm-12">
             <img src={elv} alt="Offers" />
             <h3>عروض المصاعد</h3>
-          </Link>
+          </a>
           <Link to="/Companies" className="category col-md-4 col-sm-12">
             <img src={buld} alt="Companies" />
             <h3>الشركات</h3>

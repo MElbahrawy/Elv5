@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import slide1 from "../../img/slide1.jpg";
-import slide2 from "../../img/slide2.webp";
-import slide3 from "../../img/slide3.jpg";
+import slide3 from "../../img/slide2.webp";
+import slide2 from "../../img/slide3.jpg";
 import "./Slider.css";
 
 export default function Slider() {
@@ -17,7 +17,7 @@ export default function Slider() {
             العناء
           </p>
         </Carousel.Caption>
-      </Carousel.Item>
+      </Carousel.Item> 
       <Carousel.Item>
         <img src={slide2} className="d-block w-100" alt="..." />
         <Carousel.Caption>

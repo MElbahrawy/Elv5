@@ -2,8 +2,10 @@ import React from "react";
 import Company from "./Company";
 import { companies } from "../../Data/companies";
 import "./CompaniesGroup.css";
+import { Container } from "react-bootstrap";
 export default function CompaniesGroup() {
   return (
+    <Container>
     <div className="companies">
       {companies.map((company) => (
         <Company
@@ -18,5 +20,6 @@ export default function CompaniesGroup() {
         />
       ))}
     </div>
+    </Container>
   );
 }

@@ -29,10 +29,11 @@ export default function UsersCrud() {
             <td>{user.phoneNumber}</td>
             <td>
               <Form.Select aria-label="Default select example">
-                {accType.map((type) => (
+                {accType.map((type,index) => (
                   <option
                     selected={type === user.type ? "selected" : ""}
                     value={type}
+                    key={index}
                   >
                     {type}
                   </option>
@@ -40,7 +41,7 @@ export default function UsersCrud() {
               </Form.Select>
             </td>
             <td>
-              <CrudBtns />
+              <CrudBtns userId={user.id} />
             </td>
           </tr>
         ))}
