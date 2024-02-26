@@ -3,6 +3,11 @@
   flex-direction: column-reverse;
   align-items: center;
 }
+.posts-holder > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 @media (max-width: 767px) {
   .posts-holder {
     padding-right: 15px;

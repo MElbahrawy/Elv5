@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import CrudBtns from "./CrudBtns";
+import axios from "axios";
 import { companies } from "../../Data/companies";
 
 export default function UsersCrud() {
+  const [companiesData, setCompanies] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/companies")
+      .then((respose) => {
+        setCompanies(respose.data);
+      })
+      .catch(() => setCompanies(companies));
+  }, [companiesData]);
   return (
     <Table striped bordered hover responsive>
       <thead>
@@ -16,7 +26,7 @@ export default function UsersCrud() {
         </tr>
       </thead>
       <tbody>
-        {companies.map((company) => (
+        {companiesData.map((company) => (
           <tr key={company.id}>
             <td>{company.id}</td>
             <td>{company.title}</td>
@@ -24,7 +34,7 @@ export default function UsersCrud() {
             <td>{company.phone}</td>
             <td>
               {" "}
-              <CrudBtns />{" "}
+              <CrudBtns Id={company.id} type="companies" />{" "}
             </td>
           </tr>
         ))}

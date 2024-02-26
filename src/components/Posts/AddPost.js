@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { user } from "../../Data/user";
 import "./AddPost.css";
+import axios from "axios";
+import Avatar from "../../img/Avatar.webp";
 
 export default function AddPost({ postsData, setPostsData }) {
   const [value, setValue] = useState({
@@ -8,19 +10,27 @@ export default function AddPost({ postsData, setPostsData }) {
     img: "",
     name: user.firstName + " " + user.lastName,
     type: user.type,
-    date: "الان",
-    content: ``,
+    date: "",
+    content: "",
     phoneNumber: user.phoneNumber,
   });
   const handleChange = (e) => {
     setValue({
       ...value,
-      content: `${e.target.value}`,
-      id: postsData.length + 1,
+      content: e.target.value,
     });
   };
   const handleSubmit = () => {
-    setPostsData([...postsData, value]);
+    setValue((prevValue) => {
+      const updatedValue = {
+        ...prevValue,
+        id: postsData.length + 1,
+        date: new Date(),
+      };
+      setPostsData([...postsData, updatedValue]);
+      axios.post("http://localhost:4000/posts", updatedValue);
+      return updatedValue;
+    });
   };
   return (
     <div>
@@ -43,10 +53,7 @@ export default function AddPost({ postsData, setPostsData }) {
           <div className="modal-content">
             <div className="modal-header justify-content-start position-relative">
               <div className="avatar-holder">
-                <img
-                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
-                  alt="avatar"
-                />
+                <img src={Avatar} alt="avatar" />
               </div>
               <h1 className="modal-title fs-5 me-2" id="exampleModalLabel">
                 أضافة منشور

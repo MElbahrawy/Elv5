@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,10 +6,12 @@ import { user } from "../../../Data/user";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./LoginForm.css";
+import axios from "axios";
 
 export default function LoginForm() {
   const {
     register,
+    watch,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -20,26 +22,40 @@ export default function LoginForm() {
   });
 
   const [logedIn, setlogedIn] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const submitHandler = (data) => {
     if (data.email === "admin@gmail.com" && data.password === "admin") {
       localStorage.setItem("token", "a1b2c3");
-      user.id = 1;
-      user.type = "admin";
-      user.firstName = "محمد";
-      user.lastName = "البحراوي";
-      user.email = "mohamedelbahrawy512@gmail.com";
-      user.address = "بنها/القليوبية/مصر";
-      user.phoneNumber = "01151245412";
-      user.secondNumber = "01062032063";
-      console.log(user);
       toast.success("تم تسجيل دخولك بنجاح");
       setlogedIn(true);
     } else {
       toast.error("البريد الالكتروني او كلمة السر غير صحيح");
     }
+    // axios
+    //   .get("http://localhost:4000/users")
+    //   .then((res) => res.data)
+    //   .then((data) => {
+    //     setUsers(data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching data:", error);
+    //   });
   };
-
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const user = users.find((user) =>  user.email === watch("email") && user.password === watch("password"))
+  //     if (user) {
+  //       try {
+  //         const response = await axios.post('http://localhost:4000/user', user);
+  //         console.log(response);
+  //       } catch (error) {
+  //         console.error('Error making POST request:', error);
+  //       }
+  //     }
+  //     }
+  //     fetchData()
+  //   }, [users]);
   return (
     <div className="login-page">
       <div className="container">

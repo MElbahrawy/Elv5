@@ -1,103 +1,244 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "type": "admin",
-            "firstName": "محمد",
-            "lastName": "البحراوي",
-            "email": "mohamedelbahrawy512@gmail.com",
-            "address": "بنها/القليوبية/مصر",
-            "phoneNumber": "01151245412",
-            "secondNumber": "01062032063",
-            "password": "admin"
-        },
-        {
-            "id": 2,
-            "type": "technician",
-            "firstName": "الاسطي",
-            "lastName": "عبده البلف",
-            "email": "abdo@gmail.com",
-            "address": "بنها/القليوبية/مصر",
-            "phoneNumber": "010",
-            "secondNumber": "011",
-            "password": "123"
-        },
-        {
-            "id": 3,
-            "type": "technician",
-            "firstName": "علي",
-            "lastName": "زعزعانه",
-            "email": "ali@gmail.com",
-            "address": "منوف/المنوفية/مصر",
-            "phoneNumber": "012",
-            "secondNumber": "015",
-            "password": "123"
-        },
-        {
-            "id": 4,
-            "type": "technician",
-            "firstName": "احمد",
-            "lastName": "اردغانه",
-            "email": "ahmed@gmail.com",
-            "address": "شبين/المنوفية/مصر",
-            "phoneNumber": "010",
-            "secondNumber": "011",
-            "password": "123"
-        },
-        {
-            "id": 5,
-            "type": "technician",
-            "firstName": "اسامه",
-            "lastName": "منفاخ",
-            "email": "osama@gmail.com",
-            "address": "امبابة/الجيزة/مصر",
-            "phoneNumber": "012",
-            "secondNumber": "015",
-            "password": "123"
-        },
-        {
-            "id": 6,
-            "type": "technician",
-            "firstName": "توفيق",
-            "lastName": "العنخ",
-            "email": "tawfeq@gmail.com",
-            "address": "بولاق الدكرور/الجيزة/مصر",
-            "phoneNumber": "010",
-            "secondNumber": "011",
-            "password": "123"
-        },
-        {
-            "id": 7,
-            "type": "owner",
-            "firstName": "مونيكا",
-            "lastName": "جيلير",
-            "email": "monica@gmail.com",
-            "address": "نيويورك/مانهاتن/امريكا",
-            "phoneNumber": "010",
-            "secondNumber": "011",
-            "password": "123"
-        },
-        {
-            "id": 8,
-            "type": "user",
-            "firstName": "تشاندلر",
-            "lastName": "بينج",
-            "email": "chandler@gmail.com",
-            "address": "نيويورك/مانهاتن/امريكا",
-            "phoneNumber": "010",
-            "secondNumber": "011",
-            "password": "123"
-        }
-    ],
-    "user": {
-        "id": 1,
-            "type": "admin",
-            "firstName": "محمد",
-            "lastName": "البحراوي",
-            "email": "mohamedelbahrawy512@gmail.com",
-            "address": "بنها/القليوبية/مصر",
-            "phoneNumber": "01151245412",
-            "secondNumber": "01062032063",
-            "password": "admin"
+  "users": [
+    {
+      "id": "1",
+      "type": "admin",
+      "firstName": "محمد",
+      "lastName": "البحراوي",
+      "email": "mohamedelbahrawy512@gmail.com",
+      "address": "بنها/القليوبية/مصر",
+      "phoneNumber": "01151245412",
+      "secondNumber": "01062032063",
+      "password": "admin"
+    },
+    {
+      "id": "2",
+      "type": "technician",
+      "firstName": "الاسطي",
+      "lastName": "عبده البلف",
+      "email": "abdo@gmail.com",
+      "address": "بنها/القليوبية/مصر",
+      "phoneNumber": "010",
+      "secondNumber": "011",
+      "password": "123"
+    },
+    {
+      "id": "3",
+      "type": "technician",
+      "firstName": "علي",
+      "lastName": "زعزعانه",
+      "email": "ali@gmail.com",
+      "address": "منوف/المنوفية/مصر",
+      "phoneNumber": "012",
+      "secondNumber": "015",
+      "password": "123"
+    },
+    {
+      "id": "4",
+      "type": "technician",
+      "firstName": "احمد",
+      "lastName": "اردغانه",
+      "email": "ahmed@gmail.com",
+      "address": "شبين/المنوفية/مصر",
+      "phoneNumber": "010",
+      "secondNumber": "011",
+      "password": "123"
+    },
+    {
+      "id": "5",
+      "type": "technician",
+      "firstName": "اسامه",
+      "lastName": "منفاخ",
+      "email": "osama@gmail.com",
+      "address": "امبابة/الجيزة/مصر",
+      "phoneNumber": "012",
+      "secondNumber": "015",
+      "password": "123"
+    },
+    {
+      "id": "6",
+      "type": "technician",
+      "firstName": "توفيق",
+      "lastName": "العنخ",
+      "email": "tawfeq@gmail.com",
+      "address": "بولاق الدكرور/الجيزة/مصر",
+      "phoneNumber": "010",
+      "secondNumber": "011",
+      "password": "123"
+    },
+    {
+      "id": "7",
+      "type": "owner",
+      "firstName": "مونيكا",
+      "lastName": "جيلير",
+      "email": "monica@gmail.com",
+      "address": "نيويورك/مانهاتن/امريكا",
+      "phoneNumber": "010",
+      "secondNumber": "011",
+      "password": "123"
+    },
+    {
+      "id": "8",
+      "type": "user",
+      "firstName": "تشاندلر",
+      "lastName": "بينج",
+      "email": "chandler@gmail.com",
+      "address": "نيويورك/مانهاتن/امريكا",
+      "phoneNumber": "010",
+      "secondNumber": "011",
+      "password": "123"
     }
+  ],
+  "user": {
+    "id": "1",
+    "firstName": "محمد",
+    "lastName": "البحراوي ",
+    "address": "بنها/القليوبية/مصر",
+    "phoneNumber": "01151245412",
+    "secondNumber": "01062032063",
+    "email": "mohamedelbahrawy512@gmail.com",
+    "password": "medo2020"
+  },
+  "companies": [
+    {
+      "id": "1",
+      "title": "مؤسسة الفتح للمصاعد",
+      "description": "نحن مؤسسة الفتح للمصاعد خبرة 20 عاما في مجال المصاعد، متخصصون في (توريد - وتركيب وصيانة - وتطوير جميع أنواع المصاعد المحلية و الباكدج (. كما تقوم بتوريد وتركيب المصاعد بدون غرفة ماكينات. الشركة حاصلة على رخصة مزاولة أعمال المصاعد وتركيب المصاعد بدون غرفة ماكينات. الشركة حاصلة على رخصة مزاولة أعمال المصاعد وعضوية الاتحاد المصري لمقاولي التشييد والبناء رقم (70159) ",
+      "location": "برج البشطمير, الشقة 1, الدور 1, دوران المجزر - الدقهلية - المنصورة",
+      "logo": "https://static.wixstatic.com/media/8980c5_dd3bf119127d4fb7b21459b43d0bd830~mv2.png/v1/fill/w_186,h_88,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/logo.png",
+      "website": "https://www.elfathelevators.com/",
+      "email": "",
+      "phone": "011"
+    },
+    {
+      "id": "2",
+      "title": "مؤسسة الفتح للمصاعد",
+      "description": "نحن مؤسسة الفتح للمصاعد خبرة 20 عاما في مجال المصاعد، متخصصون في (توريد - وتركيب وصيانة - وتطوير جميع أنواع المصاعد المحلية و الباكدج (. كما تقوم بتوريد وتركيب المصاعد بدون غرفة ماكينات. الشركة حاصلة على رخصة مزاولة أعمال المصاعد وتركيب المصاعد بدون غرفة ماكينات. الشركة حاصلة على رخصة مزاولة أعمال المصاعد وعضوية الاتحاد المصري لمقاولي التشييد والبناء رقم (70159) ",
+      "location": "برج البشطمير, الشقة 1, الدور 1, دوران المجزر - الدقهلية - المنصورة",
+      "logo": "https://static.wixstatic.com/media/8980c5_dd3bf119127d4fb7b21459b43d0bd830~mv2.png/v1/fill/w_186,h_88,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/logo.png",
+      "website": "https://www.elfathelevators.com/",
+      "email": "",
+      "phone": "010"
+    },
+    {
+      "id": "3",
+      "title": "مؤسسة الفتح للمصاعد",
+      "description": "نحن مؤسسة الفتح للمصاعد خبرة 20 عاما في مجال المصاعد، متخصصون في (توريد - وتركيب وصيانة - وتطوير جميع أنواع المصاعد المحلية و الباكدج (. كما تقوم بتوريد وتركيب المصاعد بدون غرفة ماكينات. الشركة حاصلة على رخصة مزاولة أعمال المصاعد وتركيب المصاعد بدون غرفة ماكينات. الشركة حاصلة على رخصة مزاولة أعمال المصاعد وعضوية الاتحاد المصري لمقاولي التشييد والبناء رقم (70159) ",
+      "location": "برج البشطمير, الشقة 1, الدور 1, دوران المجزر - الدقهلية - المنصورة",
+      "logo": "https://static.wixstatic.com/media/8980c5_dd3bf119127d4fb7b21459b43d0bd830~mv2.png/v1/fill/w_186,h_88,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/logo.png",
+      "website": "https://www.elfathelevators.com/",
+      "email": "",
+      "phone": "012"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "img": "",
+      "name": "ابراهيم جابر",
+      "type": "مستخدم",
+      "date": "2022-02-25T13:32:22.288Z",
+      "content": "لا أحب هؤلاء السُذّج الذين يتخرجون بمعدلات عالية، وتخصصات علمية مهمة، لكنهم لا يسمعون الموسيقى، ولا يعرفون شاعراً واحداً، ولم يحضروا فيلم سينما، أو يحاولوا كتابة قصيدة، أو أن يخلطوا علبة ألوان ليرسموا لوحة.. أنا لا أفهم هؤلاء الناس الذين بلا طقوس شخصية بلا عادات بلا تفاصيل ، لا يهتمون بألوان الأزرار ، ولا خشب المقاعد ويرضون بأي سائل ساخن أحمر فلا يتوقفون عند نوع الشاي الحياة في التفاصيل ، في الأحاسيس ، في الذائقة .. في معنى أن تهز رأسك حزناً أو فرحاً أو طرباً لمقطع من أغنية قديمة ، أو أن تنفعل برائحة الياسمين تهب من شارع عتيق على الدوار الأول. — إبراهيم جابر إبراهيم.",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "2",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "مالك",
+      "date": "2024-01-01T13:32:22.288Z",
+      "content": "لقد إنتهت المرحلة التي كنت ألوم فيها عائلتي وأصدقائي، والمجتمع، والعالمأجل لقد بدأت أفهم أن الشخص الوحيد الذي يمكن أن ينقذني بعد الله هو أنا..الشخص الوحيد الذي يمكنه كسري هو أنا الشخص الوحيد الذي يجب أن ألقي عليه اللوم هو أنا وليس شخصاً آخر غيري.. حياتي، صحتي، أفكاري، مشاعري، أفعالي، قراراتي نجاحي وفشلي هي مسؤوليتي أنا العالم لا يدين لي بشيء فالعالم لا يهتم العالم ليس كله ضدي وليس كله معي  العالم كان موجوداً قبل أن أولد وسيظل موجوداً بعد أن أموت العالم يستمر والوقت يمضي قدماَإما أن أنجح أو أو أخسر، إما أن أقاوم وأتحمل وأمضي قدما، أو أفقد الأمل وأستسلم.. وفي كل الأحوال انا مسؤولُ عما حدث  وعما يحدث وعما سيحدث لي..",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "3",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-01T13:32:22.288Z",
+      "content": "ads",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "4",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-20T13:32:22.288Z",
+      "content": "fdsaf",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "5",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T13:32:22.288Z",
+      "content": "fdsaf",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "6",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T19:22:12.487Z",
+      "content": "qwe",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "7",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T19:22:21.984Z",
+      "content": "ads",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "8",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T19:30:47.962Z",
+      "content": "asd",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "9",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T19:31:00.033Z",
+      "content": "انا هنا",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "10",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T19:31:41.031Z",
+      "content": "انا هنا",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": "11",
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-25T19:31:50.234Z",
+      "content": "يش",
+      "phoneNumber": "01151245412"
+    },
+    {
+      "id": 12,
+      "img": "",
+      "name": "محمد البحراوي",
+      "type": "admin",
+      "date": "2024-02-26T18:34:58.607Z",
+      "content": "hi",
+      "phoneNumber": "01151245412"
+    }
+  ]
 }

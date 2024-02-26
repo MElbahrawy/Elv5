@@ -17,7 +17,7 @@ export default function Company(props) {
             {description}
           </div>
           <div className="company-location">
-            <i class="fa-solid fa-location-dot"></i> {location}
+            <i className="fa-solid fa-location-dot"></i> {location}
           </div>
         </div>
       </div>
@@ -37,13 +37,14 @@ export default function Company(props) {
           target="_blank"
           rel="noreferrer"
         >
-          <i class="fa-brands fa-whatsapp"></i> <span>واتس اب</span>
+          <i className="fa-brands fa-whatsapp"></i> <span>واتس اب</span>
         </a>
         <a href={`mailto: ${email}`}>
-          <i class="fa-regular fa-envelope"></i> <span>البريد الالكتروني</span>
+          <i className="fa-regular fa-envelope"></i>{" "}
+          <span>البريد الالكتروني</span>
         </a>
         <a href={website}>
-          <i class="fa-solid fa-earth-africa"></i>
+          <i className="fa-solid fa-earth-africa"></i>
           <span>الموقع الالكتروني</span>
         </a>
       </div>
