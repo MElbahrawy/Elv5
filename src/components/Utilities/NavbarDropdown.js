@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 export default function NavbarDropdown() {
   const [name, setName] = useState("");
   const [type, setType] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     setName(localStorage.getItem("firstName"));
     setType(localStorage.getItem("type"));
