@@ -36,10 +36,10 @@ export default function App() {
         {localStorage.token ? (
           <Route path="/Posts" element={<Posts />} />
         ) : null}
-        {localStorage.token ? (
+        {!localStorage.token ? (
           <Route path="/sign-up" element={<SignUp />} />
         ) : null}
-{localStorage.token ? (
+{!localStorage.token ? (
           <Route path="/login" element={<Login />} />
         ) : null}
         {localStorage.token ? (
