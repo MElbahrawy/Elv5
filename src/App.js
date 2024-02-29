@@ -36,8 +36,12 @@ export default function App() {
         {localStorage.token ? (
           <Route path="/Posts" element={<Posts />} />
         ) : null}
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        {localStorage.token ? (
+          <Route path="/sign-up" element={<SignUp />} />
+        ) : null}
+{localStorage.token ? (
+          <Route path="/login" element={<Login />} />
+        ) : null}
         {localStorage.token ? (
           user.type === "admin" ? (
             <Route path="/admin/users" element={<UsersCrudPage />} />
