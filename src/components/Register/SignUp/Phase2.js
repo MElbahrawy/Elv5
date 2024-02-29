@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { governments } from "../../../Data/government";
 import "./Phase2.css";
 
-export default function Phase2(props) {
-  const { setPhase, data, setData, handleBack } = props;
+export default function Phase2({ setPhase, data, setData, handleBack }) {
   const {
     register,
     formState: { errors },
@@ -41,7 +40,7 @@ export default function Phase2(props) {
           name="gov"
           {...register("gov", { required: "يرجي اختيار المحافظة" })}
         >
-          <option value="" default="true">
+          <option value="" default={true}>
             المحافظة
           </option>
 
@@ -54,7 +53,7 @@ export default function Phase2(props) {
         {errors.gov && <p className="error">{errors.gov.message}</p>}
       </div>
       <div className="form-foot">
-        <button type="button" onClick={handleBack}>
+        <button type="button" onClick={() => handleBack()}>
           عودة
         </button>
         <button type="submit">التالي</button>

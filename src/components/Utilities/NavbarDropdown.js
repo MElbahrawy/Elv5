@@ -1,32 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { user } from "../../Data/user";
 import { Link } from "react-router-dom";
 export default function NavbarDropdown() {
+  const [name, setName] = useState("");
+  const [type, setType] = useState();
+  useEffect(() => {
+    setName(localStorage.getItem("firstName"));
+    setType(localStorage.getItem("type"));
+  }, []);
   const handleLogOut = () => {
     localStorage.clear();
-    user.id = "";
-    user.type = "";
-    user.firstName = "";
-    user.lastName = "";
-    user.email = "";
-    user.address = "";
-    user.phoneNumber = "";
-    user.secondNumber = "";
-    console.log(user);
   };
   return (
     <Dropdown id="dropdown">
       <Dropdown.Toggle>
-        <i className="fa-solid fa-circle-user"></i>{" "}
-        <p className="d-inline-block my-0 mx-2">مرحبا، {user.firstName}</p>
+        <i className="fa-solid fa-circle-user"></i>
+        <p className="d-inline-block my-0 mx-2">مرحبا، {name ? name : "عضو"}</p>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item>
           <Link to={"user"}>تعديل بياناتي</Link>
         </Dropdown.Item>
-        {user.type === "admin" ? (
+        {type === "admin" ? (
           <Dropdown.Item>
             <Link to={"admin/users"}>مركز التحكم</Link>
           </Dropdown.Item>

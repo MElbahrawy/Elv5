@@ -14,18 +14,20 @@ export default function SignUpForm() {
   };
   // data
   const [data, setData] = useState({
+    id: toString(Math.floor(Math.random() * 100) + 10),
     type: "user",
     firstName: "",
     lastName: "",
     phoneNumber: "",
-    whatsappNumber: "",
+    secondNumber: "",
     address: "",
     email: "",
     password: "",
-    confirmPassword: "",
   });
+  //   Showing phases
   const showForm = () => {
     switch (phase) {
+      // personal information phase
       case 0:
         return (
           <Phase1
@@ -35,6 +37,7 @@ export default function SignUpForm() {
             handleBack={handleBack}
           />
         );
+      // address information phase
       case 1:
         return (
           <Phase2
@@ -44,10 +47,12 @@ export default function SignUpForm() {
             handleBack={handleBack}
           />
         );
+      // contact information phase
       default:
         return <Phase3 data={data} setData={setData} handleBack={handleBack} />;
     }
   };
+
   return (
     <div className="signup-page">
       <div className="container">

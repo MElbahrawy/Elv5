@@ -7,9 +7,10 @@ import { Container } from "react-bootstrap";
 import NavbarBtns from "./NavbarBtns";
 
 export default function Navbar() {
-  const [token, setToken] = useState(localStorage.token);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
   useEffect(() => {
-    setToken(localStorage.token);
+    setToken(localStorage.getItem("token"));
   }, [localStorage.token]);
   return (
     <div className="navbar navbar-expand-md ">

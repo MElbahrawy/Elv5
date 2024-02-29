@@ -17,7 +17,7 @@ export default function PostsList() {
       .catch(() => {
         setPostsData(posts);
       });
-  }, []);
+  }, [postsData]);
 
   return (
     <>
@@ -27,6 +27,7 @@ export default function PostsList() {
           <React.Fragment key={post.id}>
             <Fade>
               <PostCard
+                id={post.id}
                 img={post.img}
                 name={post.name}
                 type={post.type}

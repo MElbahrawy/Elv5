@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Phase3.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Phase3({ data, setData, handleBack }) {
-  const [result, setResult] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     watch,
@@ -20,19 +23,20 @@ export default function Phase3({ data, setData, handleBack }) {
       ...data,
       email: formData.email,
       password: formData.password,
-      confirmPassword: formData.confirmPassword,
     });
-    setResult(true);
+    setConfirmed(true);
   };
   useEffect(() => {
-    if (result) {
-      console.log(data);
-      notify();
-      localStorage.token = "a1b2c3";
+    if (confirmed) {
+      axios.post("http://localhost:4000/users", data).then(() => {
+        toast.success("تم تسجيل بياناتك بنجاح ، سوف يتم نقلك لتسجيل دخولك");
+        setTimeout(() => {
+          navigate("login");
+        }, 2500);
+      });
     }
-  }, [data, result]);
+  }, [confirmed]);
 
-  const notify = () => toast.success("تم التسجيل بنجاح");
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="form-body">
       <div className="contact-data">

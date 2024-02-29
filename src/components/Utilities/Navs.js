@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Navs.css";
 import { Link } from "react-router-dom";
-import { user } from "../../Data/user";
-
 export default function Navs() {
   const [isActive, setActive] = useState(false);
 

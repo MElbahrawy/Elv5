@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { user } from "../../Data/user";
 import "./AddPost.css";
 import axios from "axios";
 import Avatar from "../../img/Avatar.webp";
 
 export default function AddPost({ postsData, setPostsData }) {
   const [value, setValue] = useState({
-    id: 1,
+    id: "",
     img: "",
-    name: user.firstName + " " + user.lastName,
-    type: user.type,
+    name: localStorage.firstName + " " + localStorage.lastName,
+    type: localStorage.type,
     date: "",
     content: "",
-    phoneNumber: user.phoneNumber,
+    phoneNumber: localStorage.phoneNumber,
   });
   const handleChange = (e) => {
     setValue({
@@ -24,7 +23,7 @@ export default function AddPost({ postsData, setPostsData }) {
     setValue((prevValue) => {
       const updatedValue = {
         ...prevValue,
-        id: postsData.length + 1,
+        id: String(postsData.length + 10),
         date: new Date(),
       };
       setPostsData([...postsData, updatedValue]);

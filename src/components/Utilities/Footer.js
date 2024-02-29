@@ -20,14 +20,15 @@ export default function Footer() {
           </div>
           <div className="info footer-col col-lg-3 col-md-6 col-sm-12">
             <h4>معلومات</h4>
-            <Link to="/about">عن الشركة</Link>
+            <Link to="/">عن خدمتنا</Link>
             <Link to="/Terms&Conditions">الشروط والأحكام</Link>
             <Link to="/privacy">سياسة الخصوصية</Link>
           </div>
           <div className="customer-service footer-col col-lg-3 col-md-6 col-sm-12">
             <h4>خدمات العملاء</h4>
-            <Link to="/contact">اتصل بنا</Link>
+            <Link to="/about">عن الشركة</Link>
             <Link to="/privacy">سياسة الخصوصية</Link>
+            <Link to="/contact">اتصل بنا</Link>
           </div>
           <div className="social footer-col col-lg-3 col-md-6 col-sm-12">
             <h4>وسائل التواصل</h4>

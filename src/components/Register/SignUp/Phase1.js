@@ -19,7 +19,7 @@ export default function Phase1({ setPhase, data, setData }) {
       firstName: formData.firstName,
       lastName: formData.lastName,
       phoneNumber: formData.phoneNumber,
-      whatsappNumber: formData.whatsappNumber || null,
+      secondNumber: formData.secondNumber || null,
     });
     setPhase((perv) => perv + 1);
   };
@@ -29,15 +29,9 @@ export default function Phase1({ setPhase, data, setData }) {
         {/* First Name */}
         <input
           type="text"
-          placeholder="الاسم الاول"
+          placeholder="الاسم الاول *"
           name="firstName"
-          {...register("firstName", {
-            required: "يرجي ادخال اسمك الاول",
-            minLength: {
-              value: 2,
-              message: "يجب ان يكون اكثر من حرف",
-            },
-          })}
+          {...register("firstName", { required: "يرجي ادخال اسمك" })}
         />
         {errors.firstName && (
           <p className="error">{errors.firstName.message}</p>
@@ -45,18 +39,20 @@ export default function Phase1({ setPhase, data, setData }) {
         {/* Last Name */}
         <input
           type="text"
-          placeholder="اسم العائله"
+          placeholder="اسم العائله *"
+          name="lastName"
           {...register("lastName", { required: "يرجي ادخال اسم العائله" })}
         />
         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
-        {/* Phone number */}
+        {/* Phone Number */}
         <input
           type="number"
-          placeholder="رقم الهاتف"
+          placeholder="رقم الهاتف *"
+          name="phoneNumber"
           {...register("phoneNumber", {
             required: "يرجي ادخال رقم هاتفك",
             pattern: {
-              value: /^01[0|1|2|5][0-9]{8}$/,
+              value: /^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$/,
               message: "الرقم الذي ادخلته غير صالح",
             },
           })}
@@ -64,14 +60,14 @@ export default function Phase1({ setPhase, data, setData }) {
         {errors.phoneNumber && (
           <p className="error">{errors.phoneNumber.message}</p>
         )}
-        {/* Whatsapp number */}
+        {/* second Number */}
         <input
           type="number"
           placeholder="رقم الواتس اب"
           disabled={check}
-          {...register("whatsappNumber", {
+          {...register("secondNumber", {
             pattern: {
-              value: /^01[0-9]{9}$/,
+              value: /^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$/,
               message: "الرقم الذي ادخلته غير صالح",
             },
           })}
