@@ -10,6 +10,10 @@ export default function NavbarDropdown() {
   }, []);
   const handleLogOut = () => {
     localStorage.clear();
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
+          axios
   };
   return (
     <Dropdown id="dropdown">
