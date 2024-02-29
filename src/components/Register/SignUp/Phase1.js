@@ -41,7 +41,11 @@ export default function Phase1({ setPhase, data, setData }) {
           type="text"
           placeholder="اسم العائله *"
           name="lastName"
-          {...register("lastName", { required: "يرجي ادخال اسم العائله" })}
+          {...register("lastName", { required: "يرجي ادخال اسم العائله",
+pattern: {
+              value: /^(?!.*\d)[a-zA-Z\p{Arabic}\s\-]+$/,
+              message: "الرقم الذي ادخلته غير صالح",
+            }, })}
         />
         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
         {/* Phone Number */}
