@@ -41,11 +41,17 @@ export default function Phase1({ setPhase, data, setData }) {
           type="text"
           placeholder="اسم العائله *"
           name="lastName"
-          {...register("lastName", { required: "يرجي ادخال اسم العائله",
-pattern: {
-              value: /^(?!.*\d)[a-zA-Z\p{Arabic}\s\-]+$/,
-              message: "الرقم الذي ادخلته غير صالح",
-            }, })}
+          {...register("lastName", {
+            required: "يرجي ادخال اسم العائله",
+            pattern: {
+              value: /^(?!.*\d)[a-zA-Zء-ي]+([ -]?[a-zA-Zء-ي]+)*$/,
+              message: "الاسم الذي ادخلته غير صالح",
+            },
+            minLength: {
+              value: 2,
+              message: "يجب ان يكون الاسم من حرفين علي الاقل",
+            },
+          })}
         />
         {errors.lastName && <p className="error">{errors.lastName.message}</p>}
         {/* Phone Number */}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function NavbarDropdown() {
   const [name, setName] = useState("");
   const [type, setType] = useState();
@@ -11,10 +11,9 @@ export default function NavbarDropdown() {
   }, []);
   const handleLogOut = () => {
     localStorage.clear();
-          setTimeout(() => {
-            navigate("/");
-          }, 1000);
-          axios
+    setTimeout(() => {
+      navigate(0);
+    }, 1000);
   };
   return (
     <Dropdown id="dropdown">
