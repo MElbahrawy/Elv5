@@ -31,7 +31,7 @@ export default function UsersCrud() {
             <td>{company.id}</td>
             <td>{company.title}</td>
             <td>{company.location}</td>
-            <td>{company.phone}</td>
+            <td>{company.phoneNumber}</td>
             <td>
               {" "}
               <CrudBtns Id={company.id} type="companies" />{" "}

@@ -47,12 +47,7 @@ export default function LoginForm() {
           toast.success("تم تسجيل دخولك بنجاح");
           setTimeout(() => {
             navigate("/");
-          }, 1000);
-          axios
-            .put("http://localhost:4000/user", user)
-            .catch(() =>
-              toast.error("حدث مشكلة اثناء تسجيل الدخول حاول مره اخري")
-            );
+          }, 2000);
         } else {
           toast.error("البريد الالكتروني او كلمة السر غير صحيح");
         }

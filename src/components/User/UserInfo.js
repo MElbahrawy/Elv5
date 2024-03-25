@@ -12,23 +12,19 @@ export default function UserPage() {
   let { userId } = useParams();
   // States
   const [dataUser, setDataUser] = useState({});
-  const [id, setId] = useState(user.id);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [address, setAddress] = useState(user.address);
-  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
-  const [secondNumber, setSecondNumber] = useState(user.secondNumber);
-  const [email, setEmail] = useState(user.email);
+  const [id, setId] = useState(localStorage.id);
+  const [firstName, setFirstName] = useState(localStorage.firstName);
+  const [lastName, setLastName] = useState(localStorage.lastName);
+  const [address, setAddress] = useState(localStorage.address.split("/"));
+  const [phoneNumber, setPhoneNumber] = useState(localStorage.phoneNumber);
+  const [secondNumber, setSecondNumber] = useState(localStorage.secondNumber);
+  const [email, setEmail] = useState(localStorage.email);
   const [checker, setChecker] = useState(true);
 
   //   Fetching Data
   useEffect(() => {
     axios
-      .get(
-        userId
-          ? `http://localhost:4000/users/${userId}`
-          : "http://localhost:4000/user"
-      )
+      .get(`http://localhost:4000/users/${userId}`)
       .then((res) => res.data)
       .then((user) => {
         setId(user.id);
@@ -38,10 +34,28 @@ export default function UserPage() {
         setPhoneNumber(user.phoneNumber);
         setSecondNumber(user.secondNumber);
         setEmail(user.email);
-        setDataUser(user);
+        setDataUser({
+          id,
+          firstName,
+          lastName,
+          address,
+          phoneNumber,
+          secondNumber,
+          email,
+          password: user.password,
+        });
       })
       .catch(() => {
-        console.error("APi not Working the current is static Data :)");
+        setDataUser({
+          id,
+          firstName,
+          lastName,
+          address,
+          phoneNumber,
+          secondNumber,
+          email,
+          password: "admin",
+        });
       });
   }, []);
   //   Form Hook
@@ -63,13 +77,14 @@ export default function UserPage() {
   useEffect(() => {
     firstName !== dataUser.firstName ||
     lastName !== dataUser.lastName ||
-    address.join("/") !== dataUser.address ||
+    address !== dataUser.address ||
     phoneNumber !== dataUser.phoneNumber ||
     secondNumber !== dataUser.secondNumber ||
     watch("newPassword") !== "" ||
     email !== dataUser.email
       ? setChecker(false)
       : setChecker(true);
+    // console.log(checker);
   }, [
     firstName,
     lastName,
@@ -87,7 +102,7 @@ export default function UserPage() {
         .put(
           userId
             ? `http://localhost:4000/users/${userId}`
-            : "http://localhost:4000/user",
+            : `http://localhost:4000/users/${id}`,
           {
             id,
             firstName,
@@ -97,7 +112,7 @@ export default function UserPage() {
             secondNumber,
             email,
             password:
-              watch("newPassword") == ""
+              watch("newPassword") === ""
                 ? dataUser.password
                 : watch("newPassword"),
           }

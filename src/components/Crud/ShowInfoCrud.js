@@ -13,49 +13,90 @@ export default function ShowInfoCrud(props) {
     >
       <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
-          <div className="avatar-holder d-inline">
-            <img src={Avatar} alt="avatar" />
+          <div className=" d-inline">
+            <img
+              src={props.type === "users" ? Avatar : props.user.logo}
+              alt="avatar"
+            />
           </div>
           <h3 className="d-inline mx-2">
-            {props.user.firstName} {props.user.lastName}
+            {props.type === "users"
+              ? props.user.firstName + " " + props.user.lastName
+              : props.user.title}
+            {/* {props.user.firstName} {props.user.lastName} */}
           </h3>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Row>
-          <Col>
-            <h4>الرقم التعريفي</h4>
-            <p>{props.user.id}</p>
-          </Col>
-          <Col>
-            <h4>نوع الحساب</h4>
-            <p>{props.user.type}</p>
-          </Col>
-          <Col>
-            <h4>العنوان</h4>
-            <p>{props.user.address}</p>
-          </Col>
-        </Row>
+        {props.type === "users" ? (
+          <Row>
+            <Col>
+              <h4>الرقم التعريفي</h4>
+              <p>{props.user.id}</p>
+            </Col>
+            <Col>
+              <h4>نوع الحساب</h4>
+              <p>{props.user.type}</p>
+            </Col>
+            <Col>
+              <h4>العنوان</h4>
+              <p>{props.user.address}</p>
+            </Col>
+          </Row>
+        ) : (
+          <Row>
+            <Col>
+              <h4>الوصف</h4>
+              <p>{props.user.description}</p>
+            </Col>
+          </Row>
+        )}
+        {props.type === "companies" && (
+          <Row>
+            <Col>
+              <h4>العنوان</h4>
+              <p>{props.user.location}</p>
+            </Col>
+          </Row>
+        )}
         <Row>
           <Col>
             <h4>رقم الهاتف</h4>
             <p>{props.user.phoneNumber}</p>
           </Col>
-          <Col>
-            <h4>الرقم الثاني</h4>
-            <p>{props.user.secondNumber}</p>
-          </Col>
+          {props.type === "users" ? (
+            <Col>
+              <h4>الرقم الثاني</h4>
+              <p>{props.user.secondNumber}</p>
+            </Col>
+          ) : (
+            <Col>
+              <h4>البريد الالكتروني</h4>
+              <p>{props.user.email}</p>
+            </Col>
+          )}
         </Row>
-        <Row>
-          <Col>
-            <h4>البريد الالكتروني</h4>
-            <p>{props.user.email}</p>
-          </Col>
-          <Col>
-            <h4>الرقم السري</h4>
-            <p>{props.user.password}</p>
-          </Col>
-        </Row>
+        {props.type === "users" ? (
+          <Row>
+            <Col>
+              <h4>البريد الالكتروني</h4>
+              <p>{props.user.email}</p>
+            </Col>
+            <Col>
+              <h4>الرقم السري</h4>
+              <p>{props.user.password}</p>
+            </Col>
+          </Row>
+        ) : (
+          <Row>
+            <Col>
+              <h4>الموقع الالكتروني</h4>
+              <a target="_blank" href={props.user.website}>
+                {props.user.website}
+              </a>
+            </Col>
+          </Row>
+        )}
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

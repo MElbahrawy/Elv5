@@ -9,14 +9,21 @@ import { user } from "../../Data/user";
 export default function CrudBtns({ Id, type }) {
   const [modalShow, setModalShow] = useState(false);
   const [userData, setUserData] = useState({});
+  //   Show
   const showElement = () => {
+    console.log(type);
     axios
-      .get(`http://localhost:4000/users/${Id}`)
+      .get(
+        type === "users"
+          ? `http://localhost:4000/users/${Id}`
+          : `http://localhost:4000/companies/${Id}`
+      )
       .then((res) => res.data)
       .then((data) => setUserData(data))
       .catch(() => setUserData(user));
     setModalShow(true);
   };
+  //   Delete
   const deleteElement = (id) => {
     Swal.fire({
       title: "هل انت متأكد من حذف هذا العنصر نهائيا ؟",
@@ -41,6 +48,7 @@ export default function CrudBtns({ Id, type }) {
       <ShowInfoCrud
         show={modalShow}
         user={userData}
+        type={type}
         onHide={() => setModalShow(false)}
       />
       <Button variant="warning">

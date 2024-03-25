@@ -60,7 +60,7 @@ export default function PostCard({
             className="delete p-1 border-white"
             onClick={() => deletePost()}
           >
-            <i className="fa-solid fa-trash-can mx-1"></i>حذف
+            <i className="fa-solid fa-trash-can mx-1"></i>
           </Button>
         ) : null}
         <div className="d-flex gap-2">
