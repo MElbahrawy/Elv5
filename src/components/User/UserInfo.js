@@ -75,6 +75,15 @@ export default function UserPage() {
   };
   //   Enable save Changes button if there's a change happen
   useEffect(() => {
+    console.log(dataUser);
+    console.log(
+      firstName,
+      lastName,
+      lastName,
+      address,
+      phoneNumber,
+      secondNumber
+    );
     firstName !== dataUser.firstName ||
     lastName !== dataUser.lastName ||
     address !== dataUser.address ||
@@ -93,6 +102,7 @@ export default function UserPage() {
     secondNumber,
     email,
     watch("newPassword"),
+    dataUser,
   ]);
   //   Submit Handling
   const submitHandler = () => {

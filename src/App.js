@@ -21,6 +21,7 @@ import UserPage from "./pages/User/UserPage";
 import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import { user } from "./Data/user";
+import EditInfoCrud from "./components/Crud/EditInfoCrud";
 
 export default function App() {
   return (
@@ -39,7 +40,7 @@ export default function App() {
         {!localStorage.token ? (
           <Route path="/sign-up" element={<SignUp />} />
         ) : null}
-{!localStorage.token ? (
+        {!localStorage.token ? (
           <Route path="/login" element={<Login />} />
         ) : null}
         {localStorage.token ? (
@@ -55,6 +56,14 @@ export default function App() {
         {localStorage.token ? (
           user.type === "admin" ? (
             <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
+          ) : null
+        ) : null}
+        {localStorage.token ? (
+          user.type === "admin" ? (
+            <Route
+              path="/admin/Companies/:companyId"
+              element={<EditInfoCrud />}
+            />
           ) : null
         ) : null}
         {localStorage.token ? (

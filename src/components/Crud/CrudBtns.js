@@ -52,7 +52,11 @@ export default function CrudBtns({ Id, type }) {
         onHide={() => setModalShow(false)}
       />
       <Button variant="warning">
-        <Link to={`${Id}`} style={{ color: "black" }} id={Id}>
+        <Link
+          to={type === "users" ? `${Id}` : `/admin/companies/${Id}`}
+          style={{ color: "black" }}
+          id={Id}
+        >
           تعديل
         </Link>{" "}
       </Button>
