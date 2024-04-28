@@ -12,19 +12,16 @@ export default function PostsList() {
   useEffect(() => {
     axios
       .get("http://localhost:4000/posts")
-      .then((res) => res.data)
-      .then((posts) => setPostsData(posts))
-      .catch(() => {
-        setPostsData(posts);
-      });
+      .then((res) => setPostsData(res.data))
+      .catch((err) => setPostsData(posts));
   }, [postsData]);
 
   return (
     <>
       <AddPost postsData={postsData} setPostsData={setPostsData} />
-      <Container className="posts-holder">
-        {postsData.map((post) => (
-          <React.Fragment key={post.id}>
+      <Container className="posts-holder my-4">
+        {postsData.map((post, index) => (
+          <React.Fragment key={index}>
             <Fade>
               <PostCard
                 id={post.id}

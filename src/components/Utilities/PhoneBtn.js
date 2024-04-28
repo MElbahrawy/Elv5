@@ -5,7 +5,8 @@ export default function WhatsappBtn(props) {
   const { phone } = props;
   return (
     <a href={`tel:${phone}`} className="phone" target="_blank" rel="noreferrer">
-      <i className="fa-solid fa-phone-volume"></i>اتصل الان
+      <i className="fa-solid fa-phone-volume"></i>
+      <p className="m-0">اتصل الان</p>
     </a>
   );
 }

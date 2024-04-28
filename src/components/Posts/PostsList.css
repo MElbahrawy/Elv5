@@ -10,6 +10,7 @@
 }
 @media (max-width: 767px) {
   .posts-holder {
-    padding-right: 15px;
+    /* padding-right: 15px; */
+    padding: 0;
   }
 }

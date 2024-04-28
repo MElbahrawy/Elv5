@@ -1,6 +1,6 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
-import { governments } from "../../Data/government";
+import { governorates } from "../../Data/governorates";
 import { Link, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -12,37 +12,44 @@ export default function UserPage() {
   let { userId } = useParams();
   // States
   const [dataUser, setDataUser] = useState({});
-  const [id, setId] = useState(localStorage.id);
-  const [firstName, setFirstName] = useState(localStorage.firstName);
-  const [lastName, setLastName] = useState(localStorage.lastName);
-  const [address, setAddress] = useState(localStorage.address.split("/"));
-  const [phoneNumber, setPhoneNumber] = useState(localStorage.phoneNumber);
-  const [secondNumber, setSecondNumber] = useState(localStorage.secondNumber);
-  const [email, setEmail] = useState(localStorage.email);
+  const [id, setId] = useState(user.id);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [street, setStreet] = useState(user.street);
+  const [area, setArea] = useState(user.area);
+  const [city, setCity] = useState(user.city);
+  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
+  const [secondNumber, setSecondNumber] = useState(user.secondNumber);
+  const [email, setEmail] = useState(user.email);
   const [checker, setChecker] = useState(true);
 
   //   Fetching Data
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/users/${userId}`)
+      .get(
+        `http://154.237.200.76:5109/api/Account/GetByuserId?userId=${userId}`
+      )
       .then((res) => res.data)
-      .then((user) => {
-        setId(user.id);
-        setFirstName(user.firstName);
-        setLastName(user.lastName);
-        setAddress(user.address.split("/"));
-        setPhoneNumber(user.phoneNumber);
-        setSecondNumber(user.secondNumber);
-        setEmail(user.email);
+      .then((userData) => {
+        setId(userData.accountID);
+        setFirstName(userData.accountFName);
+        setLastName(userData.accountLName);
+        setStreet(userData.accountAddress);
+        setArea(userData.accountAddress);
+        setCity(userData.accountAddress);
+        setPhoneNumber(userData.phoneNumber);
+        setSecondNumber(userData.accountWhatsApp);
+        setEmail(userData.accountEmail);
         setDataUser({
           id,
           firstName,
           lastName,
-          address,
+          street,
+          area,
+          city,
           phoneNumber,
           secondNumber,
           email,
-          password: user.password,
         });
       })
       .catch(() => {
@@ -50,7 +57,9 @@ export default function UserPage() {
           id,
           firstName,
           lastName,
-          address,
+          street,
+          area,
+          city,
           phoneNumber,
           secondNumber,
           email,
@@ -68,25 +77,18 @@ export default function UserPage() {
     mode: "onSubmit",
   });
   //   Address handling
-  const handleAddress = (index, value) => {
-    let newAddress = [...address];
-    newAddress[index] = value;
-    setAddress(newAddress);
-  };
+  //   const handleAddress = (index, value) => {
+  //     let newAddress = [...address];
+  //     newAddress[index] = value;
+  //     setAddress(newAddress);
+  //   };
   //   Enable save Changes button if there's a change happen
   useEffect(() => {
-    console.log(dataUser);
-    console.log(
-      firstName,
-      lastName,
-      lastName,
-      address,
-      phoneNumber,
-      secondNumber
-    );
     firstName !== dataUser.firstName ||
     lastName !== dataUser.lastName ||
-    address !== dataUser.address ||
+    street !== dataUser.street ||
+    area !== dataUser.area ||
+    city !== dataUser.city ||
     phoneNumber !== dataUser.phoneNumber ||
     secondNumber !== dataUser.secondNumber ||
     watch("newPassword") !== "" ||
@@ -97,7 +99,9 @@ export default function UserPage() {
   }, [
     firstName,
     lastName,
-    address,
+    street,
+    area,
+    city,
     phoneNumber,
     secondNumber,
     email,
@@ -111,13 +115,13 @@ export default function UserPage() {
       axios
         .put(
           userId
-            ? `http://localhost:4000/users/${userId}`
-            : `http://localhost:4000/users/${id}`,
+            ? `http://154.237.200.76:5109/api/Account/${userId}`
+            : `http://154.237.200.76:5109/api/Account/${id}`,
           {
             id,
             firstName,
             lastName,
-            address: address.join("/"),
+            // address,
             phoneNumber,
             secondNumber,
             email,
@@ -223,19 +227,19 @@ export default function UserPage() {
                 <Form.Label>الشارع *</Form.Label>
                 <Form.Control
                   type="text"
-                  value={address[0]}
-                  onChange={(e) => handleAddress(0, e.target.value)}
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
                 />
               </Form.Group>
             </Col>
-            {/* District */}
+            {/* Area */}
             <Col md="2">
               <Form.Group className="mb-3">
                 <Form.Label>المنطقه *</Form.Label>
                 <Form.Control
                   type="text"
-                  value={address[1]}
-                  onChange={(e) => handleAddress(1, e.target.value)}
+                  value={area}
+                  onChange={(e) => setArea(e.target.value)}
                 />
               </Form.Group>
             </Col>
@@ -245,13 +249,13 @@ export default function UserPage() {
                 <Form.Label>المحافظه *</Form.Label>
                 <Form.Select
                   aria-label="Default select example"
-                  onChange={(e) => handleAddress(2, e.target.value)}
+                  onChange={(e) => setCity(e.target.value)}
                 >
-                  {governments.map((gov, index) => (
+                  {governorates.map((gov, index) => (
                     <option
                       value={gov}
                       key={index}
-                      selected={gov === address[2] ? "selected" : ""}
+                      selected={gov === city ? "selected" : ""}
                     >
                       {gov}
                     </option>

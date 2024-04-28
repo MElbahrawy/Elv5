@@ -1,4 +1,4 @@
-export const governments = [
+export const governorates = [
   "القاهرة",
   "الجيزة",
   "الإسكندرية",

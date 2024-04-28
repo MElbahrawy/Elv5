@@ -1,9 +1,15 @@
 import React from "react";
 import "./Company.css";
 
-export default function Company(props) {
-  const { title, description, location, logo, phone, email, website } = props;
-
+export default function Company({
+  title,
+  description,
+  location,
+  logo,
+  phone,
+  email,
+  website,
+}) {
   return (
     <div className="company-card">
       <div className="company-body">

@@ -10,7 +10,8 @@ export default function WhatsappBtn(props) {
       target="_blank"
       rel="noreferrer"
     >
-      <i className="fa-brands fa-whatsapp"></i>واتس اب
+      <i className="fa-brands fa-whatsapp"></i>
+      <p className="m-0">واتس اب</p>
     </a>
   );
 }

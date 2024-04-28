@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import "./Phase1.css";
 
 export default function Phase1({ setPhase, data, setData }) {
-  const [check, setCheck] = useState(false);
+  //   const [check, setCheck] = useState(false);
   const {
     register,
     formState: { errors },
@@ -16,10 +16,11 @@ export default function Phase1({ setPhase, data, setData }) {
   const submitHandler = (formData) => {
     setData({
       ...data,
+      username: formData.firstName,
       firstName: formData.firstName,
       lastName: formData.lastName,
       phoneNumber: formData.phoneNumber,
-      secondNumber: formData.secondNumber || null,
+      whatsApp: formData.secondNumber || null,
     });
     setPhase((perv) => perv + 1);
   };
@@ -83,16 +84,20 @@ export default function Phase1({ setPhase, data, setData }) {
         {/* second Number */}
         <input
           type="number"
-          placeholder="رقم الواتس اب"
-          disabled={check}
+          placeholder="رقم الواتس اب *"
+          //   disabled={check}
           {...register("secondNumber", {
+            required: "يرجي ادخال رقم الواتس اب",
             pattern: {
               value: /^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$/,
               message: "الرقم الذي ادخلته غير صالح",
             },
           })}
         />
-        <div className="d-flex align-items-center gap-2 mx-3">
+        {errors.secondNumber && (
+          <p className="error">{errors.secondNumber.message}</p>
+        )}
+        {/* <div className="d-flex align-items-center gap-2 mx-3">
           <input
             type="checkbox"
             className="w-auto m-0"
@@ -100,7 +105,7 @@ export default function Phase1({ setPhase, data, setData }) {
             onChange={() => setCheck(!check)}
           />
           <label htmlFor="check">ليس لدي واتس اب</label>
-        </div>
+        </div> */}
       </div>
       <div className="form-foot">
         <button disabled>عودة</button>

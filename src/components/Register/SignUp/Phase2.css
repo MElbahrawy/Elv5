@@ -1,7 +1,7 @@
 .address-data {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   padding: 0 10%;
 }
 .address-data input {
@@ -16,7 +16,7 @@
   margin-bottom: 15px;
 }
 .address-data select {
-  width: 80%;
+  width: 100%;
   padding: 10px 5px;
   text-align: center;
 }

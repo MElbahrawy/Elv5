@@ -1,21 +1,21 @@
-#main-ad {
+#main-adv {
   width: 100%;
   color: var(--text-light);
 }
-#main-ad .container {
+#main-adv .container {
   position: relative;
   background-color: #ddd;
   height: inherit;
 }
-#main-ad .container .row {
+#main-adv .container .row {
   height: inherit;
 }
-#main-ad .img-holder {
+#main-adv .img-holder {
   background: url("../../img/fred-kleber-tSDsY-zvg5k-unsplash.jpg");
   background-position: center;
   background-size: cover;
 }
-#main-ad .ad-details {
+#main-adv .ad-details {
   background: linear-gradient(to right, var(--main-color), #e89002);
   display: flex;
   justify-content: center;
@@ -24,31 +24,31 @@
   flex-direction: column;
 }
 @media (max-width: 767px) {
-  #main-ad .ad-details {
+  #main-adv .ad-details {
     padding: 15px;
     padding-right: 30px;
   }
 }
-#main-ad .ad-details .main-ad-title {
+#main-adv .ad-details .main-ad-title {
   font-weight: 900;
   text-shadow: 0 0 10px var(--text-color);
 }
 @media (max-width: 767px) {
-  #main-ad .ad-details .main-ad-title {
+  #main-adv .ad-details .main-ad-title {
     font-size: 1em;
     font-weight: 700;
   }
 }
-#main-ad .ad-details .main-ad-desc {
+#main-adv .ad-details .main-ad-desc {
   text-shadow: 0 0 10px var(--text-color);
   margin-bottom: 5px;
 }
 @media (max-width: 767px) {
-  #main-ad .ad-details .main-ad-desc {
+  #main-adv .ad-details .main-ad-desc {
     font-size: 0.6em;
   }
 }
-#main-ad .ad-details .main-ad-website {
+#main-adv .ad-details .main-ad-website {
   border: 1px solid;
   color: var(--text-light);
   border-color: var(--text-light);
@@ -62,7 +62,7 @@
   -o-border-radius: 15px;
 }
 @media (max-width: 767px) {
-  #main-ad .ad-details .main-ad-website {
+  #main-adv .ad-details .main-ad-website {
     font-size: 0.5em;
     padding: 5px;
     border-radius: 7px;
@@ -74,9 +74,9 @@
     box-shadow: 0 0 3px var(--text-light);
   }
 }
-#main-ad .ad-details .main-ad-website:hover {
+#main-adv .ad-details .main-ad-website:hover {
   opacity: 0.8;
 }
-#main-ad .ad-details .main-ad-website i {
+#main-adv .ad-details .main-ad-website i {
   margin-left: 5px;
 }

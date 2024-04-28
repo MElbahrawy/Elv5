@@ -4,14 +4,14 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-export default function EditInfoCrud() {
+export default function EditCompanyForm() {
   let { companyId } = useParams();
   const [title, setTitle] = useState("لا توجد بيانات حاليا");
-  const [description, setdescription] = useState("لا توجد بيانات حاليا");
-  const [address, setaddress] = useState("لا توجد بيانات حاليا");
-  const [website, setwebsite] = useState("لا توجد بيانات حاليا");
-  const [email, setemail] = useState("لا توجد بيانات حاليا");
-  const [phoneNumber, setphoneNumber] = useState("لا توجد بيانات حاليا");
+  const [description, setDescription] = useState("لا توجد بيانات حاليا");
+  const [address, setAddress] = useState("لا توجد بيانات حاليا");
+  const [website, setWebsite] = useState("لا توجد بيانات حاليا");
+  const [email, setEmail] = useState("لا توجد بيانات حاليا");
+  const [phoneNumber, setPhoneNumber] = useState("لا توجد بيانات حاليا");
 
   useEffect(() => {
     axios
@@ -19,11 +19,11 @@ export default function EditInfoCrud() {
       .then((res) => res.data)
       .then((company) => {
         setTitle(company.title);
-        setdescription(company.description);
-        setaddress(company.location);
-        setwebsite(company.website);
-        setemail(company.email);
-        setphoneNumber(company.phoneNumber);
+        setDescription(company.description);
+        setAddress(company.location);
+        setWebsite(company.website);
+        setEmail(company.email);
+        setPhoneNumber(company.phoneNumber);
       })
       .catch(() => {
         console.error("static data");

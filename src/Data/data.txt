@@ -1,0 +1,63 @@
+[1] Companies
+{
+    "id" id number
+    "title" company title
+    "description"  description of the company 
+    "location" address
+    "logo"  logo image url
+    "website"  website link
+    "email"  email address
+    "phoneNumber"  phone number
+    "whatsappNumber"  whatsapp number
+},
+GET [all companies, company by id]
+    - get all companies 
+    - get one company by id
+Post [company{..., id= ""}]
+    send new company info without id (server will generate it)
+
+[2] posts
+{
+    "id"  id number
+    "ownerId" id of the user
+    "img" image (not handled in website) 
+    "name" user name
+    "type" user type
+    "date" posted date
+    "content"  content of the post
+    "phoneNumber"   phone number of the person who made this post for contact
+}
+GET [all posts]
+    get all posts (يفضل لو فيه طريقة اننا نعمل ليميت للبوستس اللي بترجع يعني بتبدا من اندكس كذا ويعرض من الاندكس عدد معين)
+Post [post{...,id=""}]
+    send new post without id (server will generate it)
+Delete [delete a post using post id]
+    the owner can delete his own posts by sending the post id.
+
+[3] Users
+{
+    "id" user id
+    "type" user type
+    "firstName" first name
+    "lastName" last name
+    "email"  e-mail address
+    "address" [street/city/governorate]     // can be one variable or 3 "prefer 3 =D"
+    "phoneNumber"  phone number
+    "secondNumber"  second phone number(optional)
+    "password" user password
+}
+GET[all users, all technicians, user by id, user's password by id]
+    - get all users for crud
+    - get all technicians for technicians tab
+    - get user by id for editing profile and crud editing
+    - get user's data "without password" when logging in
+    - get user's password by id to check password before change info
+Post[new user, login]
+    - new user {..., type="user" (by default), id="" (server will generate it), secondNumber="" (can be null)} ==> response(success/email exist)
+    - login {email,password} ==> response(userData+Token / error message with delay if wrong password)
+Put[edit user information or password using id]
+    - user can edit his personal information or password
+    - admin can edit user personal information
+    - admin can promote user
+Delete[delete user from crud]
+    - admin can delete user 

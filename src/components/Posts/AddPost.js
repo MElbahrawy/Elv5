@@ -4,7 +4,7 @@ import axios from "axios";
 import Avatar from "../../img/Avatar.webp";
 
 export default function AddPost({ postsData, setPostsData }) {
-  const [value, setValue] = useState({
+  const [PostData, setPostData] = useState({
     id: "",
     img: "",
     name: localStorage.firstName + " " + localStorage.lastName,
@@ -14,20 +14,22 @@ export default function AddPost({ postsData, setPostsData }) {
     phoneNumber: localStorage.phoneNumber,
   });
   const handleChange = (e) => {
-    setValue({
-      ...value,
+    setPostData({
+      ...PostData,
       content: e.target.value,
     });
   };
   const handleSubmit = () => {
-    setValue((prevValue) => {
+    setPostData((prevValue) => {
       const updatedValue = {
         ...prevValue,
         id: String(postsData.length + 10),
         date: new Date(),
       };
-      setPostsData([...postsData, updatedValue]);
-      axios.post("http://localhost:4000/posts", updatedValue);
+      axios
+        .post("http://localhost:4000/posts", updatedValue)
+        .then(() => setPostsData([...postsData, updatedValue]))
+        .catch((err) => console.log(err));
       return updatedValue;
     });
   };

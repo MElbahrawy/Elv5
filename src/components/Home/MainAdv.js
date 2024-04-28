@@ -1,9 +1,9 @@
 import React from "react";
 import "./MainAd.css";
 
-export default function MainAd() {
+export default function MainAdv() {
   return (
-    <section id="main-ad">
+    <section id="main-adv">
       <div className="container">
         <div className="row">
           <div className="img-holder col-6"></div>

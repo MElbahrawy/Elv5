@@ -49,11 +49,13 @@
 .company-card .logo-holder img {
   width: 50%;
   margin: 15px 0;
+  max-height: 140px;
 }
 @media (min-width: 767px) {
   .company-card .logo-holder img {
     width: 100%;
     margin: 0 0 0 30px;
+    max-height: 120px;
   }
 }
 .company-details {

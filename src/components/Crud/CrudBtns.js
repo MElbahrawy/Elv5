@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import { server } from "../../Data/APIs.js";
+import ShowInfoCrud from "./ShowInfoCrud";
 import { Button } from "react-bootstrap";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { user } from "../../Data/user";
+import { companies } from "../../Data/companies";
 import Swal from "sweetalert2";
 import axios from "axios";
-import ShowInfoCrud from "./ShowInfoCrud";
-import { user } from "../../Data/user";
 
 export default function CrudBtns({ Id, type }) {
   const [modalShow, setModalShow] = useState(false);
-  const [userData, setUserData] = useState({});
+  const [fullData, setFullData] = useState({});
   //   Show
   const showElement = () => {
-    console.log(type);
     axios
       .get(
         type === "users"
-          ? `http://localhost:4000/users/${Id}`
+          ? server.GetByUserId + Id
           : `http://localhost:4000/companies/${Id}`
       )
       .then((res) => res.data)
-      .then((data) => setUserData(data))
-      .catch(() => setUserData(user));
+      .then((data) => setFullData(data))
+      .catch(() =>
+        type === "users" ? setFullData(user) : setFullData(companies[0])
+      );
     setModalShow(true);
   };
   //   Delete
@@ -32,22 +35,19 @@ export default function CrudBtns({ Id, type }) {
       if (data.isConfirmed) {
         axios
           .delete(`http://localhost:4000/${type}/${id}`)
-          .then((res) => {
-            console.log(res);
-          })
-          .catch(() => alert("user not Found"));
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
       }
     });
   };
   return (
     <div className="d-flex gap-3">
       <Button variant="success" onClick={() => showElement()}>
-        {" "}
-        عرض{" "}
+        عرض
       </Button>
       <ShowInfoCrud
         show={modalShow}
-        user={userData}
+        user={fullData}
         type={type}
         onHide={() => setModalShow(false)}
       />
@@ -58,7 +58,7 @@ export default function CrudBtns({ Id, type }) {
           id={Id}
         >
           تعديل
-        </Link>{" "}
+        </Link>
       </Button>
       <Button
         variant="danger"
@@ -66,7 +66,6 @@ export default function CrudBtns({ Id, type }) {
           deleteElement(Id);
         }}
       >
-        {" "}
         حذف
       </Button>
     </div>

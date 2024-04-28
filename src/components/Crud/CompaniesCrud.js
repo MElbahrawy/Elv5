@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { companies } from "../../Data/companies";
 import Table from "react-bootstrap/Table";
 import CrudBtns from "./CrudBtns";
 import axios from "axios";
-import { companies } from "../../Data/companies";
 
 export default function UsersCrud() {
   const [companiesData, setCompanies] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:4000/companies")
-      .then((respose) => {
-        setCompanies(respose.data);
-      })
+      .then((respose) => setCompanies(respose.data))
       .catch(() => setCompanies(companies));
   }, [companiesData]);
   return (
@@ -33,8 +31,7 @@ export default function UsersCrud() {
             <td>{company.location}</td>
             <td>{company.phoneNumber}</td>
             <td>
-              {" "}
-              <CrudBtns Id={company.id} type="companies" />{" "}
+              <CrudBtns Id={company.id} type="companies" />
             </td>
           </tr>
         ))}

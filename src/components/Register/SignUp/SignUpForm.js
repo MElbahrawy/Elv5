@@ -14,15 +14,18 @@ export default function SignUpForm() {
   };
   // data
   const [data, setData] = useState({
-    id: toString(Math.floor(Math.random() * 100) + 10),
-    type: "user",
+    userName: "",
     firstName: "",
     lastName: "",
     phoneNumber: "",
-    secondNumber: "",
-    address: "",
+    whatsApp: "",
+    street: "",
+    area: "",
+    city: "",
     email: "",
     password: "",
+    profilePicture:
+      "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
   });
   //   Showing phases
   const showForm = () => {

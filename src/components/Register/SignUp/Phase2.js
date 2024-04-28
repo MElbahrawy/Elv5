@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { governments } from "../../../Data/government";
+import { governorates } from "../../../Data/governorates";
 import "./Phase2.css";
 
 export default function Phase2({ setPhase, data, setData, handleBack }) {
@@ -15,7 +15,9 @@ export default function Phase2({ setPhase, data, setData, handleBack }) {
   const submitHandler = (formData) => {
     setData({
       ...data,
-      address: formData.street + "/" + formData.state + "/" + formData.gov,
+      street: formData.street,
+      area: formData.state,
+      city: formData.gov,
     });
     setPhase((perv) => perv + 1);
   };
@@ -44,7 +46,7 @@ export default function Phase2({ setPhase, data, setData, handleBack }) {
             المحافظة
           </option>
 
-          {governments.map((gov, id) => (
+          {governorates.map((gov, id) => (
             <option key={id} value={gov}>
               {gov}
             </option>

@@ -21,7 +21,7 @@ import UserPage from "./pages/User/UserPage";
 import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import { user } from "./Data/user";
-import EditInfoCrud from "./components/Crud/EditInfoCrud";
+import EditCompanyForm from "./components/Crud/EditCompanyForm";
 
 export default function App() {
   return (
@@ -62,7 +62,7 @@ export default function App() {
           user.type === "admin" ? (
             <Route
               path="/admin/Companies/:companyId"
-              element={<EditInfoCrud />}
+              element={<EditCompanyForm />}
             />
           ) : null
         ) : null}

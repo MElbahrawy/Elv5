@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Phase3.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { server } from "../../../Data/APIs.js";
 
 export default function Phase3({ data, setData, handleBack }) {
   const [confirmed, setConfirmed] = useState(false);
@@ -28,12 +29,19 @@ export default function Phase3({ data, setData, handleBack }) {
   };
   useEffect(() => {
     if (confirmed) {
-      axios.post("http://localhost:4000/users", data).then(() => {
-        toast.success("تم تسجيل بياناتك بنجاح ، سوف يتم نقلك لتسجيل دخولك");
-        setTimeout(() => {
-          navigate("login");
-        }, 2500);
-      });
+      // password 12 at least 1 capital 1 number 1 symbol
+      axios
+        .post(server.register, data)
+        .then((success) => {
+          toast.success("تم تسجيل بياناتك بنجاح ، سوف يتم نقلك لتسجيل دخولك");
+          setTimeout(() => {
+            navigate("/login");
+          }, 2500);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("حدث خطأ اثناء التسجيل يرجي المحاولة مره اخري");
+        });
     }
   }, [confirmed]);
 
@@ -58,9 +66,14 @@ export default function Phase3({ data, setData, handleBack }) {
           placeholder="الرقم السري"
           {...register("password", {
             required: "يرجي ادخال رقم سري",
+            pattern: {
+              value:
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}|:<>?~-])[A-Za-z\d!@#$%^&*()_+{}|:<>?~-]{8,}$/,
+              message: "يجب ان يحتوي علي الاقل حرف صغير و حرف كبير ورقم ورمز",
+            },
             minLength: {
-              value: 8,
-              message: "يجب ان تكون كلمة السر اكثر من 8 حروف و ارقام",
+              value: 12,
+              message: "يجب ان تكون كلمة السر اكثر من 12 حروف",
             },
           })}
         />
@@ -82,7 +95,7 @@ export default function Phase3({ data, setData, handleBack }) {
         <button type="button" onClick={handleBack}>
           عودة
         </button>
-        <button type="submit">التالي</button>
+        <button type="submit">تسجيل</button>
       </div>
       <ToastContainer />
     </form>

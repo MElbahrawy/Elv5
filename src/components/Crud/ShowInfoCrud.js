@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import Avatar from "../../img/Avatar.webp";
-import axios from "axios";
 
 export default function ShowInfoCrud(props) {
   return (
@@ -15,15 +14,14 @@ export default function ShowInfoCrud(props) {
         <Modal.Title id="contained-modal-title-vcenter">
           <div className=" d-inline">
             <img
-              src={props.type === "users" ? Avatar : props.user.logo}
+              src={props.type === "users" ? Avatar : props.user.accountImage}
               alt="avatar"
             />
           </div>
           <h3 className="d-inline mx-2">
             {props.type === "users"
-              ? props.user.firstName + " " + props.user.lastName
+              ? props.user.accountFName + " " + props.user.accountLName
               : props.user.title}
-            {/* {props.user.firstName} {props.user.lastName} */}
           </h3>
         </Modal.Title>
       </Modal.Header>
@@ -32,15 +30,15 @@ export default function ShowInfoCrud(props) {
           <Row>
             <Col>
               <h4>الرقم التعريفي</h4>
-              <p>{props.user.id}</p>
+              <p>{props.user.accountID}</p>
             </Col>
             <Col>
               <h4>نوع الحساب</h4>
-              <p>{props.user.type}</p>
+              <p>{props.user.accountType}</p>
             </Col>
             <Col>
               <h4>العنوان</h4>
-              <p>{props.user.address}</p>
+              <p>{props.user.accountAddress}</p>
             </Col>
           </Row>
         ) : (
@@ -67,12 +65,12 @@ export default function ShowInfoCrud(props) {
           {props.type === "users" ? (
             <Col>
               <h4>الرقم الثاني</h4>
-              <p>{props.user.secondNumber}</p>
+              <p>{props.user.accountWhatsApp}</p>
             </Col>
           ) : (
             <Col>
               <h4>البريد الالكتروني</h4>
-              <p>{props.user.email}</p>
+              <p>{props.user.accountEmail}</p>
             </Col>
           )}
         </Row>
@@ -80,7 +78,7 @@ export default function ShowInfoCrud(props) {
           <Row>
             <Col>
               <h4>البريد الالكتروني</h4>
-              <p>{props.user.email}</p>
+              <p>{props.user.accountEmail}</p>
             </Col>
             <Col>
               <h4>الرقم السري</h4>

@@ -19,7 +19,9 @@ export default function NavbarDropdown() {
     <Dropdown id="dropdown">
       <Dropdown.Toggle>
         <i className="fa-solid fa-circle-user"></i>
-        <p className="d-inline-block my-0 mx-2">مرحبا، {name ? name : "عضو"}</p>
+        <p className="d-inline-block my-0 mx-2">
+          مرحبا، {name ? name : "مستخدم"}
+        </p>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>

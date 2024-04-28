@@ -3,16 +3,17 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { user } from "../../../Data/user";
+import { server } from "../../../Data/APIs";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./LoginForm.css";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const {
     register,
-    watch,
     formState: { errors },
     handleSubmit,
   } = useForm({
@@ -22,51 +23,42 @@ export default function LoginForm() {
     },
   });
 
-  //   const [logedIn, setlogedIn] = useState(false);
-
   const submitHandler = (data) => {
+    console.log(data);
     axios
-      .get("http://localhost:4000/users")
-      .then((response) => response.data)
-      .then((fetchedData) => {
-        const user = fetchedData.find(
-          (userFound) =>
-            userFound.email === watch("email") &&
-            userFound.password === watch("password")
+      .post(server.login, data)
+      .then((success) => {
+        toast.success("تم تسجيل دخولك بنجاح");
+        localStorage.setItem(
+          "token",
+          JSON.stringify(jwtDecode(success.data.token))
         );
-        if (user) {
-          localStorage.setItem("token", "a1b2c3");
-          localStorage.setItem("id", user.id);
-          localStorage.setItem("type", user.type);
-          localStorage.setItem("firstName", user.firstName);
-          localStorage.setItem("lastName", user.lastName);
-          localStorage.setItem("email", user.email);
-          localStorage.setItem("address", user.address);
-          localStorage.setItem("phoneNumber", user.phoneNumber);
-          localStorage.setItem("secondNumber", user.secondNumber);
-          toast.success("تم تسجيل دخولك بنجاح");
-          setTimeout(() => {
-            navigate("/");
-          }, 2000);
-        } else {
-          toast.error("البريد الالكتروني او كلمة السر غير صحيح");
-        }
+        localStorage.setItem("email", success.data.email);
+        localStorage.setItem("type", "admin");
+        localStorage.setItem("id", "500");
+        localStorage.setItem("firstName", "محمد");
+        localStorage.setItem("lastName", "البحراوي");
+        localStorage.setItem("phoneNumber", "01151245412");
+        localStorage.setItem("secondNumber", "01151245412");
+        setTimeout(() => {
+          navigate(0);
+        }, 2500);
       })
-      .catch(() => {
+      .catch((err) => {
+        toast.error(err?.response?.data);
         if (data.email === "admin@gmail.com" && data.password === "admin") {
+          toast.success("تم تسجيل دخولك بدون اتصال");
           localStorage.setItem("token", "a1b2c3");
-          localStorage.setItem("id", user.id);
-          localStorage.setItem("type", user.type);
-          localStorage.setItem("firstName", user.firstName);
-          localStorage.setItem("lastName", user.lastName);
-          localStorage.setItem("email", user.email);
-          localStorage.setItem("address", user.address);
-          localStorage.setItem("phoneNumber", user.phoneNumber);
-          localStorage.setItem("secondNumber", user.secondNumber);
-          toast.success("تم تسجيل دخولك بنجاح");
+          localStorage.setItem("email", data.email);
+          localStorage.setItem("type", "admin");
+          localStorage.setItem("id", "500");
+          localStorage.setItem("firstName", "محمد");
+          localStorage.setItem("lastName", "البحراوي");
+          localStorage.setItem("phoneNumber", "01151245412");
+          localStorage.setItem("secondNumber", "01151245412");
           setTimeout(() => {
             navigate(0);
-          }, 1000);
+          }, 2500);
         } else {
           toast.error("البريد الالكتروني او كلمة السر غير صحيح");
         }
@@ -109,7 +101,6 @@ export default function LoginForm() {
             </Link>
           </div>
           <ToastContainer />
-          {/* {logedIn ? <Navigate to="/" /> : null} */}
         </form>
       </div>
     </div>

@@ -8,6 +8,12 @@
   -o-border-radius: 5px;
   width: fit-content;
   color: #fff;
+  display: flex;
+}
+@media (max-width: 346px) {
+  .phone p {
+    display: none;
+  }
 }
 
 .phone:hover {
@@ -18,4 +24,7 @@
   margin: 0 5px;
   color: #fff;
   font-size: 1.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
