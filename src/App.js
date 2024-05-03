@@ -22,6 +22,7 @@ import Posts from "./pages/Posts/Posts";
 import Home from "./pages/Home/Home";
 import { user } from "./Data/user";
 import EditCompanyForm from "./components/Crud/EditCompanyForm";
+import ElevatorCrudPage from "./pages/Admin/ElevatorCrudPage";
 
 export default function App() {
   return (
@@ -64,6 +65,11 @@ export default function App() {
               path="/admin/Companies/:companyId"
               element={<EditCompanyForm />}
             />
+          ) : null
+        ) : null}
+        {localStorage.token ? (
+          user.type === "admin" ? (
+            <Route path="/admin/elevators" element={<ElevatorCrudPage />} />
           ) : null
         ) : null}
         {localStorage.token ? (

@@ -14,7 +14,7 @@ export default function Company({
     <div className="company-card">
       <div className="company-body">
         <div className="logo-holder">
-          <img src={logo} alt="companyLogo" />
+          <img src={`data:image/jpeg;base64,${logo}`} alt="companyLogo" />
         </div>
         <div className="company-details">
           <h2 className="company-title">{title}</h2>

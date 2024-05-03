@@ -10,6 +10,9 @@ export default function CrudCat() {
       <Link to="/admin/Companies" className="bg-dark p-2 text-light">
         شركات
       </Link>
+      <Link to="/admin/elevators" className="bg-dark p-2 text-light">
+        المصاعد
+      </Link>
     </div>
   );
 }

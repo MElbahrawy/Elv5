@@ -5,17 +5,25 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { users } from "../../Data/users";
 import { server } from "../../Data/APIs.js";
+import LoadingSpinner from "../Utilities/LoadingSpinner.js";
 
 export default function UsersCrud() {
   const accType = ["admin", "owner", "technician", "user"];
   const [usersData, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // fetching users data
   useEffect(() => {
     axios
       .get(server.getAllUsers)
-      .then((response) => setUsers(response.data))
-      .catch(() => setUsers(users));
+      .then((response) => {
+        setLoading(false);
+        setUsers(response.data);
+      })
+      .catch(() => {
+        setLoading(false);
+        setUsers(users);
+      });
   }, []);
   // handle updating data
   const handleType = (userId, newType) => {

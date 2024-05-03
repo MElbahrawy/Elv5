@@ -11,6 +11,7 @@ import axios from "axios";
 export default function UserPage() {
   let { userId } = useParams();
   // States
+
   const [dataUser, setDataUser] = useState({});
   const [id, setId] = useState(user.id);
   const [firstName, setFirstName] = useState(user.firstName);

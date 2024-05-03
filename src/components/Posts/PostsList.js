@@ -6,20 +6,30 @@ import { posts } from "../../Data/posts";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
+import LoadingSpinner from "../Utilities/LoadingSpinner";
 
 export default function PostsList() {
   const [postsData, setPostsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/posts")
-      .then((res) => setPostsData(res.data))
-      .catch((err) => setPostsData(posts));
+      .then((res) => {
+        setLoading(false);
+        setPostsData(res.data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setPostsData(posts);
+      });
   }, [postsData]);
 
   return (
     <>
       <AddPost postsData={postsData} setPostsData={setPostsData} />
       <Container className="posts-holder my-4">
+        {loading && <LoadingSpinner />}
         {postsData.map((post, index) => (
           <React.Fragment key={index}>
             <Fade>

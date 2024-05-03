@@ -9,8 +9,12 @@ export default function UsersCrud() {
   useEffect(() => {
     axios
       .get("http://localhost:4000/companies")
-      .then((respose) => setCompanies(respose.data))
-      .catch(() => setCompanies(companies));
+      .then((respose) => {
+        setCompanies(respose.data);
+      })
+      .catch(() => {
+        setCompanies(companies);
+      });
   }, [companiesData]);
   return (
     <Table striped bordered hover responsive>
