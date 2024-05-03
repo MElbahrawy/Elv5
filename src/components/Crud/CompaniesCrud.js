@@ -1,21 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { companies } from "../../Data/companies";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import CrudBtns from "./CrudBtns";
-import axios from "axios";
 
-export default function UsersCrud() {
-  const [companiesData, setCompanies] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/companies")
-      .then((respose) => {
-        setCompanies(respose.data);
-      })
-      .catch(() => {
-        setCompanies(companies);
-      });
-  }, [companiesData]);
+export default function UsersCrud({ companiesData }) {
   return (
     <Table striped bordered hover responsive>
       <thead>

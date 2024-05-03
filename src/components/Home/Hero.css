@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 #hero-section .img-holder {
-  background-color: black;
+  background-color: var(--main-color);
   filter: blur(1.5px);
   background-position: center;
   background-size: cover;
@@ -24,6 +24,11 @@
   width: 100%;
   object-fit: fill;
   pointer-events: none;
+}
+@media (max-width: 767px) {
+  #hero-section .img-holder video {
+    object-fit: contain;
+  }
 }
 #hero-section .hero-heading {
   padding: 50px;

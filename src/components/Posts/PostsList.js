@@ -7,6 +7,7 @@ import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
+import { server } from "../../Data/APIs";
 
 export default function PostsList() {
   const [postsData, setPostsData] = useState([]);
@@ -14,12 +15,15 @@ export default function PostsList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/posts")
+      .get(server.posts)
       .then((res) => {
         setLoading(false);
+        console.log(res);
+        // axios.get(server.GetByUserId+ res.UserId).then((dataUser) => setPostsData())
         setPostsData(res.data);
       })
       .catch((err) => {
+        console.log(err);
         setLoading(false);
         setPostsData(posts);
       });

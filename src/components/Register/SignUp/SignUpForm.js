@@ -24,8 +24,7 @@ export default function SignUpForm() {
     city: "",
     email: "",
     password: "",
-    profilePicture:
-      "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+    profilePicture: "",
   });
   //   Showing phases
   const showForm = () => {

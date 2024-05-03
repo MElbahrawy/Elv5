@@ -20,16 +20,19 @@ export default function TechniciansGroup() {
         setLoading(false);
         setUsersData(data);
       })
-      .catch((err) => setLoading(false));
+      .catch((err) => {
+        setLoading(false);
+        setUsersData(users);
+      });
   }, []);
   return (
     <Row className="technicians my-5 gap-5 mx-3 justify-content-around align-items-start">
       {loading && <LoadingSpinner />}
-      {usersData.map((tech) => (
+      {usersData.map((tech, index) => (
         <Technician
-          key={tech.id}
-          name={tech.firstName + " " + tech.lastName}
-          address={tech.address}
+          key={index}
+          name={tech.accountFName + " " + tech.accountLName}
+          address={tech.accountAddress}
         />
       ))}
     </Row>

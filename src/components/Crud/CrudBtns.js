@@ -34,7 +34,7 @@ export default function CrudBtns({ Id, type }) {
     }).then((data) => {
       if (data.isConfirmed) {
         axios
-          .delete(`http://localhost:4000/${type}/${id}`)
+          .delete(server.DeleteUser, Id)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
       }

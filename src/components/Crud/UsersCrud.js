@@ -1,30 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Table from "react-bootstrap/Table";
 import CrudBtns from "./CrudBtns";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { users } from "../../Data/users";
 import { server } from "../../Data/APIs.js";
-import LoadingSpinner from "../Utilities/LoadingSpinner.js";
 
-export default function UsersCrud() {
+export default function UsersCrud({ usersData }) {
   const accType = ["admin", "owner", "technician", "user"];
-  const [usersData, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  // fetching users data
-  useEffect(() => {
-    axios
-      .get(server.getAllUsers)
-      .then((response) => {
-        setLoading(false);
-        setUsers(response.data);
-      })
-      .catch(() => {
-        setLoading(false);
-        setUsers(users);
-      });
-  }, []);
   // handle updating data
   const handleType = (userId, newType) => {
     let updatedData = {
