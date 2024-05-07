@@ -24,7 +24,6 @@ export default function SignUpForm() {
     city: "",
     email: "",
     password: "",
-    profilePicture: "",
   });
   //   Showing phases
   const showForm = () => {

@@ -2,36 +2,52 @@ import React, { useState } from "react";
 import "./AddPost.css";
 import axios from "axios";
 import Avatar from "../../img/Avatar.webp";
+import { server } from "../../Data/APIs";
 
 export default function AddPost({ postsData, setPostsData }) {
   const [PostData, setPostData] = useState({
-    id: "",
-    img: "",
-    name: localStorage.firstName + " " + localStorage.lastName,
-    type: localStorage.type,
-    date: "",
-    content: "",
-    phoneNumber: localStorage.phoneNumber,
+    // name: localStorage.firstName + " " + localStorage.lastName,
+    // type: localStorage.type,
+    // date: "",
+    Content: "",
+    UserId: localStorage.id,
+    Media: "",
+    // phoneNumber: localStorage.phoneNumber,
   });
   const handleChange = (e) => {
     setPostData({
       ...PostData,
-      content: e.target.value,
+      Content: e.target.value,
     });
   };
-  const handleSubmit = () => {
-    setPostData((prevValue) => {
-      const updatedValue = {
-        ...prevValue,
-        id: String(postsData.length + 10),
-        date: new Date(),
-      };
-      axios
-        .post("http://localhost:4000/posts", updatedValue)
-        .then(() => setPostsData([...postsData, updatedValue]))
-        .catch((err) => console.log(err));
-      return updatedValue;
+
+  const handleMedia = (e) => {
+    setPostData({
+      ...PostData,
+      Media: e.target.value,
     });
+  };
+
+  const handleSubmit = () => {
+    // setPostData((prevValue) => {
+    //   const updatedValue = {
+    //     ...prevValue,
+    //     id: String(postsData.length + 10),
+    //     date: new Date(),
+    //   };
+    //   axios
+    //     .post("http://localhost:4000/posts", updatedValue)
+    //     .then(() => setPostsData([...postsData, updatedValue]))
+    //     .catch((err) => console.log(err));
+    //   return updatedValue;
+    // });
+    console.log(PostData);
+    axios
+      .post(server.Posts, PostData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   return (
     <div>
@@ -72,6 +88,12 @@ export default function AddPost({ postsData, setPostsData }) {
                 className="post-text form-control"
                 placeholder="اعرض مشكلتك"
                 onChange={handleChange}
+              />
+              <input
+                type="file"
+                className="post-text form-control"
+                placeholder=""
+                onChange={handleMedia}
               />
             </div>
             <div className="modal-footer">

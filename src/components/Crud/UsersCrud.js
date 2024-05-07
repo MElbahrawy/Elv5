@@ -34,7 +34,7 @@ export default function UsersCrud({ usersData }) {
       </thead>
       <tbody>
         {usersData.map((user) => (
-          <tr key={user.id}>
+          <tr key={user.accountID}>
             <td>{user.accountID}</td>
             <td>{user.accountFName}</td>
             <td>{user.accountLName}</td>

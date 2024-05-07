@@ -7,6 +7,29 @@ import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import { user } from "../../Data/user";
 import axios from "axios";
+import { server } from "../../Data/APIs";
+
+/* 
+
+edit data :- 
+accountFName
+string
+accountLName
+string
+accountStreet
+string
+accountArea
+string
+accountCity
+string
+PhoneNumber
+string
+accountWhatsApp
+string
+accountImage
+string($binary)
+
+*/
 
 export default function UserPage() {
   let { userId } = useParams();
@@ -21,15 +44,12 @@ export default function UserPage() {
   const [city, setCity] = useState(user.city);
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
   const [secondNumber, setSecondNumber] = useState(user.secondNumber);
-  const [email, setEmail] = useState(user.email);
   const [checker, setChecker] = useState(true);
 
   //   Fetching Data
   useEffect(() => {
     axios
-      .get(
-        `http://154.237.200.76:5109/api/Account/GetByuserId?userId=${userId}`
-      )
+      .get(server.GetByUserId + userId)
       .then((res) => res.data)
       .then((userData) => {
         setId(userData.accountID);
@@ -40,7 +60,6 @@ export default function UserPage() {
         setCity(userData.accountAddress);
         setPhoneNumber(userData.phoneNumber);
         setSecondNumber(userData.accountWhatsApp);
-        setEmail(userData.accountEmail);
         setDataUser({
           id,
           firstName,
@@ -50,7 +69,6 @@ export default function UserPage() {
           city,
           phoneNumber,
           secondNumber,
-          email,
         });
       })
       .catch(() => {
@@ -63,7 +81,6 @@ export default function UserPage() {
           city,
           phoneNumber,
           secondNumber,
-          email,
           password: "admin",
         });
       });
@@ -91,12 +108,9 @@ export default function UserPage() {
     area !== dataUser.area ||
     city !== dataUser.city ||
     phoneNumber !== dataUser.phoneNumber ||
-    secondNumber !== dataUser.secondNumber ||
-    watch("newPassword") !== "" ||
-    email !== dataUser.email
+    secondNumber !== dataUser.secondNumber
       ? setChecker(false)
       : setChecker(true);
-    // console.log(checker);
   }, [
     firstName,
     lastName,
@@ -105,44 +119,29 @@ export default function UserPage() {
     city,
     phoneNumber,
     secondNumber,
-    email,
-    watch("newPassword"),
     dataUser,
   ]);
   //   Submit Handling
   const submitHandler = () => {
     // check if the current user is correct
-    if (dataUser.password === watch("currentPassword")) {
-      axios
-        .put(
-          userId
-            ? `http://154.237.200.76:5109/api/Account/${userId}`
-            : `http://154.237.200.76:5109/api/Account/${id}`,
-          {
-            id,
-            firstName,
-            lastName,
-            // address,
-            phoneNumber,
-            secondNumber,
-            email,
-            password:
-              watch("newPassword") === ""
-                ? dataUser.password
-                : watch("newPassword"),
-          }
-        )
-        .catch((err) => {
-          console.log(err);
-        });
-      toast.success("تم التعديل بنجاح");
-    } else {
-      // if the password is wrong
-      console.log(watch("currentPassword"));
-      console.log(dataUser.password);
-      toast.error(`الرقم السري الذي ادخلته غير صحيح 
-       حاول مره اخري`);
-    }
+    axios
+      .put(
+        userId
+          ? `http://154.237.200.76:bg5109/api/Account/${userId}`
+          : `http://154.237.200.76:5hh109/api/Account/${id}`,
+        {
+          id,
+          firstName,
+          lastName,
+          // address,
+          phoneNumber,
+          secondNumber,
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    toast.success("تم التعديل بنجاح");
   };
   return (
     <div className="my-5">
@@ -207,19 +206,6 @@ export default function UserPage() {
               </Form.Group>
             </Col>
           </Row>
-          {/* Email */}
-          <Row>
-            <Col md="6">
-              <Form.Group className="mb-3">
-                <Form.Label>البريد الالكتروني *</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
           {/* Address */}
           <Row>
             {/* Street */}
@@ -275,7 +261,7 @@ export default function UserPage() {
                 <Form.Control
                   type="password"
                   {...register("currentPassword", {
-                    required: "يرجي ادخال الرقم السري لتأكيد البيانات",
+                    // required: "يرجي ادخال الرقم السري لتأكيد البيانات",
                   })}
                 />
                 {errors.currentPassword && (

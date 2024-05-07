@@ -28,18 +28,18 @@ export default function LoginForm() {
     axios
       .post(server.login, data)
       .then((success) => {
+        console.log(success.data);
         toast.success("تم تسجيل دخولك بنجاح");
-        localStorage.setItem(
-          "token",
-          JSON.stringify(jwtDecode(success.data.token))
-        );
-        localStorage.setItem("email", success.data.email);
+        let tokenObj = jwtDecode(success?.data?.token);
+        console.log(tokenObj);
+        localStorage.setItem("token", JSON.stringify(tokenObj));
+        localStorage.setItem("email", success?.data?.email);
         localStorage.setItem("type", "admin");
-        localStorage.setItem("id", "500");
-        localStorage.setItem("firstName", "محمد");
-        localStorage.setItem("lastName", "البحراوي");
-        localStorage.setItem("phoneNumber", "01151245412");
-        localStorage.setItem("secondNumber", "01151245412");
+        localStorage.setItem("id", tokenObj.UserId);
+        localStorage.setItem("firstName", tokenObj.given_name[0]);
+        localStorage.setItem("lastName", tokenObj.given_name[1]);
+        localStorage.setItem("phoneNumber", tokenObj.whatsApp);
+        localStorage.setItem("secondNumber", tokenObj.whatsApp);
         setTimeout(() => {
           navigate(0);
         }, 2500);

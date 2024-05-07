@@ -28,13 +28,15 @@ export default function CrudBtns({ Id, type }) {
   };
   //   Delete
   const deleteElement = (id) => {
+    let userId = parseInt(id);
+    console.log(userId);
     Swal.fire({
       title: "هل انت متأكد من حذف هذا العنصر نهائيا ؟",
       showCancelButton: true,
     }).then((data) => {
       if (data.isConfirmed) {
         axios
-          .delete(server.DeleteUser, Id)
+          .delete(server.DeleteUser, userId)
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
       }

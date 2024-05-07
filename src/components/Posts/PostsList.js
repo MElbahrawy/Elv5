@@ -15,36 +15,47 @@ export default function PostsList() {
 
   useEffect(() => {
     axios
-      .get(server.posts)
+      .get(server.Posts)
       .then((res) => {
         setLoading(false);
-        console.log(res);
+        console.log(res.data);
         // axios.get(server.GetByUserId+ res.UserId).then((dataUser) => setPostsData())
         setPostsData(res.data);
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        setPostsData(posts);
+        // setPostsData(posts);
       });
-  }, [postsData]);
+  }, []);
+
+  //   let address = "benha/Qalubia/Egypt";
+  //   console.log(address.split("/"));
+  //   let devideAddress = (address) => {
+  //     let city = address.split("/")[0];
+  //     let area = address.split("/")[1];
+  //     let country = address.split("/")[2];
+  //   };
 
   return (
     <>
       <AddPost postsData={postsData} setPostsData={setPostsData} />
       <Container className="posts-holder my-4">
         {loading && <LoadingSpinner />}
-        {postsData.map((post, index) => (
+        {postsData.reverse().map((post, index) => (
           <React.Fragment key={index}>
             <Fade>
               <PostCard
-                id={post.id}
+                id={post.postId}
+                name={
+                  post.userDto.accountFName + " " + post.userDto.accountLName
+                }
+                date={post.postTime}
+                content={post.postText}
+                type={post.userDto.accountType}
                 img={post.img}
-                name={post.name}
-                type={post.type}
-                date={post.date}
-                content={post.content}
-                phoneNumber={post.phoneNumber}
+                media={post.postMedia}
+                phoneNumber={post.userDto.phoneNumber}
               />
               <hr />
             </Fade>

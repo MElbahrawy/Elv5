@@ -4,6 +4,7 @@ import Slider from "../../components/Home/Slider";
 import Categories from "../../components/Home/Categories";
 import MainAdv from "../../components/Home/MainAdv";
 import TopCompanies from "../../components/Home/TopCompanies";
+import SecondaryAdv from "../../components/Home/SecondaryAdv";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <MainAdv />
       <Slider />
+      <SecondaryAdv />
       <Categories />
       <TopCompanies />
     </>

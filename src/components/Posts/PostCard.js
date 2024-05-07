@@ -8,6 +8,8 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { server } from "../../Data/APIs.js";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({
   id,
@@ -17,8 +19,10 @@ export default function PostCard({
   date,
   content,
   phoneNumber,
+  media,
 }) {
   const PublishedDate = useTime(date);
+  const navigate = useNavigate();
   const deletePost = () => {
     Swal.fire({
       title: "هل انت متأكد من حذف هذا المنشور نهائيا ؟",
@@ -26,9 +30,17 @@ export default function PostCard({
     }).then((data) => {
       if (data.isConfirmed) {
         axios
-          .delete(`http://localhost:4000/posts/${id}`)
-          .then(() => toast.success("تم حذف المنشور بنجاح"))
-          .catch(() => toast.error("حدث خطأ اثناء حذف المنشور"));
+          .delete(server.DeletePost + id)
+          .then(() => {
+            toast.success("تم حذف المنشور بنجاح");
+            setTimeout(() => {
+              navigate(0);
+            }, 2500);
+          })
+          .catch((err) => {
+            toast.error("حدث خطأ اثناء حذف المنشور");
+            console.log(err);
+          });
       }
     });
   };
@@ -40,7 +52,7 @@ export default function PostCard({
             <img src={img ? img : Avatar} alt="avatar" />
           </div>
           <div className="post-owner-name">{name}</div>
-          <div className="post-owner-type">{type}</div>
+          <div className="post-owner-type">{type ? type : "user"}</div>
         </div>
         <div className="post-date">{PublishedDate}</div>
       </div>

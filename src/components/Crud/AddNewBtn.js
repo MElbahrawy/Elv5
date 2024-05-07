@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { server } from "../../Data/APIs";
 import NewUserForm from "./NewUserForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function AddNewBtn({ type }) {
@@ -15,6 +15,7 @@ export default function AddNewBtn({ type }) {
 
   const submitHandler = (formData) => {
     if (type === "user") {
+      console.log("user");
       setData({
         userName: formData.email,
         firstName: formData.firstName,
@@ -26,8 +27,6 @@ export default function AddNewBtn({ type }) {
         city: formData.gov,
         email: formData.email,
         password: formData.password,
-        profilePicture:
-          "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
       });
     } else {
       setData({
@@ -42,16 +41,20 @@ export default function AddNewBtn({ type }) {
         city: formData.gov,
       });
     }
-    axios
-      .post(server.register, data)
-      .then((res) => {
-        toast.success(res.response.data);
-      })
-      .catch((err) => {
-        toast.error(err.response.data);
-      });
     setShow(false);
   };
+  useEffect(() => {
+    data?.userName &&
+      axios
+        .post(server.register, data)
+        .then((res) => {
+          toast.success(res.response?.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(err.response?.data);
+        });
+  }, [data]);
 
   return (
     <>

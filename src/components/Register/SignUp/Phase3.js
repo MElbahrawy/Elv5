@@ -25,7 +25,6 @@ export default function Phase3({ data, setData, handleBack }) {
       ...data,
       email: formData.email,
       password: formData.password,
-      profilePicture: formData.img,
     });
     setConfirmed(true);
   };
@@ -50,7 +49,6 @@ export default function Phase3({ data, setData, handleBack }) {
   return (
     <form onSubmit={handleSubmit(submitHandler)} className="form-body">
       <div className="contact-data">
-        <input type="file" {...register("img")} />
         <input
           type="email"
           placeholder="بريدك الالكتروني"
