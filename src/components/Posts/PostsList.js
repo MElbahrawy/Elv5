@@ -29,14 +29,6 @@ export default function PostsList() {
       });
   }, []);
 
-  //   let address = "benha/Qalubia/Egypt";
-  //   console.log(address.split("/"));
-  //   let devideAddress = (address) => {
-  //     let city = address.split("/")[0];
-  //     let area = address.split("/")[1];
-  //     let country = address.split("/")[2];
-  //   };
-
   return (
     <>
       <AddPost postsData={postsData} setPostsData={setPostsData} />

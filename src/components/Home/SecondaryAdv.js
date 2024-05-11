@@ -10,13 +10,13 @@ export default function SecondaryAdv() {
     <section id="sec-adv" className="p-1">
       <Container>
         <Row className="justify-content-center gap-3">
-          <Col className="right-ad p-0" sm="5">
+          <Col className="right-ad p-0" md="4">
             <div className="adv-card ">
               <img src={pic1} alt="img_placeholder" />
               <span className="p-1">أحصل علي المزيد من العروض</span>
             </div>
           </Col>
-          <Col className="left-ad p-0 d-flex flex-column gap-3" sm="5">
+          <Col className="left-ad p-0 d-flex flex-column gap-3" md="4">
             <div className="adv-card h-50">
               <img src={pic2} alt="img_placeholder" />
               <span className="p-1">أحصل علي المزيد من العروض </span>

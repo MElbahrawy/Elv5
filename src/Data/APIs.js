@@ -1,5 +1,6 @@
 const ip = "http://154.238.228.9:5109/";
 export const server = {
+  getIp: ip,
   // user
   register: `${ip}api/Account/register`,
   login: `${ip}api/Account/login`,

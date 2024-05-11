@@ -27,16 +27,19 @@ export default function CrudBtns({ Id, type }) {
     setModalShow(true);
   };
   //   Delete
-  const deleteElement = (id) => {
-    let userId = parseInt(id);
-    console.log(userId);
+  const deleteElement = () => {
+    let currentId = parseInt(Id);
+    console.log(currentId);
     Swal.fire({
       title: "هل انت متأكد من حذف هذا العنصر نهائيا ؟",
       showCancelButton: true,
     }).then((data) => {
       if (data.isConfirmed) {
         axios
-          .delete(server.DeleteUser, userId)
+          .delete(
+            type === "users" ? server.DeleteUser : server.DeleteCompany,
+            currentId
+          )
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
       }
@@ -65,7 +68,7 @@ export default function CrudBtns({ Id, type }) {
       <Button
         variant="danger"
         onClick={() => {
-          deleteElement(Id);
+          deleteElement();
         }}
       >
         حذف

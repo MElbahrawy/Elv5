@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form";
 import { user } from "../../Data/user";
 import axios from "axios";
 import { server } from "../../Data/APIs";
+import UserPassword from "./UserPassword";
 
 /* 
 
@@ -55,9 +56,9 @@ export default function UserPage() {
         setId(userData.accountID);
         setFirstName(userData.accountFName);
         setLastName(userData.accountLName);
-        setStreet(userData.accountAddress);
-        setArea(userData.accountAddress);
-        setCity(userData.accountAddress);
+        setStreet(userData.accountStreet);
+        setArea(userData.accountArea);
+        setCity(userData.accountCity);
         setPhoneNumber(userData.phoneNumber);
         setSecondNumber(userData.accountWhatsApp);
         setDataUser({
@@ -81,26 +82,13 @@ export default function UserPage() {
           city,
           phoneNumber,
           secondNumber,
-          password: "admin",
         });
       });
   }, []);
   //   Form Hook
-  const {
-    register,
-    watch,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({
+  const { handleSubmit } = useForm({
     mode: "onSubmit",
   });
-  //   Address handling
-  //   const handleAddress = (index, value) => {
-  //     let newAddress = [...address];
-  //     newAddress[index] = value;
-  //     setAddress(newAddress);
-  //   };
-  //   Enable save Changes button if there's a change happen
   useEffect(() => {
     firstName !== dataUser.firstName ||
     lastName !== dataUser.lastName ||
@@ -121,27 +109,27 @@ export default function UserPage() {
     secondNumber,
     dataUser,
   ]);
-  //   Submit Handling
   const submitHandler = () => {
-    // check if the current user is correct
-    axios
-      .put(
-        userId
-          ? `http://154.237.200.76:bg5109/api/Account/${userId}`
-          : `http://154.237.200.76:5hh109/api/Account/${id}`,
-        {
-          id,
-          firstName,
-          lastName,
-          // address,
-          phoneNumber,
-          secondNumber,
-        }
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-    toast.success("تم التعديل بنجاح");
+    // axios
+    //   .put(
+    //     userId
+    //       ? `http://154.237.200.76:bg5109/api/Account/${userId}`
+    //       : `http://154.237.200.76:5hh109/api/Account/${id}`,
+    //     {
+    //       id,
+    //       firstName,
+    //       lastName,
+    //       street,
+    //       area,
+    //       city,
+    //       phoneNumber,
+    //       secondNumber,
+    //     }
+    //   )
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    // toast.success("تم التعديل بنجاح");
   };
   return (
     <div className="my-5">
@@ -179,7 +167,6 @@ export default function UserPage() {
               </Form.Group>
             </Col>
           </Row>
-          <hr />
           <div className="mb-4 h2">بيانات التواصل</div>
           {/* Phone */}
           <Row>
@@ -251,67 +238,15 @@ export default function UserPage() {
               </Form.Group>
             </Col>
           </Row>
-          <hr />
-          <div className="mb-4 h2">الرقم السري</div>
-          <Row>
-            {/* Current Password */}
-            <Col md="4">
-              <Form.Group className="mb-3">
-                <Form.Label>الرقم السري الحالي *</Form.Label>
-                <Form.Control
-                  type="password"
-                  {...register("currentPassword", {
-                    // required: "يرجي ادخال الرقم السري لتأكيد البيانات",
-                  })}
-                />
-                {errors.currentPassword && (
-                  <p className="error">{errors.currentPassword.message}</p>
-                )}
-              </Form.Group>
-            </Col>
-            {/* New Password */}
-            <Col md="4">
-              <Form.Group className="mb-3">
-                <Form.Label>الرقم السري الجديد</Form.Label>
-                <Form.Control
-                  type="password"
-                  {...register("newPassword", {
-                    minLength: {
-                      value: 8,
-                      message: "يجب ان تكون كلمة السر اكثر من 8 حروف و ارقام",
-                    },
-                  })}
-                />
-                {errors.newPassword && (
-                  <p className="error">{errors.newPassword.message}</p>
-                )}
-              </Form.Group>
-            </Col>
-            {/* Confirm Password */}
-            <Col md="4">
-              <Form.Group className="mb-3">
-                <Form.Label>تأكيد الرقم السري الجديد</Form.Label>
-                <Form.Control
-                  type="password"
-                  {...register("confirmPassword", {
-                    validate: (value) =>
-                      value === watch("newPassword") ||
-                      "كلمتان السر غير متطابقتان",
-                  })}
-                />
-                {errors.confirmPassword && (
-                  <p className="error">{errors.confirmPassword.message}</p>
-                )}
-              </Form.Group>
-            </Col>
-          </Row>
           <Button variant="success" type="submit" disabled={checker}>
             حفظ التغييرات
           </Button>
           <Link to=".." relative="path" className="mx-2">
             <Button variant="danger">عودة</Button>
           </Link>
+          <hr />
         </Form>
+        <UserPassword />
       </Container>
       <ToastContainer />
     </div>

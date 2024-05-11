@@ -21,12 +21,12 @@ export default function AddPost({ postsData, setPostsData }) {
     });
   };
 
-  const handleMedia = (e) => {
-    setPostData({
-      ...PostData,
-      Media: e.target.value,
-    });
-  };
+  //   const handleMedia = (e) => {
+  //     setPostData({
+  //       ...PostData,
+  //       Media: e.target.value,
+  //     });
+  //   };
 
   const handleSubmit = () => {
     // setPostData((prevValue) => {
@@ -89,12 +89,12 @@ export default function AddPost({ postsData, setPostsData }) {
                 placeholder="اعرض مشكلتك"
                 onChange={handleChange}
               />
-              <input
+              {/* <input
                 type="file"
                 className="post-text form-control"
                 placeholder=""
                 onChange={handleMedia}
-              />
+              /> */}
             </div>
             <div className="modal-footer">
               <button

@@ -80,10 +80,6 @@ export default function ShowInfoCrud(props) {
               <h4>البريد الالكتروني</h4>
               <p>{props.user.accountEmail}</p>
             </Col>
-            <Col>
-              <h4>الرقم السري</h4>
-              <p>{props.user.password}</p>
-            </Col>
           </Row>
         ) : (
           <Row>

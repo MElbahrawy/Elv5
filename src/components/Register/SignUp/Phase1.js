@@ -16,7 +16,6 @@ export default function Phase1({ setPhase, data, setData }) {
   const submitHandler = (formData) => {
     setData({
       ...data,
-      username: formData.firstName,
       firstName: formData.firstName,
       lastName: formData.lastName,
       phoneNumber: formData.phoneNumber,

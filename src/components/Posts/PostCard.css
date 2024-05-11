@@ -134,6 +134,15 @@
   white-space: pre-line;
   padding: 20px 50px;
   overflow-wrap: break-word;
+  max-height: 400px;
+  overflow: hidden;
+}
+.post-card .post-content .img-holder {
+  padding-bottom: 20px;
+}
+.post-card .post-content img {
+  width: 50%;
+  object-fit: fill;
 }
 @media (max-width: 576px) {
   .post-card .post-content {

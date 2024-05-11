@@ -56,7 +56,14 @@ export default function PostCard({
         </div>
         <div className="post-date">{PublishedDate}</div>
       </div>
-      <div className="post-content">{content}</div>
+      <div className="post-content">
+        <p>{content}</p>
+        {media && (
+          <div className="img-holder d-flex justify-content-center">
+            <img src={server.getIp + media} alt="" />
+          </div>
+        )}
+      </div>
       <div
         className="post-contact align-items-baseline"
         style={{

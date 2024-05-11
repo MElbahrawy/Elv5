@@ -23,6 +23,7 @@ export default function Phase3({ data, setData, handleBack }) {
     console.log(formData.img);
     setData({
       ...data,
+      username: formData.email,
       email: formData.email,
       password: formData.password,
     });
