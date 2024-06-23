@@ -61,7 +61,9 @@
 .login-form .btn:hover {
   opacity: 0.8;
 }
-.login-form .to-signup {
+
+.login-form a {
+  color: var(--main-color);
   font-size: 14px;
   margin: 0 5px;
   color: var(--main-color);

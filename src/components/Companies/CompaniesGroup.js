@@ -5,24 +5,24 @@ import Company from "./Company";
 import axios from "axios";
 import { server } from "../../Data/APIs";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
+import NoData from "../Utilities/NoData";
 
 export default function CompaniesGroup() {
   const [companiesData, setCompaniesData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [empty, setEmpty] = useState(false);
   useEffect(() => {
     axios
-      .get("http://154.237.205.10:5109/api/Company/GetAll")
-      .then((res) => {
-        console.log(res.data);
-        return res.data;
-      })
+      .get(server.GetAllCompany)
+      .then((res) => res.data)
       .then((data) => {
         setLoading(false);
         setCompaniesData(data);
       })
       .catch(() => {
         setLoading(false);
-        //   setCompaniesData(companies);
+        // setCompaniesData(companies);
+        setEmpty(true);
       });
   }, []);
 
@@ -30,6 +30,7 @@ export default function CompaniesGroup() {
     <Container>
       <div className="d-flex flex-column justify-content-center align-items-center gap-4 my-5">
         {loading && <LoadingSpinner />}
+        {empty && <NoData />}
         {companiesData.map((company) => (
           <Company
             key={company.id}

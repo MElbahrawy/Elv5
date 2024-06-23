@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "react-bootstrap/Table";
 import CrudBtns from "./CrudBtns";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { server } from "../../Data/APIs.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UsersCrud({ usersData }) {
   const accType = ["admin", "owner", "technician", "user"];
+  const [check, setCheck] = useState(false);
 
   // handle updating data
   const handleType = (userId, newType) => {
+    setCheck(true);
     let updatedData = {
       userId: userId,
       role: newType,
     };
     axios
       .post(server.updateRole, updatedData)
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+      .then((response) => toast.success("تم التعديل بنجاح"))
+      .catch((err) =>
+        toast.error("حدث خطأ اثناء العملية. يرجي المحاولة مرة اخري")
+      )
+      .finally(() => setCheck(false));
   };
   return (
     <Table striped bordered hover responsive>
@@ -45,6 +52,7 @@ export default function UsersCrud({ usersData }) {
                 aria-label="Default select example"
                 defaultValue={user.accountType}
                 id={user.accountID}
+                disabled={check}
                 onChange={(e) => handleType(user.accountID, e.target.value)}
               >
                 {accType.map((type, index) => (
@@ -60,6 +68,7 @@ export default function UsersCrud({ usersData }) {
           </tr>
         ))}
       </tbody>
+      <ToastContainer />
     </Table>
   );
 }

@@ -7,11 +7,12 @@ import { Col, Container, Row } from "react-bootstrap";
 import CompaniesCrud from "../../components/Crud/CompaniesCrud";
 import CrudCat from "../../components/Crud/CrudCat";
 import AddNewBtn from "../../components/Crud/AddNewBtn";
+import NoData from "../../components/Utilities/NoData.js";
 
 export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [companiesData, setCompanies] = useState([]);
-
+  const [empty, setEmpty] = useState(false);
   useEffect(() => {
     axios
       .get(server.GetAllCompany)
@@ -22,20 +23,21 @@ export default function AdminPage() {
       })
       .catch(() => {
         setLoading(false);
-        setCompanies(companies);
+        // setCompanies(companies);
+        setEmpty(true);
       });
   }, []);
   return (
     <Container className="my-4 align-items-end d-flex flex-column">
-      {!loading && <AddNewBtn type="company" />}
+      {!loading && !empty && <AddNewBtn type="company" />}
       <Row className="w-100">
         <Col sm="2">
           <CrudCat />
         </Col>
         <Col sm="10">
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
+          {loading && <LoadingSpinner />}
+          {empty && <NoData />}
+          {!loading && !empty && (
             <CompaniesCrud companiesData={companiesData} />
           )}
         </Col>

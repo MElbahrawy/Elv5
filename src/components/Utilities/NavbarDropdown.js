@@ -6,8 +6,8 @@ export default function NavbarDropdown() {
   const [type, setType] = useState();
   const navigate = useNavigate();
   useEffect(() => {
-    setName(localStorage.getItem("firstName"));
-    setType(localStorage.getItem("type"));
+    setName(JSON.parse(localStorage.data)?.firstName);
+    setType(JSON.parse(localStorage.data)?.type);
   }, []);
   const handleLogOut = () => {
     localStorage.clear();

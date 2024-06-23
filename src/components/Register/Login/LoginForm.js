@@ -12,6 +12,7 @@ import { jwtDecode } from "jwt-decode";
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const [check, setCheck] = useState(false);
   const {
     register,
     formState: { errors },
@@ -24,22 +25,32 @@ export default function LoginForm() {
   });
 
   const submitHandler = (data) => {
-    console.log(data);
+    setCheck(true);
     axios
       .post(server.login, data)
       .then((success) => {
-        console.log(success.data);
         toast.success("تم تسجيل دخولك بنجاح");
         let tokenObj = jwtDecode(success?.data?.token);
-        console.log(tokenObj);
         localStorage.setItem("token", JSON.stringify(tokenObj));
-        localStorage.setItem("email", success?.data?.email);
-        localStorage.setItem("type", "admin");
-        localStorage.setItem("id", tokenObj.UserId);
-        localStorage.setItem("firstName", tokenObj.given_name[0]);
-        localStorage.setItem("lastName", tokenObj.given_name[1]);
-        localStorage.setItem("phoneNumber", tokenObj.whatsApp);
-        localStorage.setItem("secondNumber", tokenObj.whatsApp);
+        // localStorage.setItem("email", success?.data?.email);
+        // localStorage.setItem("type", "admin");
+        // localStorage.setItem("id", tokenObj.UserId);
+        // localStorage.setItem("firstName", tokenObj.given_name[0]);
+        // localStorage.setItem("lastName", tokenObj.given_name[1]);
+        // localStorage.setItem("phoneNumber", tokenObj.whatsApp);
+        // localStorage.setItem("secondNumber", tokenObj.whatsApp);
+        localStorage.setItem(
+          "data",
+          JSON.stringify({
+            id: tokenObj.UserId,
+            type: "admin",
+            firstName: tokenObj.given_name[0],
+            lastName: tokenObj.given_name[1],
+            email: tokenObj.whatsApp,
+            phoneNumber: tokenObj.whatsApp,
+            secondNumber: tokenObj.whatsApp,
+          })
+        );
         setTimeout(() => {
           navigate(0);
         }, 2500);
@@ -49,18 +60,31 @@ export default function LoginForm() {
         if (data.email === "admin@gmail.com" && data.password === "admin") {
           toast.success("تم تسجيل دخولك بدون اتصال");
           localStorage.setItem("token", "a1b2c3");
-          localStorage.setItem("email", data.email);
-          localStorage.setItem("type", "admin");
-          localStorage.setItem("id", "500");
-          localStorage.setItem("firstName", "محمد");
-          localStorage.setItem("lastName", "البحراوي");
-          localStorage.setItem("phoneNumber", "01151245412");
-          localStorage.setItem("secondNumber", "01151245412");
+          // localStorage.setItem("email", data.email);
+          // localStorage.setItem("type", "admin");
+          // localStorage.setItem("id", "500");
+          // localStorage.setItem("firstName", "محمد");
+          // localStorage.setItem("lastName", "البحراوي");
+          // localStorage.setItem("phoneNumber", "01151245412");
+          // localStorage.setItem("secondNumber", "01151245412");
+          localStorage.setItem(
+            "data",
+            JSON.stringify({
+              id: "500",
+              type: "admin",
+              firstName: "محمد",
+              lastName: "البحراوي",
+              email: data.email,
+              phoneNumber: "01151245412",
+              secondNumber: "01151245412",
+            })
+          );
           setTimeout(() => {
             navigate(0);
           }, 2500);
         } else {
           toast.error("البريد الالكتروني او كلمة السر غير صحيح");
+          setCheck(false);
         }
       });
   };
@@ -94,8 +118,11 @@ export default function LoginForm() {
               <span className="error">{errors.password.message}</span>
             )}
           </div>
+          <Link to="/forgetPassword">هل نسيت كلمة السر ؟</Link>
           <div className="input-btn">
-            <button className="btn">تسجيل دخول</button>
+            <button className="btn" disabled={check}>
+              تسجيل دخول
+            </button>
             <Link to="/sign-up" className="to-signup">
               لست عضو ؟ انضم الان
             </Link>

@@ -9,6 +9,7 @@ import { server } from "../../../Data/APIs.js";
 
 export default function Phase3({ data, setData, handleBack }) {
   const [confirmed, setConfirmed] = useState(false);
+  const [check, setCheck] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -20,6 +21,7 @@ export default function Phase3({ data, setData, handleBack }) {
     mode: "onSubmit",
   });
   const submitHandler = (formData) => {
+    setCheck(true);
     console.log(formData.img);
     setData({
       ...data,
@@ -43,6 +45,7 @@ export default function Phase3({ data, setData, handleBack }) {
         .catch((err) => {
           console.log(err);
           toast.error("حدث خطأ اثناء التسجيل يرجي المحاولة مره اخري");
+          setCheck(false);
         });
     }
   }, [confirmed]);
@@ -94,10 +97,12 @@ export default function Phase3({ data, setData, handleBack }) {
         )}
       </div>
       <div className="form-foot">
-        <button type="button" onClick={handleBack}>
+        <button type="button" onClick={handleBack} disabled={check}>
           عودة
         </button>
-        <button type="submit">تسجيل</button>
+        <button type="submit" disabled={check}>
+          تسجيل
+        </button>
       </div>
       <ToastContainer />
     </form>

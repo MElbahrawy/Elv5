@@ -8,11 +8,12 @@ import axios from "axios";
 import { Fade } from "react-awesome-reveal";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import { server } from "../../Data/APIs";
+import NoData from "../Utilities/NoData";
 
 export default function PostsList() {
   const [postsData, setPostsData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [empty, setEmpty] = useState(false);
   useEffect(() => {
     axios
       .get(server.Posts)
@@ -26,6 +27,7 @@ export default function PostsList() {
         console.log(err);
         setLoading(false);
         // setPostsData(posts);
+        setEmpty(true);
       });
   }, []);
 
@@ -34,6 +36,7 @@ export default function PostsList() {
       <AddPost postsData={postsData} setPostsData={setPostsData} />
       <Container className="posts-holder my-4">
         {loading && <LoadingSpinner />}
+        {empty && <NoData />}
         {postsData.reverse().map((post, index) => (
           <React.Fragment key={index}>
             <Fade>

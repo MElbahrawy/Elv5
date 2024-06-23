@@ -5,9 +5,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { server } from "../../Data/APIs";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function AddElevator() {
   const [id, setId] = useState();
+  const [check, setCheck] = useState(false);
   const {
     register,
     reset,
@@ -18,11 +20,17 @@ export default function AddElevator() {
     criteriaMode: "all",
   });
   const submitHandler = (formData) => {
+    setCheck(true);
     axios
       .post(server.CreateDevice, formData)
       .then((res) => setId(res.data.id))
       .then(() => reset())
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        toast.error("حدث خطأ اثناء العملية. يرجي المحاولة مرة اخري")
+      )
+      .finally(() => {
+        setCheck(false);
+      });
   };
   return (
     <form
@@ -57,11 +65,17 @@ export default function AddElevator() {
         />
         {errors.floors && <p className="error">{errors.floors.message}</p>}
         <hr />
-        <Button type="submit" variant="success" className="w-100 my-2">
+        <Button
+          type="submit"
+          variant="success"
+          disabled={check}
+          className="w-100 my-2"
+        >
           تسجيل
         </Button>
         <p>رقم الجهاز : {id ? id : null}</p>
       </div>
+      <ToastContainer />
     </form>
   );
 }

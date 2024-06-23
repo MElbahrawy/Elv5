@@ -3,7 +3,7 @@ import React from "react";
 import Navs from "./components/Utilities/Navs";
 import Header from "./components/Utilities/Header";
 import Navbar from "./components/Utilities/Navbar";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, json } from "react-router-dom";
 import ScrollToTop from "./components/Utilities/ScrollToTop";
 import CompaniesCrudPage from "./pages/Admin/CompaniesCrudPage";
 import TermsPage from "./pages/TermsAndConditions.js/TermsPage";
@@ -23,6 +23,7 @@ import Home from "./pages/Home/Home";
 import { user } from "./Data/user";
 import EditCompanyForm from "./components/Crud/EditCompanyForm";
 import ElevatorCrudPage from "./pages/Admin/ElevatorCrudPage";
+import ForgetPasswordPage from "./pages/Register/ForgetPasswordPage";
 
 export default function App() {
   return (
@@ -30,50 +31,37 @@ export default function App() {
       <Header />
       <Navbar />
       <Navs />
+
       <Routes>
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/technicians" element={<Technicians />} />
         <Route path="/companies" element={<Companies />} />
         {localStorage.token ? (
-          <Route path="/Posts" element={<Posts />} />
-        ) : null}
-        {!localStorage.token ? (
-          <Route path="/sign-up" element={<SignUp />} />
-        ) : null}
-        {!localStorage.token ? (
-          <Route path="/login" element={<Login />} />
-        ) : null}
-        {localStorage.token ? (
-          user.type === "admin" ? (
-            <Route path="/admin/users" element={<UsersCrudPage />} />
+          <>
+            <Route path="/Posts" element={<Posts />} />
+            <Route path="/user" element={<UserPage />} />
+          </>
+        ) : (
+          <>
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/ForgetPassword" element={<ForgetPasswordPage />} />
+          </>
+        )}
+        {localStorage.data ? (
+          JSON.parse(localStorage.data)?.type === "admin" ? (
+            <>
+              <Route path="/admin/users" element={<UsersCrudPage />} />
+              <Route path="/admin/users/:userId" element={<UserDataPage />} />
+              <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
+              <Route
+                path="/admin/Companies/:companyId"
+                element={<EditCompanyForm />}
+              />
+              <Route path="/admin/elevators" element={<ElevatorCrudPage />} />
+            </>
           ) : null
-        ) : null}
-        {localStorage.token ? (
-          user.type === "admin" ? (
-            <Route path="/admin/users/:userId" element={<UserDataPage />} />
-          ) : null
-        ) : null}
-        {localStorage.token ? (
-          user.type === "admin" ? (
-            <Route path="/admin/Companies" element={<CompaniesCrudPage />} />
-          ) : null
-        ) : null}
-        {localStorage.token ? (
-          user.type === "admin" ? (
-            <Route
-              path="/admin/Companies/:companyId"
-              element={<EditCompanyForm />}
-            />
-          ) : null
-        ) : null}
-        {localStorage.token ? (
-          user.type === "admin" ? (
-            <Route path="/admin/elevators" element={<ElevatorCrudPage />} />
-          ) : null
-        ) : null}
-        {localStorage.token ? (
-          <Route path="/user" element={<UserPage />} />
         ) : null}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
