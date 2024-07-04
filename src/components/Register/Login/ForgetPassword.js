@@ -23,13 +23,12 @@ export default function ForgetPassword() {
     axios
       .post(server.Posts, data.email)
       .then(() => {
-        toast.error("البريد الالكتروني او كلمة السر غير صحيح");
         setTimeout(() => {
-          navigate(0);
-        }, 2500);
+          navigate("/checkEmail");
+        }, 1500);
       })
       .catch(() => {
-        toast.error("البريد الالكتروني او كلمة السر غير صحيح");
+        toast.error("حدث خطأ حاول مره اخري");
         setCheck(false);
       });
   };

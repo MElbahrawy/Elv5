@@ -23,8 +23,8 @@ export default function AdminPage() {
       })
       .catch(() => {
         setLoading(false);
-        // setCompanies(companies);
-        setEmpty(true);
+        setCompanies(companies);
+        // setEmpty(true);
       });
   }, []);
   return (

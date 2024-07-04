@@ -24,6 +24,7 @@ import { user } from "./Data/user";
 import EditCompanyForm from "./components/Crud/EditCompanyForm";
 import ElevatorCrudPage from "./pages/Admin/ElevatorCrudPage";
 import ForgetPasswordPage from "./pages/Register/ForgetPasswordPage";
+import CheckInboxPage from "./pages/Register/CheckInboxPage";
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/ForgetPassword" element={<ForgetPasswordPage />} />
+            <Route path="/checkEmail" element={<CheckInboxPage />} />
           </>
         )}
         {localStorage.data ? (

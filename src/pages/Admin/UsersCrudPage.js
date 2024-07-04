@@ -23,8 +23,8 @@ export default function AdminPage() {
       })
       .catch(() => {
         setLoading(false);
-        // setUsers(users);
-        setEmpty(true);
+        setUsers(users);
+        // setEmpty(true);
       });
   }, []);
   return (
