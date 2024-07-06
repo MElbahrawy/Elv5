@@ -1,4 +1,4 @@
-const ip = "http://154.238.228.9:5109/";
+const ip = "http://197.121.252.93:5109/";
 export const server = {
   getIp: ip,
   // user
