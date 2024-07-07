@@ -23,6 +23,7 @@ export default function PostCard({
 }) {
   const PublishedDate = useTime(date);
   const navigate = useNavigate();
+  console.log(JSON.parse(localStorage.data).phoneNumber);
   const deletePost = () => {
     Swal.fire({
       title: "هل انت متأكد من حذف هذا المنشور نهائيا ؟",
@@ -68,12 +69,12 @@ export default function PostCard({
         className="post-contact align-items-baseline"
         style={{
           justifyContent:
-            phoneNumber === localStorage.phoneNumber
+            phoneNumber === JSON.parse(localStorage.data).phoneNumber
               ? "space-between"
               : "flex-end",
         }}
       >
-        {phoneNumber === localStorage.phoneNumber ? (
+        {phoneNumber === JSON.parse(localStorage.data).phoneNumber ? (
           <Button
             variant="danger"
             className="delete p-1 border-white"

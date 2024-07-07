@@ -19,6 +19,9 @@ export default function AdminPage() {
       .get(server.getAllUsers)
       .then((response) => {
         setLoading(false);
+        Array.isArray(response.data) &&
+          response.data.length === 0 &&
+          setEmpty(true);
         setUsers(response.data);
       })
       .catch(() => {

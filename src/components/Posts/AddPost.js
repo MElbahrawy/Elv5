@@ -10,7 +10,7 @@ export default function AddPost({ postsData, setPostsData }) {
     // type: localStorage.type,
     // date: "",
     Content: "",
-    UserId: localStorage.id,
+    UserId: JSON.parse(localStorage.data).id,
     Media: "",
     // phoneNumber: localStorage.phoneNumber,
   });

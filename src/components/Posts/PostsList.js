@@ -19,7 +19,7 @@ export default function PostsList() {
       .get(server.Posts)
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
+        Array.isArray(res.data) && res.data.length === 0 && setEmpty(true);
         // axios.get(server.GetByUserId+ res.UserId).then((dataUser) => setPostsData())
         setPostsData(res.data);
       })

@@ -16,6 +16,9 @@ export default function TechniciansGroup() {
       .get(server.technicianUsers)
       .then((Response) => {
         console.log(Response);
+        Array.isArray(Response.data) &&
+          Response.data.length === 0 &&
+          setEmpty(true);
         return Response.data;
       })
       .then((data) => {

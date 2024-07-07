@@ -19,6 +19,9 @@ export default function AdminPage() {
       .then((response) => {
         console.log(response);
         setLoading(false);
+        Array.isArray(response.data) &&
+          response.data.length === 0 &&
+          setEmpty(true);
         setCompanies(response.data);
       })
       .catch(() => {

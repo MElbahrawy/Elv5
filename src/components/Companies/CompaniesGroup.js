@@ -18,6 +18,7 @@ export default function CompaniesGroup() {
       .then((data) => {
         setLoading(false);
         setCompaniesData(data);
+        Array.isArray(data) && data.length === 0 && setEmpty(true);
       })
       .catch(() => {
         setLoading(false);
