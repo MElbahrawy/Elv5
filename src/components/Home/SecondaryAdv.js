@@ -7,7 +7,7 @@ import pic3 from "../../img/ad3.jpg";
 
 export default function SecondaryAdv() {
   return (
-    <section id="sec-adv" className="p-1">
+    <section id="sec-adv" className="p-1 d-none">
       <Container>
         <Row className="justify-content-center gap-3">
           <Col className="right-ad p-0" md="4">
