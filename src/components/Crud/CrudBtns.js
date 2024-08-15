@@ -14,15 +14,12 @@ export default function CrudBtns({ Id, type }) {
   //   Show
   const showElement = () => {
     axios
-      .get(
-        type === "users"
-          ? server.GetByUserId + Id
-          : `http://localhost:4000/companies/${Id}`
-      )
+      .get(type === "users" ? server.GetByUserId + Id : server.GetCompany + Id)
       .then((res) => res.data)
       .then((data) => setFullData(data))
-      .catch(() =>
-        type === "users" ? setFullData(user) : setFullData(companies[0])
+      .catch((err) =>
+        // type === "users" ? setFullData(user) : setFullData(companies[0])
+        console.log(err)
       );
     setModalShow(true);
   };
@@ -37,7 +34,9 @@ export default function CrudBtns({ Id, type }) {
       if (data.isConfirmed) {
         axios
           .delete(
-            type === "users" ? server.DeleteUser : server.DeleteCompany,
+            type === "users"
+              ? server.DeleteUser
+              : server.deleteCompany + currentId,
             currentId
           )
           .then((res) => console.log(res))

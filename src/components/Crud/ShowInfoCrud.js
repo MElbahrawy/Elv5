@@ -14,14 +14,20 @@ export default function ShowInfoCrud(props) {
         <Modal.Title id="contained-modal-title-vcenter">
           <div className=" d-inline">
             <img
-              src={props.type === "users" ? Avatar : props.user.accountImage}
-              alt="avatar"
+              src={
+                props.user.accountImage || props.user.logo
+                  ? props.type === "users"
+                    ? props.user.accountImage
+                    : props.user.logo
+                  : Avatar
+              }
+              alt="imageofuser"
             />
           </div>
           <h3 className="d-inline mx-2">
             {props.type === "users"
               ? props.user.accountFName + " " + props.user.accountLName
-              : props.user.title}
+              : props.user.name}
           </h3>
         </Modal.Title>
       </Modal.Header>
@@ -53,14 +59,18 @@ export default function ShowInfoCrud(props) {
           <Row>
             <Col>
               <h4>العنوان</h4>
-              <p>{props.user.location}</p>
+              <p>{props.user.location + " , " + props.user.address}</p>
             </Col>
           </Row>
         )}
         <Row>
           <Col>
             <h4>رقم الهاتف</h4>
-            <p>{props.user.phoneNumber}</p>
+            <p>
+              {props.type === "users"
+                ? props.user.phoneNumber
+                : props.user.phone}
+            </p>
           </Col>
           {props.type === "users" ? (
             <Col>
@@ -70,7 +80,7 @@ export default function ShowInfoCrud(props) {
           ) : (
             <Col>
               <h4>البريد الالكتروني</h4>
-              <p>{props.user.accountEmail}</p>
+              <p>{props.user.email}</p>
             </Col>
           )}
         </Row>
@@ -86,7 +96,7 @@ export default function ShowInfoCrud(props) {
             <Col>
               <h4>الموقع الالكتروني</h4>
               <a target="_blank" href={props.user.website}>
-                {props.user.website}
+                {props.user.link}
               </a>
             </Col>
           </Row>

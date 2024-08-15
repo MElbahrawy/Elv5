@@ -1,4 +1,4 @@
-const ip = "http://197.121.252.93:5109/";
+const ip = "http://192.168.1.2:5109/";
 export const server = {
   getIp: ip,
   // user
@@ -8,7 +8,6 @@ export const server = {
   GetByUserId: `${ip}api/Account/GetByuserId?userId=`,
   DeleteUser: `${ip}api/Account`,
   //   "userId": number
-
   technicianUsers: `${ip}api/Account/technicianUsers`,
   updateRole: `${ip}api/Account/updaterole`,
   CreateDevice: `${ip}api/Elevator/CreateDevice`,
@@ -25,6 +24,9 @@ export const server = {
   // "email": "string",
   // "phone": "string",
   // "whatsApp": "string"
+  GetCompany: `${ip}api/Company/GetCompanyById?id=`,
+  createCompany: `${ip}api/Company/Create`,
+  deleteCompany: `${ip}api/Company/`,
   Posts: `${ip}api/Post`,
   DeletePost: `${ip}api/Post/`,
 };

@@ -43,6 +43,7 @@ export default function ContactForm() {
             type="email"
             placeholder="name@example.com"
             onChange={(e) => setemail(e.target.value)}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -52,6 +53,7 @@ export default function ContactForm() {
             rows={3}
             placeholder="اكتب هنا ..."
             onChange={(e) => setmessage(e.target.value)}
+            required
           />
         </Form.Group>
         <Button

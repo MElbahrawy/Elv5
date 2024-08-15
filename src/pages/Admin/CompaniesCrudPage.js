@@ -26,13 +26,13 @@ export default function AdminPage() {
       })
       .catch(() => {
         setLoading(false);
-        setCompanies(companies);
-        // setEmpty(true);
+        // setCompanies(companies);
+        setEmpty(true);
       });
   }, []);
   return (
     <Container className="my-4 align-items-end d-flex flex-column">
-      {!loading && !empty && <AddNewBtn type="company" />}
+      {!loading && <AddNewBtn type="company" />}
       <Row className="w-100">
         <Col sm="2">
           <CrudCat />

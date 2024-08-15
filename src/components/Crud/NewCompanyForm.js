@@ -50,8 +50,9 @@ export default function NewUserForm({ submitHandler }) {
           <p className="error">{errors.description.message}</p>
         )}
         {/* Logo */}
+        <span>لوجو الشركة</span>
         <input
-          type="text"
+          type="file"
           placeholder="لوجو الشركة *"
           name="logo"
           {...register("logo", {
@@ -104,17 +105,10 @@ export default function NewUserForm({ submitHandler }) {
       <div className="address-data">
         <input
           type="address"
-          placeholder="الشارع"
-          {...register("street", { required: "يرجي ادخال اسم الشارع" })}
+          placeholder="العنوان"
+          {...register("street", { required: "يرجي ادخال عنوان الشركة" })}
         />
         {errors.street && <p className="error">{errors.street.message}</p>}
-        <input
-          type="text"
-          placeholder="المنطقة"
-          {...register("state", { required: "يرجي ادخال اسم المنطقه" })}
-        />
-        {errors.state && <p className="error">{errors.state.message}</p>}
-
         <select
           className="form-select form-select-md"
           name="gov"

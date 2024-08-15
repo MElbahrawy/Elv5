@@ -18,9 +18,9 @@ export default function UsersCrud({ companiesData }) {
         {companiesData.map((company) => (
           <tr key={company.id}>
             <td>{company.id}</td>
-            <td>{company.title}</td>
+            <td>{company.name}</td>
             <td>{company.location}</td>
-            <td>{company.phoneNumber}</td>
+            <td>{company.phone}</td>
             <td>
               <CrudBtns Id={company.id} type="companies" />
             </td>

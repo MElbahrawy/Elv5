@@ -24,10 +24,11 @@ export default function AdminPage() {
           setEmpty(true);
         setUsers(response.data);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setLoading(false);
-        setUsers(users);
-        // setEmpty(true);
+        // setUsers(users);
+        setEmpty(true);
       });
   }, []);
   return (
