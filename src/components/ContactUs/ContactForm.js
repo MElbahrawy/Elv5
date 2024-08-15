@@ -28,7 +28,8 @@ export default function ContactForm() {
       }
     );
   }
-  const HandleClick = () => {
+  const HandleClick = (e) => {
+    e.preventDefault();
     setCheck(true);
     SendEmail();
     setCheck(false);
@@ -58,8 +59,9 @@ export default function ContactForm() {
         </Form.Group>
         <Button
           className="bg-main"
-          onClick={() => HandleClick()}
+          onSubmit={(e) => HandleClick(e)}
           disabled={check}
+          type="submit"
         >
           أرسل
         </Button>
